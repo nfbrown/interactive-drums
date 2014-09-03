@@ -5,7 +5,7 @@ PC->Embedded Packet Structure:
 			29: 	Reset
 			28-25: 	Control (mode, play/pause, etc)
 			24:		Reserved for nothing
-			23-16:	BPM
+			23-16:	Packets/second
 		Bits 15-0: Drum bits
 			Two bits for each drum
 
