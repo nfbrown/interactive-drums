@@ -1,7 +1,7 @@
 import serial
 import numpy as np
 
-class SendPacket:
+class DrumSerial:
     serial_out = serial.Serial()
 
     def __init__(self, port):
