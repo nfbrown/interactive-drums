@@ -7,6 +7,7 @@ class DrumSerial:
     def __init__(self, port):
         self.serial_port.baudrate = 115200
         self.serial_port.bytesize = 32
+        self.serial_port.timeout = 15
         self.serial_port.open(port)
 
     def send(self, packet):
