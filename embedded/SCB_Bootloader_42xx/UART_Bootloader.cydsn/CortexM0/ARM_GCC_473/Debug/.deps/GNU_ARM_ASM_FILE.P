@@ -1,0 +1,4 @@
+C:/Users/vrnk/Desktop/ES100\ FW\ -049/FW/SCB_Bootloader_42xx/UART_Bootloader.cydsn/CortexM0/ARM_GCC_473/Debug/CyBootAsmGnu.o : C:/Users/vrnk/Desktop/ES100\ FW\ -049/FW/SCB_Bootloader_42xx/UART_Bootloader.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s 
+
+C:/Users/vrnk/Desktop/ES100\ FW\ -049/FW/SCB_Bootloader_42xx/UART_Bootloader.cydsn/Generated_Source/PSoC4/CyBootAsmGnu.s : 
+

@@ -1,0 +1,90 @@
+--------------- Rebuild Started: 01/20/2014 20:29:29 Project: UART_Bootloader, Configuration: ARM GCC 4.7.3 Debug ---------------
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\main.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_Btldr.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\cyfitter_cfg.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\cymetadata.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_SPI_UART.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_SPI_UART_INT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_PM.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_UART.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_BOOT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_UART_BOOT.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_rx.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_SCB_IRQ.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_SCBCLK.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_tx.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Cm0Start.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\CyBootAsmGnu.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\CyFlash.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\CyLib.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\cyPm.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\cyutils.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Bootloader.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\P1_6.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PWM.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\PWM_PM.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Clock.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\Boot_P0_7.o"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.hex"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.elf"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.map"
+Deleting file ".\UART_Bootloader.cycdx"
+Deleting file ".\UART_Bootloader.svd"
+Deleting file ".\UART_Bootloader.rpt"
+Deleting file ".\UART_Bootloader_timing.html"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\.deps\C_FILE.P"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\.deps\ARM_C_FILE.P"
+Deleting file ".\CortexM0\ARM_GCC_473\Debug\.deps\GNU_ARM_ASM_FILE.P"
+cydsfit.exe "-.appdatapath" "C:\Users\vrnk\AppData\Local\Cypress Semiconductor\PSoC Creator\3.0" "-.fdsnotice" "-.fdswarpdepfile=warp_dependencies.txt" "-.fdselabdepfile=elab_dependencies.txt" "-.fdsbldfile=generated_files.txt" "-p" "C:\hardware\Kits\CY8CKIT-049\System_Firmware_Design\SCB_Bootloader_42xx\UART_Bootloader.cydsn\UART_Bootloader.cyprj" "-d" "CY8C4245AXI-483" "-s" "C:\hardware\Kits\CY8CKIT-049\System_Firmware_Design\SCB_Bootloader_42xx\UART_Bootloader.cydsn\Generated_Source\PSoC4" "--" "-yv2" "-v3" "-ygs" "-q10" "-o2" "-.fftcfgtype=LE"
+Elaborating Design...
+HDL Generation ...
+Synthesis ...
+Place and Route ...
+Tech mapping ...
+Info: mpr.M0037: Unused pieces of the design have been optimized out. See the Tech mapping section of the report file for details. (App=cydsfit)
+Analog Placement ...
+Analog Routing ...
+Analog Code Generation ...
+Digital Placement ...
+Digital Routing ...
+Bitstream Generation ...
+Static timing analysis ...
+API Generation ...
+Dependency Generation ...
+Clean Temporary Files ...
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\main.lst -Os -ffunction-sections -c .\main.c -o .\CortexM0\ARM_GCC_473\Debug\main.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_Btldr.lst -Os -ffunction-sections -c .\UART_Btldr.c -o .\CortexM0\ARM_GCC_473\Debug\UART_Btldr.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\cyfitter_cfg.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\cyfitter_cfg.c -o .\CortexM0\ARM_GCC_473\Debug\cyfitter_cfg.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\cymetadata.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\cymetadata.c -o .\CortexM0\ARM_GCC_473\Debug\cymetadata.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART.c -o .\CortexM0\ARM_GCC_473\Debug\UART.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_SPI_UART.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_SPI_UART.c -o .\CortexM0\ARM_GCC_473\Debug\UART_SPI_UART.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_SPI_UART_INT.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_SPI_UART_INT.c -o .\CortexM0\ARM_GCC_473\Debug\UART_SPI_UART_INT.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_PM.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_PM.c -o .\CortexM0\ARM_GCC_473\Debug\UART_PM.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_UART.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_UART.c -o .\CortexM0\ARM_GCC_473\Debug\UART_UART.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_BOOT.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_BOOT.c -o .\CortexM0\ARM_GCC_473\Debug\UART_BOOT.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_UART_BOOT.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_UART_BOOT.c -o .\CortexM0\ARM_GCC_473\Debug\UART_UART_BOOT.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_rx.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_rx.c -o .\CortexM0\ARM_GCC_473\Debug\UART_rx.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_SCB_IRQ.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_SCB_IRQ.c -o .\CortexM0\ARM_GCC_473\Debug\UART_SCB_IRQ.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_SCBCLK.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_SCBCLK.c -o .\CortexM0\ARM_GCC_473\Debug\UART_SCBCLK.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\UART_tx.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\UART_tx.c -o .\CortexM0\ARM_GCC_473\Debug\UART_tx.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\Cm0Start.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\Cm0Start.c -o .\CortexM0\ARM_GCC_473\Debug\Cm0Start.o
+arm-none-eabi-as.exe -I. -I./Generated_Source/PSoC4 -mcpu=cortex-m0 -mthumb -g -alh=.\CortexM0\ARM_GCC_473\Debug/CyBootAsmGnu.lst -o .\CortexM0\ARM_GCC_473\Debug\CyBootAsmGnu.o .\Generated_Source\PSoC4\CyBootAsmGnu.s
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\CyFlash.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\CyFlash.c -o .\CortexM0\ARM_GCC_473\Debug\CyFlash.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\CyLib.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\CyLib.c -o .\CortexM0\ARM_GCC_473\Debug\CyLib.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\cyPm.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\cyPm.c -o .\CortexM0\ARM_GCC_473\Debug\cyPm.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\cyutils.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\cyutils.c -o .\CortexM0\ARM_GCC_473\Debug\cyutils.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\Bootloader.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\Bootloader.c -o .\CortexM0\ARM_GCC_473\Debug\Bootloader.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\P1_6.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\P1_6.c -o .\CortexM0\ARM_GCC_473\Debug\P1_6.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\PWM.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\PWM.c -o .\CortexM0\ARM_GCC_473\Debug\PWM.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\PWM_PM.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\PWM_PM.c -o .\CortexM0\ARM_GCC_473\Debug\PWM_PM.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\Clock.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\Clock.c -o .\CortexM0\ARM_GCC_473\Debug\Clock.o
+arm-none-eabi-gcc.exe -I. -I./Generated_Source/PSoC4 -Wno-main -mcpu=cortex-m0 -mthumb -Wall -g -D DEBUG -Wa,-alh=.\CortexM0\ARM_GCC_473\Debug\Boot_P0_7.lst -Os -ffunction-sections -c .\Generated_Source\PSoC4\Boot_P0_7.c -o .\CortexM0\ARM_GCC_473\Debug\Boot_P0_7.o
+arm-none-eabi-ar.exe -rs .\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.a .\CortexM0\ARM_GCC_473\Debug\cyfitter_cfg.o .\CortexM0\ARM_GCC_473\Debug\UART.o .\CortexM0\ARM_GCC_473\Debug\UART_SPI_UART.o .\CortexM0\ARM_GCC_473\Debug\UART_SPI_UART_INT.o .\CortexM0\ARM_GCC_473\Debug\UART_PM.o .\CortexM0\ARM_GCC_473\Debug\UART_UART.o .\CortexM0\ARM_GCC_473\Debug\UART_BOOT.o .\CortexM0\ARM_GCC_473\Debug\UART_UART_BOOT.o .\CortexM0\ARM_GCC_473\Debug\UART_rx.o .\CortexM0\ARM_GCC_473\Debug\UART_SCB_IRQ.o .\CortexM0\ARM_GCC_473\Debug\UART_SCBCLK.o .\CortexM0\ARM_GCC_473\Debug\UART_tx.o .\CortexM0\ARM_GCC_473\Debug\CyBootAsmGnu.o .\CortexM0\ARM_GCC_473\Debug\CyFlash.o .\CortexM0\ARM_GCC_473\Debug\CyLib.o .\CortexM0\ARM_GCC_473\Debug\cyPm.o .\CortexM0\ARM_GCC_473\Debug\cyutils.o .\CortexM0\ARM_GCC_473\Debug\Bootloader.o .\CortexM0\ARM_GCC_473\Debug\P1_6.o .\CortexM0\ARM_GCC_473\Debug\PWM.o .\CortexM0\ARM_GCC_473\Debug\PWM_PM.o .\CortexM0\ARM_GCC_473\Debug\Clock.o .\CortexM0\ARM_GCC_473\Debug\Boot_P0_7.o
+arm-none-eabi-ar.exe: creating .\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.a
+arm-none-eabi-gcc.exe -mthumb -march=armv6-m -T .\Generated_Source\PSoC4\cm0gcc.ld -g -Wl,-Map,.\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.map -specs=nano.specs -Wl,--gc-sections -Wl,--start-group -o .\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.elf .\CortexM0\ARM_GCC_473\Debug\main.o .\CortexM0\ARM_GCC_473\Debug\UART_Btldr.o .\CortexM0\ARM_GCC_473\Debug\cymetadata.o .\CortexM0\ARM_GCC_473\Debug\Cm0Start.o .\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.a "C:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_473\Debug\CyComponentLibrary.a" -Wl,--end-group
+cyelftool.exe -P C:\hardware\Kits\CY8CKIT-049\System_Firmware_Design\SCB_Bootloader_42xx\UART_Bootloader.cydsn\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.elf --flash_row_size 128 --flash_size 32768 --size_var_name Bootloader_SizeBytes --checksum_var_name Bootloader_Checksum --ignore 0xC0
+cyelftool.exe -S C:\hardware\Kits\CY8CKIT-049\System_Firmware_Design\SCB_Bootloader_42xx\UART_Bootloader.cydsn\CortexM0\ARM_GCC_473\Debug\UART_Bootloader.elf
+Flash used: 3912 of 32768 bytes (11.9 %).
+SRAM used: 1704 of 4096 bytes (41.6 %).
+--------------- Rebuild Succeeded: 01/20/2014 20:29:49 ---------------

@@ -1,0 +1,788 @@
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"main.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.startup.main,"ax",%progbits
+  18              		.align	1
+  19              		.global	main
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	main, %function
+  23              	main:
+  24              	.LFB33:
+  25              		.file 1 ".\\main.c"
+   1:.\main.c      **** ﻿/******************************************************************************
+   2:.\main.c      **** * Project Name		: UART_Bootloader
+   3:.\main.c      **** * File Name			: main.c
+   4:.\main.c      **** * Version 			: 1.0
+   5:.\main.c      **** * Device Used		: CY8C4245AXI-483
+   6:.\main.c      **** * Software Used		: PSoC Creator 3.0
+   7:.\main.c      **** * Compiler    		: ARMGCC 4.7.3, ARM RVDS Generic, ARM MDK Generic
+   8:.\main.c      **** * Related Hardware	: CY8CKIT-049-42xx PSoC 4 Prototyping Kit 
+   9:.\main.c      **** *
+  10:.\main.c      **** ********************************************************************************
+  11:.\main.c      **** * Copyright (2014), Cypress Semiconductor Corporation. All Rights Reserved.
+  12:.\main.c      **** ********************************************************************************
+  13:.\main.c      **** * This software is owned by Cypress Semiconductor Corporation (Cypress)
+  14:.\main.c      **** * and is protected by and subject to worldwide patent protection (United
+  15:.\main.c      **** * States and foreign), United States copyright laws and international treaty
+  16:.\main.c      **** * provisions. Cypress hereby grants to licensee a personal, non-exclusive,
+  17:.\main.c      **** * non-transferable license to copy, use, modify, create derivative works of,
+  18:.\main.c      **** * and compile the Cypress Source Code and derivative works for the sole
+  19:.\main.c      **** * purpose of creating custom software in support of licensee product to be
+  20:.\main.c      **** * used only in conjunction with a Cypress integrated circuit as specified in
+  21:.\main.c      **** * the applicable agreement. Any reproduction, modification, translation,
+  22:.\main.c      **** * compilation, or representation of this software except as specified above 
+  23:.\main.c      **** * is prohibited without the express written permission of Cypress.
+  24:.\main.c      **** *
+  25:.\main.c      **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH 
+  26:.\main.c      **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  27:.\main.c      **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  28:.\main.c      **** * Cypress reserves the right to make changes without further notice to the 
+  29:.\main.c      **** * materials described herein. Cypress does not assume any liability arising out 
+  30:.\main.c      **** * of the application or use of any product or circuit described herein. Cypress 
+  31:.\main.c      **** * does not authorize its products for use as critical components in life-support 
+  32:.\main.c      **** * systems where a malfunction or failure may reasonably be expected to result in 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 2
+
+
+  33:.\main.c      **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  34:.\main.c      **** * support systems application implies that the manufacturer assumes all risk of 
+  35:.\main.c      **** * such use and in doing so indemnifies Cypress against all charges. 
+  36:.\main.c      **** *
+  37:.\main.c      **** * Use of this Software may be limited by and subject to the applicable Cypress
+  38:.\main.c      **** * software license agreement. 
+  39:.\main.c      **** *******************************************************************************/
+  40:.\main.c      **** 
+  41:.\main.c      **** /******************************************************************************
+  42:.\main.c      **** *                           THEORY OF OPERATION
+  43:.\main.c      **** * The Bootlader uses UART interface to bootload a new project. The Switch on the 
+  44:.\main.c      **** * board needs to be pressed during power up to enter into the bootlader. The LED 
+  45:.\main.c      **** * on the board blinks every 500ms to indicate that the bootloader is active and 
+  46:.\main.c      **** * is ready for a bootload operation.
+  47:.\main.c      **** * Default UART Port Configuration for bootloading the PSoC 4 in CY8CKIT-049-42xx
+  48:.\main.c      **** * Baud Rate : 115200 bps
+  49:.\main.c      **** * Data Bits : 8
+  50:.\main.c      **** * Stop Bits : 1
+  51:.\main.c      **** * Parity    : None
+  52:.\main.c      **** ******************************************************************************/
+  53:.\main.c      **** 
+  54:.\main.c      **** #include <project.h>
+  55:.\main.c      **** 
+  56:.\main.c      **** /* Define the Bootload Switch timeout in ms */
+  57:.\main.c      **** #define SWITCH_PRESS_TIMEOUT 100
+  58:.\main.c      **** 
+  59:.\main.c      **** int main()
+  60:.\main.c      **** {
+  26              		.loc 1 60 0
+  27              		.cfi_startproc
+  28              	.LVL0:
+  29 0000 10B5     		push	{r4, lr}
+  30              	.LCFI0:
+  31              		.cfi_def_cfa_offset 8
+  32              		.cfi_offset 4, -8
+  33              		.cfi_offset 14, -4
+  61:.\main.c      ****     
+  62:.\main.c      **** 	uint8 counter = 0;	
+  63:.\main.c      **** 	
+  64:.\main.c      **** 	/* Enable global interrupts*/
+  65:.\main.c      **** 	CyGlobalIntEnable;
+  34              		.loc 1 65 0
+  35              	@ 65 ".\main.c" 1
+  36 0002 62B6     		CPSIE   i
+  37              	@ 0 "" 2
+  66:.\main.c      **** 	
+  67:.\main.c      **** 	/* Check if the switch is pressed during power up */ 
+  68:.\main.c      **** 	if(Boot_P0_7_Read() == 0)
+  38              		.loc 1 68 0
+  39              		.code	16
+  40 0004 FFF7FEFF 		bl	Boot_P0_7_Read
+  41              	.LVL1:
+  42 0008 0028     		cmp	r0, #0
+  43 000a 0ED1     		bne	.L6
+  44 000c 6524     		mov	r4, #101
+  45              	.LVL2:
+  46              	.L3:
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 3
+
+
+  69:.\main.c      **** 	{
+  70:.\main.c      **** 		
+  71:.\main.c      **** 		for(counter = 0; counter <= SWITCH_PRESS_TIMEOUT; counter++)
+  72:.\main.c      **** 		{
+  73:.\main.c      **** 			/* Delay for 1ms */
+  74:.\main.c      **** 			CyDelay(1);
+  47              		.loc 1 74 0
+  48 000e 0120     		mov	r0, #1
+  49 0010 FFF7FEFF 		bl	CyDelay
+  50              	.LVL3:
+  75:.\main.c      **** 				
+  76:.\main.c      **** 			/* If the switch is released before specified time, do not enter the 
+  77:.\main.c      **** 			 * bootloader */
+  78:.\main.c      **** 			if(Boot_P0_7_Read() != 0)
+  51              		.loc 1 78 0
+  52 0014 FFF7FEFF 		bl	Boot_P0_7_Read
+  53              	.LVL4:
+  54 0018 0028     		cmp	r0, #0
+  55 001a 06D1     		bne	.L6
+  56 001c 013C     		sub	r4, r4, #1
+  57 001e E4B2     		uxtb	r4, r4
+  71:.\main.c      **** 		for(counter = 0; counter <= SWITCH_PRESS_TIMEOUT; counter++)
+  58              		.loc 1 71 0
+  59 0020 002C     		cmp	r4, #0
+  60 0022 F4D1     		bne	.L3
+  79:.\main.c      **** 				break;
+  80:.\main.c      **** 		}
+  81:.\main.c      **** 						 
+  82:.\main.c      **** 		if(counter > SWITCH_PRESS_TIMEOUT)
+  83:.\main.c      **** 		{
+  84:.\main.c      **** 			/* If the switch was pressed for more than 100 millisecond counter 
+  85:.\main.c      **** 			 * value will be 100. If so, set the flash run type as bootloader to 
+  86:.\main.c      **** 			 * wait for a bootload operation */
+  87:.\main.c      **** 			Bootloader_SET_RUN_TYPE (Bootloader_START_BTLDR);
+  61              		.loc 1 87 0
+  62 0024 034B     		ldr	r3, .L10
+  63 0026 4022     		mov	r2, #64
+  64 0028 1A60     		str	r2, [r3]
+  65              	.L6:
+  88:.\main.c      **** 		}
+  89:.\main.c      **** 	}
+  90:.\main.c      **** 		
+  91:.\main.c      **** 	/*Indicate that you have entered the bootloader mode.*/
+  92:.\main.c      **** 	PWM_Start();
+  66              		.loc 1 92 0
+  67 002a FFF7FEFF 		bl	PWM_Start
+  68              	.LVL5:
+  93:.\main.c      **** 	
+  94:.\main.c      **** 	/* Start the Bootloader */
+  95:.\main.c      **** 	Bootloader_Start();
+  69              		.loc 1 95 0
+  70 002e FFF7FEFF 		bl	Bootloader_Start
+  71              	.LVL6:
+  72              	.L5:
+  73 0032 FEE7     		b	.L5
+  74              	.L11:
+  75              		.align	2
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 4
+
+
+  76              	.L10:
+  77 0034 00000000 		.word	cyBtldrRunType
+  78              		.cfi_endproc
+  79              	.LFE33:
+  80              		.size	main, .-main
+  81              		.text
+  82              	.Letext0:
+  83              		.file 2 "./Generated_Source/PSoC4/cytypes.h"
+  84              		.file 3 "./Generated_Source/PSoC4/PWM.h"
+  85              		.file 4 "./Generated_Source/PSoC4/Bootloader.h"
+  86              		.file 5 "./Generated_Source/PSoC4/Boot_P0_7.h"
+  87              		.file 6 "./Generated_Source/PSoC4/CyLib.h"
+  88              		.section	.debug_info,"",%progbits
+  89              	.Ldebug_info0:
+  90 0000 4B010000 		.4byte	0x14b
+  91 0004 0200     		.2byte	0x2
+  92 0006 00000000 		.4byte	.Ldebug_abbrev0
+  93 000a 04       		.byte	0x4
+  94 000b 01       		.uleb128 0x1
+  95 000c 3E000000 		.4byte	.LASF17
+  96 0010 01       		.byte	0x1
+  97 0011 3A010000 		.4byte	.LASF18
+  98 0015 43010000 		.4byte	.LASF19
+  99 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 100 001d 00000000 		.4byte	0
+ 101 0021 00000000 		.4byte	0
+ 102 0025 00000000 		.4byte	.Ldebug_line0
+ 103 0029 02       		.uleb128 0x2
+ 104 002a 01       		.byte	0x1
+ 105 002b 06       		.byte	0x6
+ 106 002c 24010000 		.4byte	.LASF0
+ 107 0030 02       		.uleb128 0x2
+ 108 0031 01       		.byte	0x1
+ 109 0032 08       		.byte	0x8
+ 110 0033 CF000000 		.4byte	.LASF1
+ 111 0037 02       		.uleb128 0x2
+ 112 0038 02       		.byte	0x2
+ 113 0039 05       		.byte	0x5
+ 114 003a EB000000 		.4byte	.LASF2
+ 115 003e 02       		.uleb128 0x2
+ 116 003f 02       		.byte	0x2
+ 117 0040 07       		.byte	0x7
+ 118 0041 B6000000 		.4byte	.LASF3
+ 119 0045 02       		.uleb128 0x2
+ 120 0046 04       		.byte	0x4
+ 121 0047 05       		.byte	0x5
+ 122 0048 E2000000 		.4byte	.LASF4
+ 123 004c 02       		.uleb128 0x2
+ 124 004d 04       		.byte	0x4
+ 125 004e 07       		.byte	0x7
+ 126 004f 8D000000 		.4byte	.LASF5
+ 127 0053 02       		.uleb128 0x2
+ 128 0054 08       		.byte	0x8
+ 129 0055 05       		.byte	0x5
+ 130 0056 00000000 		.4byte	.LASF6
+ 131 005a 02       		.uleb128 0x2
+ 132 005b 08       		.byte	0x8
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 5
+
+
+ 133 005c 07       		.byte	0x7
+ 134 005d 9F000000 		.4byte	.LASF7
+ 135 0061 03       		.uleb128 0x3
+ 136 0062 04       		.byte	0x4
+ 137 0063 05       		.byte	0x5
+ 138 0064 696E7400 		.ascii	"int\000"
+ 139 0068 02       		.uleb128 0x2
+ 140 0069 04       		.byte	0x4
+ 141 006a 07       		.byte	0x7
+ 142 006b 15000000 		.4byte	.LASF8
+ 143 006f 04       		.uleb128 0x4
+ 144 0070 87000000 		.4byte	.LASF9
+ 145 0074 02       		.byte	0x2
+ 146 0075 5B       		.byte	0x5b
+ 147 0076 30000000 		.4byte	0x30
+ 148 007a 04       		.uleb128 0x4
+ 149 007b 0E000000 		.4byte	.LASF10
+ 150 007f 02       		.byte	0x2
+ 151 0080 5D       		.byte	0x5d
+ 152 0081 4C000000 		.4byte	0x4c
+ 153 0085 02       		.uleb128 0x2
+ 154 0086 04       		.byte	0x4
+ 155 0087 04       		.byte	0x4
+ 156 0088 C9000000 		.4byte	.LASF11
+ 157 008c 02       		.uleb128 0x2
+ 158 008d 08       		.byte	0x8
+ 159 008e 04       		.byte	0x4
+ 160 008f 06010000 		.4byte	.LASF12
+ 161 0093 02       		.uleb128 0x2
+ 162 0094 01       		.byte	0x1
+ 163 0095 08       		.byte	0x8
+ 164 0096 DD000000 		.4byte	.LASF13
+ 165 009a 05       		.uleb128 0x5
+ 166 009b 7A000000 		.4byte	0x7a
+ 167 009f 02       		.uleb128 0x2
+ 168 00a0 04       		.byte	0x4
+ 169 00a1 07       		.byte	0x7
+ 170 00a2 94010000 		.4byte	.LASF14
+ 171 00a6 06       		.uleb128 0x6
+ 172 00a7 01       		.byte	0x1
+ 173 00a8 39000000 		.4byte	.LASF20
+ 174 00ac 01       		.byte	0x1
+ 175 00ad 3B       		.byte	0x3b
+ 176 00ae 61000000 		.4byte	0x61
+ 177 00b2 00000000 		.4byte	.LFB33
+ 178 00b6 38000000 		.4byte	.LFE33
+ 179 00ba 00000000 		.4byte	.LLST0
+ 180 00be 01       		.byte	0x1
+ 181 00bf 0A010000 		.4byte	0x10a
+ 182 00c3 07       		.uleb128 0x7
+ 183 00c4 0D010000 		.4byte	.LASF21
+ 184 00c8 01       		.byte	0x1
+ 185 00c9 3E       		.byte	0x3e
+ 186 00ca 6F000000 		.4byte	0x6f
+ 187 00ce 20000000 		.4byte	.LLST1
+ 188 00d2 08       		.uleb128 0x8
+ 189 00d3 08000000 		.4byte	.LVL1
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 6
+
+
+ 190 00d7 17010000 		.4byte	0x117
+ 191 00db 09       		.uleb128 0x9
+ 192 00dc 14000000 		.4byte	.LVL3
+ 193 00e0 25010000 		.4byte	0x125
+ 194 00e4 EE000000 		.4byte	0xee
+ 195 00e8 0A       		.uleb128 0xa
+ 196 00e9 01       		.byte	0x1
+ 197 00ea 50       		.byte	0x50
+ 198 00eb 01       		.byte	0x1
+ 199 00ec 31       		.byte	0x31
+ 200 00ed 00       		.byte	0
+ 201 00ee 08       		.uleb128 0x8
+ 202 00ef 18000000 		.4byte	.LVL4
+ 203 00f3 17010000 		.4byte	0x117
+ 204 00f7 08       		.uleb128 0x8
+ 205 00f8 2E000000 		.4byte	.LVL5
+ 206 00fc 39010000 		.4byte	0x139
+ 207 0100 08       		.uleb128 0x8
+ 208 0101 32000000 		.4byte	.LVL6
+ 209 0105 44010000 		.4byte	0x144
+ 210 0109 00       		.byte	0
+ 211 010a 0B       		.uleb128 0xb
+ 212 010b 15010000 		.4byte	.LASF22
+ 213 010f 04       		.byte	0x4
+ 214 0110 60       		.byte	0x60
+ 215 0111 9A000000 		.4byte	0x9a
+ 216 0115 01       		.byte	0x1
+ 217 0116 01       		.byte	0x1
+ 218 0117 0C       		.uleb128 0xc
+ 219 0118 01       		.byte	0x1
+ 220 0119 2A000000 		.4byte	.LASF23
+ 221 011d 05       		.byte	0x5
+ 222 011e 20       		.byte	0x20
+ 223 011f 01       		.byte	0x1
+ 224 0120 6F000000 		.4byte	0x6f
+ 225 0124 01       		.byte	0x1
+ 226 0125 0D       		.uleb128 0xd
+ 227 0126 01       		.byte	0x1
+ 228 0127 22000000 		.4byte	.LASF24
+ 229 012b 06       		.byte	0x6
+ 230 012c 69       		.byte	0x69
+ 231 012d 01       		.byte	0x1
+ 232 012e 01       		.byte	0x1
+ 233 012f 39010000 		.4byte	0x139
+ 234 0133 0E       		.uleb128 0xe
+ 235 0134 7A000000 		.4byte	0x7a
+ 236 0138 00       		.byte	0
+ 237 0139 0F       		.uleb128 0xf
+ 238 013a 01       		.byte	0x1
+ 239 013b 30010000 		.4byte	.LASF15
+ 240 013f 03       		.byte	0x3
+ 241 0140 1F01     		.2byte	0x11f
+ 242 0142 01       		.byte	0x1
+ 243 0143 01       		.byte	0x1
+ 244 0144 10       		.uleb128 0x10
+ 245 0145 01       		.byte	0x1
+ 246 0146 F5000000 		.4byte	.LASF16
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 7
+
+
+ 247 014a 04       		.byte	0x4
+ 248 014b 93       		.byte	0x93
+ 249 014c 01       		.byte	0x1
+ 250 014d 01       		.byte	0x1
+ 251 014e 00       		.byte	0
+ 252              		.section	.debug_abbrev,"",%progbits
+ 253              	.Ldebug_abbrev0:
+ 254 0000 01       		.uleb128 0x1
+ 255 0001 11       		.uleb128 0x11
+ 256 0002 01       		.byte	0x1
+ 257 0003 25       		.uleb128 0x25
+ 258 0004 0E       		.uleb128 0xe
+ 259 0005 13       		.uleb128 0x13
+ 260 0006 0B       		.uleb128 0xb
+ 261 0007 03       		.uleb128 0x3
+ 262 0008 0E       		.uleb128 0xe
+ 263 0009 1B       		.uleb128 0x1b
+ 264 000a 0E       		.uleb128 0xe
+ 265 000b 55       		.uleb128 0x55
+ 266 000c 06       		.uleb128 0x6
+ 267 000d 11       		.uleb128 0x11
+ 268 000e 01       		.uleb128 0x1
+ 269 000f 52       		.uleb128 0x52
+ 270 0010 01       		.uleb128 0x1
+ 271 0011 10       		.uleb128 0x10
+ 272 0012 06       		.uleb128 0x6
+ 273 0013 00       		.byte	0
+ 274 0014 00       		.byte	0
+ 275 0015 02       		.uleb128 0x2
+ 276 0016 24       		.uleb128 0x24
+ 277 0017 00       		.byte	0
+ 278 0018 0B       		.uleb128 0xb
+ 279 0019 0B       		.uleb128 0xb
+ 280 001a 3E       		.uleb128 0x3e
+ 281 001b 0B       		.uleb128 0xb
+ 282 001c 03       		.uleb128 0x3
+ 283 001d 0E       		.uleb128 0xe
+ 284 001e 00       		.byte	0
+ 285 001f 00       		.byte	0
+ 286 0020 03       		.uleb128 0x3
+ 287 0021 24       		.uleb128 0x24
+ 288 0022 00       		.byte	0
+ 289 0023 0B       		.uleb128 0xb
+ 290 0024 0B       		.uleb128 0xb
+ 291 0025 3E       		.uleb128 0x3e
+ 292 0026 0B       		.uleb128 0xb
+ 293 0027 03       		.uleb128 0x3
+ 294 0028 08       		.uleb128 0x8
+ 295 0029 00       		.byte	0
+ 296 002a 00       		.byte	0
+ 297 002b 04       		.uleb128 0x4
+ 298 002c 16       		.uleb128 0x16
+ 299 002d 00       		.byte	0
+ 300 002e 03       		.uleb128 0x3
+ 301 002f 0E       		.uleb128 0xe
+ 302 0030 3A       		.uleb128 0x3a
+ 303 0031 0B       		.uleb128 0xb
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 8
+
+
+ 304 0032 3B       		.uleb128 0x3b
+ 305 0033 0B       		.uleb128 0xb
+ 306 0034 49       		.uleb128 0x49
+ 307 0035 13       		.uleb128 0x13
+ 308 0036 00       		.byte	0
+ 309 0037 00       		.byte	0
+ 310 0038 05       		.uleb128 0x5
+ 311 0039 35       		.uleb128 0x35
+ 312 003a 00       		.byte	0
+ 313 003b 49       		.uleb128 0x49
+ 314 003c 13       		.uleb128 0x13
+ 315 003d 00       		.byte	0
+ 316 003e 00       		.byte	0
+ 317 003f 06       		.uleb128 0x6
+ 318 0040 2E       		.uleb128 0x2e
+ 319 0041 01       		.byte	0x1
+ 320 0042 3F       		.uleb128 0x3f
+ 321 0043 0C       		.uleb128 0xc
+ 322 0044 03       		.uleb128 0x3
+ 323 0045 0E       		.uleb128 0xe
+ 324 0046 3A       		.uleb128 0x3a
+ 325 0047 0B       		.uleb128 0xb
+ 326 0048 3B       		.uleb128 0x3b
+ 327 0049 0B       		.uleb128 0xb
+ 328 004a 49       		.uleb128 0x49
+ 329 004b 13       		.uleb128 0x13
+ 330 004c 11       		.uleb128 0x11
+ 331 004d 01       		.uleb128 0x1
+ 332 004e 12       		.uleb128 0x12
+ 333 004f 01       		.uleb128 0x1
+ 334 0050 40       		.uleb128 0x40
+ 335 0051 06       		.uleb128 0x6
+ 336 0052 9742     		.uleb128 0x2117
+ 337 0054 0C       		.uleb128 0xc
+ 338 0055 01       		.uleb128 0x1
+ 339 0056 13       		.uleb128 0x13
+ 340 0057 00       		.byte	0
+ 341 0058 00       		.byte	0
+ 342 0059 07       		.uleb128 0x7
+ 343 005a 34       		.uleb128 0x34
+ 344 005b 00       		.byte	0
+ 345 005c 03       		.uleb128 0x3
+ 346 005d 0E       		.uleb128 0xe
+ 347 005e 3A       		.uleb128 0x3a
+ 348 005f 0B       		.uleb128 0xb
+ 349 0060 3B       		.uleb128 0x3b
+ 350 0061 0B       		.uleb128 0xb
+ 351 0062 49       		.uleb128 0x49
+ 352 0063 13       		.uleb128 0x13
+ 353 0064 02       		.uleb128 0x2
+ 354 0065 06       		.uleb128 0x6
+ 355 0066 00       		.byte	0
+ 356 0067 00       		.byte	0
+ 357 0068 08       		.uleb128 0x8
+ 358 0069 898201   		.uleb128 0x4109
+ 359 006c 00       		.byte	0
+ 360 006d 11       		.uleb128 0x11
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 9
+
+
+ 361 006e 01       		.uleb128 0x1
+ 362 006f 31       		.uleb128 0x31
+ 363 0070 13       		.uleb128 0x13
+ 364 0071 00       		.byte	0
+ 365 0072 00       		.byte	0
+ 366 0073 09       		.uleb128 0x9
+ 367 0074 898201   		.uleb128 0x4109
+ 368 0077 01       		.byte	0x1
+ 369 0078 11       		.uleb128 0x11
+ 370 0079 01       		.uleb128 0x1
+ 371 007a 31       		.uleb128 0x31
+ 372 007b 13       		.uleb128 0x13
+ 373 007c 01       		.uleb128 0x1
+ 374 007d 13       		.uleb128 0x13
+ 375 007e 00       		.byte	0
+ 376 007f 00       		.byte	0
+ 377 0080 0A       		.uleb128 0xa
+ 378 0081 8A8201   		.uleb128 0x410a
+ 379 0084 00       		.byte	0
+ 380 0085 02       		.uleb128 0x2
+ 381 0086 0A       		.uleb128 0xa
+ 382 0087 9142     		.uleb128 0x2111
+ 383 0089 0A       		.uleb128 0xa
+ 384 008a 00       		.byte	0
+ 385 008b 00       		.byte	0
+ 386 008c 0B       		.uleb128 0xb
+ 387 008d 34       		.uleb128 0x34
+ 388 008e 00       		.byte	0
+ 389 008f 03       		.uleb128 0x3
+ 390 0090 0E       		.uleb128 0xe
+ 391 0091 3A       		.uleb128 0x3a
+ 392 0092 0B       		.uleb128 0xb
+ 393 0093 3B       		.uleb128 0x3b
+ 394 0094 0B       		.uleb128 0xb
+ 395 0095 49       		.uleb128 0x49
+ 396 0096 13       		.uleb128 0x13
+ 397 0097 3F       		.uleb128 0x3f
+ 398 0098 0C       		.uleb128 0xc
+ 399 0099 3C       		.uleb128 0x3c
+ 400 009a 0C       		.uleb128 0xc
+ 401 009b 00       		.byte	0
+ 402 009c 00       		.byte	0
+ 403 009d 0C       		.uleb128 0xc
+ 404 009e 2E       		.uleb128 0x2e
+ 405 009f 00       		.byte	0
+ 406 00a0 3F       		.uleb128 0x3f
+ 407 00a1 0C       		.uleb128 0xc
+ 408 00a2 03       		.uleb128 0x3
+ 409 00a3 0E       		.uleb128 0xe
+ 410 00a4 3A       		.uleb128 0x3a
+ 411 00a5 0B       		.uleb128 0xb
+ 412 00a6 3B       		.uleb128 0x3b
+ 413 00a7 0B       		.uleb128 0xb
+ 414 00a8 27       		.uleb128 0x27
+ 415 00a9 0C       		.uleb128 0xc
+ 416 00aa 49       		.uleb128 0x49
+ 417 00ab 13       		.uleb128 0x13
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 10
+
+
+ 418 00ac 3C       		.uleb128 0x3c
+ 419 00ad 0C       		.uleb128 0xc
+ 420 00ae 00       		.byte	0
+ 421 00af 00       		.byte	0
+ 422 00b0 0D       		.uleb128 0xd
+ 423 00b1 2E       		.uleb128 0x2e
+ 424 00b2 01       		.byte	0x1
+ 425 00b3 3F       		.uleb128 0x3f
+ 426 00b4 0C       		.uleb128 0xc
+ 427 00b5 03       		.uleb128 0x3
+ 428 00b6 0E       		.uleb128 0xe
+ 429 00b7 3A       		.uleb128 0x3a
+ 430 00b8 0B       		.uleb128 0xb
+ 431 00b9 3B       		.uleb128 0x3b
+ 432 00ba 0B       		.uleb128 0xb
+ 433 00bb 27       		.uleb128 0x27
+ 434 00bc 0C       		.uleb128 0xc
+ 435 00bd 3C       		.uleb128 0x3c
+ 436 00be 0C       		.uleb128 0xc
+ 437 00bf 01       		.uleb128 0x1
+ 438 00c0 13       		.uleb128 0x13
+ 439 00c1 00       		.byte	0
+ 440 00c2 00       		.byte	0
+ 441 00c3 0E       		.uleb128 0xe
+ 442 00c4 05       		.uleb128 0x5
+ 443 00c5 00       		.byte	0
+ 444 00c6 49       		.uleb128 0x49
+ 445 00c7 13       		.uleb128 0x13
+ 446 00c8 00       		.byte	0
+ 447 00c9 00       		.byte	0
+ 448 00ca 0F       		.uleb128 0xf
+ 449 00cb 2E       		.uleb128 0x2e
+ 450 00cc 00       		.byte	0
+ 451 00cd 3F       		.uleb128 0x3f
+ 452 00ce 0C       		.uleb128 0xc
+ 453 00cf 03       		.uleb128 0x3
+ 454 00d0 0E       		.uleb128 0xe
+ 455 00d1 3A       		.uleb128 0x3a
+ 456 00d2 0B       		.uleb128 0xb
+ 457 00d3 3B       		.uleb128 0x3b
+ 458 00d4 05       		.uleb128 0x5
+ 459 00d5 27       		.uleb128 0x27
+ 460 00d6 0C       		.uleb128 0xc
+ 461 00d7 3C       		.uleb128 0x3c
+ 462 00d8 0C       		.uleb128 0xc
+ 463 00d9 00       		.byte	0
+ 464 00da 00       		.byte	0
+ 465 00db 10       		.uleb128 0x10
+ 466 00dc 2E       		.uleb128 0x2e
+ 467 00dd 00       		.byte	0
+ 468 00de 3F       		.uleb128 0x3f
+ 469 00df 0C       		.uleb128 0xc
+ 470 00e0 03       		.uleb128 0x3
+ 471 00e1 0E       		.uleb128 0xe
+ 472 00e2 3A       		.uleb128 0x3a
+ 473 00e3 0B       		.uleb128 0xb
+ 474 00e4 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 11
+
+
+ 475 00e5 0B       		.uleb128 0xb
+ 476 00e6 27       		.uleb128 0x27
+ 477 00e7 0C       		.uleb128 0xc
+ 478 00e8 3C       		.uleb128 0x3c
+ 479 00e9 0C       		.uleb128 0xc
+ 480 00ea 00       		.byte	0
+ 481 00eb 00       		.byte	0
+ 482 00ec 00       		.byte	0
+ 483              		.section	.debug_loc,"",%progbits
+ 484              	.Ldebug_loc0:
+ 485              	.LLST0:
+ 486 0000 00000000 		.4byte	.LFB33
+ 487 0004 02000000 		.4byte	.LCFI0
+ 488 0008 0200     		.2byte	0x2
+ 489 000a 7D       		.byte	0x7d
+ 490 000b 00       		.sleb128 0
+ 491 000c 02000000 		.4byte	.LCFI0
+ 492 0010 38000000 		.4byte	.LFE33
+ 493 0014 0200     		.2byte	0x2
+ 494 0016 7D       		.byte	0x7d
+ 495 0017 08       		.sleb128 8
+ 496 0018 00000000 		.4byte	0
+ 497 001c 00000000 		.4byte	0
+ 498              	.LLST1:
+ 499 0020 00000000 		.4byte	.LVL0
+ 500 0024 0E000000 		.4byte	.LVL2
+ 501 0028 0200     		.2byte	0x2
+ 502 002a 30       		.byte	0x30
+ 503 002b 9F       		.byte	0x9f
+ 504 002c 00000000 		.4byte	0
+ 505 0030 00000000 		.4byte	0
+ 506              		.section	.debug_aranges,"",%progbits
+ 507 0000 1C000000 		.4byte	0x1c
+ 508 0004 0200     		.2byte	0x2
+ 509 0006 00000000 		.4byte	.Ldebug_info0
+ 510 000a 04       		.byte	0x4
+ 511 000b 00       		.byte	0
+ 512 000c 0000     		.2byte	0
+ 513 000e 0000     		.2byte	0
+ 514 0010 00000000 		.4byte	.LFB33
+ 515 0014 38000000 		.4byte	.LFE33-.LFB33
+ 516 0018 00000000 		.4byte	0
+ 517 001c 00000000 		.4byte	0
+ 518              		.section	.debug_ranges,"",%progbits
+ 519              	.Ldebug_ranges0:
+ 520 0000 00000000 		.4byte	.LFB33
+ 521 0004 38000000 		.4byte	.LFE33
+ 522 0008 00000000 		.4byte	0
+ 523 000c 00000000 		.4byte	0
+ 524              		.section	.debug_line,"",%progbits
+ 525              	.Ldebug_line0:
+ 526 0000 99000000 		.section	.debug_str,"MS",%progbits,1
+ 526      02007800 
+ 526      00000201 
+ 526      FB0E0D00 
+ 526      01010101 
+ 527              	.LASF6:
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 12
+
+
+ 528 0000 6C6F6E67 		.ascii	"long long int\000"
+ 528      206C6F6E 
+ 528      6720696E 
+ 528      7400
+ 529              	.LASF10:
+ 530 000e 75696E74 		.ascii	"uint32\000"
+ 530      333200
+ 531              	.LASF8:
+ 532 0015 756E7369 		.ascii	"unsigned int\000"
+ 532      676E6564 
+ 532      20696E74 
+ 532      00
+ 533              	.LASF24:
+ 534 0022 43794465 		.ascii	"CyDelay\000"
+ 534      6C617900 
+ 535              	.LASF23:
+ 536 002a 426F6F74 		.ascii	"Boot_P0_7_Read\000"
+ 536      5F50305F 
+ 536      375F5265 
+ 536      616400
+ 537              	.LASF20:
+ 538 0039 6D61696E 		.ascii	"main\000"
+ 538      00
+ 539              	.LASF17:
+ 540 003e 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 540      4320342E 
+ 540      372E3320 
+ 540      32303133 
+ 540      30333132 
+ 541 0071 616E6368 		.ascii	"anch revision 196615]\000"
+ 541      20726576 
+ 541      6973696F 
+ 541      6E203139 
+ 541      36363135 
+ 542              	.LASF9:
+ 543 0087 75696E74 		.ascii	"uint8\000"
+ 543      3800
+ 544              	.LASF5:
+ 545 008d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 545      20756E73 
+ 545      69676E65 
+ 545      6420696E 
+ 545      7400
+ 546              	.LASF7:
+ 547 009f 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 547      206C6F6E 
+ 547      6720756E 
+ 547      7369676E 
+ 547      65642069 
+ 548              	.LASF3:
+ 549 00b6 73686F72 		.ascii	"short unsigned int\000"
+ 549      7420756E 
+ 549      7369676E 
+ 549      65642069 
+ 549      6E7400
+ 550              	.LASF11:
+ 551 00c9 666C6F61 		.ascii	"float\000"
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 13
+
+
+ 551      7400
+ 552              	.LASF1:
+ 553 00cf 756E7369 		.ascii	"unsigned char\000"
+ 553      676E6564 
+ 553      20636861 
+ 553      7200
+ 554              	.LASF13:
+ 555 00dd 63686172 		.ascii	"char\000"
+ 555      00
+ 556              	.LASF4:
+ 557 00e2 6C6F6E67 		.ascii	"long int\000"
+ 557      20696E74 
+ 557      00
+ 558              	.LASF2:
+ 559 00eb 73686F72 		.ascii	"short int\000"
+ 559      7420696E 
+ 559      7400
+ 560              	.LASF16:
+ 561 00f5 426F6F74 		.ascii	"Bootloader_Start\000"
+ 561      6C6F6164 
+ 561      65725F53 
+ 561      74617274 
+ 561      00
+ 562              	.LASF12:
+ 563 0106 646F7562 		.ascii	"double\000"
+ 563      6C6500
+ 564              	.LASF21:
+ 565 010d 636F756E 		.ascii	"counter\000"
+ 565      74657200 
+ 566              	.LASF22:
+ 567 0115 63794274 		.ascii	"cyBtldrRunType\000"
+ 567      6C647252 
+ 567      756E5479 
+ 567      706500
+ 568              	.LASF0:
+ 569 0124 7369676E 		.ascii	"signed char\000"
+ 569      65642063 
+ 569      68617200 
+ 570              	.LASF15:
+ 571 0130 50574D5F 		.ascii	"PWM_Start\000"
+ 571      53746172 
+ 571      7400
+ 572              	.LASF18:
+ 573 013a 2E5C6D61 		.ascii	".\\main.c\000"
+ 573      696E2E63 
+ 573      00
+ 574              	.LASF19:
+ 575 0143 433A5C55 		.ascii	"C:\\Users\\vrnk\\Desktop\\ES100 FW -049\\FW\\SCB_Bo"
+ 575      73657273 
+ 575      5C76726E 
+ 575      6B5C4465 
+ 575      736B746F 
+ 576 0170 6F746C6F 		.ascii	"otloader_42xx\\UART_Bootloader.cydsn\000"
+ 576      61646572 
+ 576      5F343278 
+ 576      785C5541 
+ 576      52545F42 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccAdnfvU.s 			page 14
+
+
+ 577              	.LASF14:
+ 578 0194 73697A65 		.ascii	"sizetype\000"
+ 578      74797065 
+ 578      00
+ 579              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

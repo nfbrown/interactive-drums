@@ -1,0 +1,915 @@
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"UART_UART_BOOT.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.UART_UartCyBtldrCommStart,"ax",%progbits
+  18              		.align	1
+  19              		.global	UART_UartCyBtldrCommStart
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	UART_UartCyBtldrCommStart, %function
+  23              	UART_UartCyBtldrCommStart:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\UART_UART_BOOT.c"
+   1:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * File Name: UART_UART_BOOT.c
+   3:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Version 1.10
+   4:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+   5:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Description:
+   6:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  This file provides the source code to the API for the bootloader
+   7:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  communication support in SCB Component UART mode.
+   8:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+   9:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Note:
+  10:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  11:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** ********************************************************************************
+  12:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Copyright 2013, Cypress Semiconductor Corporation.  All rights reserved.
+  13:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * You may use this file only in accordance with the license, terms, conditions,
+  14:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  15:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * the software package with which this file was provided.
+  16:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+  17:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  18:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** #include "UART_SPI_UART.h"
+  19:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  20:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** #if defined(CYDEV_BOOTLOADER_IO_COMP) && (UART_UART_BTLDR_COMM_ENABLED)
+  21:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  22:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** /***************************************
+  23:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *    Private I/O Component Vars
+  24:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** ***************************************/
+  25:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  26:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  27:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+  28:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommStart
+  29:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** ********************************************************************************
+  30:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  31:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Summary:
+  32:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  This fucntion does nothing.
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  SCB in UART mode does not support bootloader communication.
+  34:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  35:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Parameters:
+  36:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  None
+  37:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  38:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Return:
+  39:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  None
+  40:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  41:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+  42:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** void UART_UartCyBtldrCommStart(void)
+  43:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+  26              		.loc 1 43 0
+  27              		.cfi_startproc
+  44:.\Generated_Source\PSoC4/UART_UART_BOOT.c ****     ; /* Does nothing */
+  45:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+  28              		.loc 1 45 0
+  29              		@ sp needed for prologue
+  30 0000 7047     		bx	lr
+  31              		.cfi_endproc
+  32              	.LFE0:
+  33              		.size	UART_UartCyBtldrCommStart, .-UART_UartCyBtldrCommStart
+  34              		.section	.text.UART_UartCyBtldrCommStop,"ax",%progbits
+  35              		.align	1
+  36              		.global	UART_UartCyBtldrCommStop
+  37              		.code	16
+  38              		.thumb_func
+  39              		.type	UART_UartCyBtldrCommStop, %function
+  40              	UART_UartCyBtldrCommStop:
+  41              	.LFB1:
+  46:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  47:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  48:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+  49:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommStop
+  50:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** ********************************************************************************
+  51:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  52:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Summary:
+  53:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  This fucntion does nothing.
+  54:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  SCB in UART mode does not support bootloader communication.
+  55:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  56:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Parameters:
+  57:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  None
+  58:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  59:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Return:
+  60:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  None
+  61:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  62:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+  63:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** void UART_UartCyBtldrCommStop(void)
+  64:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+  42              		.loc 1 64 0
+  43              		.cfi_startproc
+  65:.\Generated_Source\PSoC4/UART_UART_BOOT.c ****     ; /* Does nothing */
+  66:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+  44              		.loc 1 66 0
+  45              		@ sp needed for prologue
+  46 0000 7047     		bx	lr
+  47              		.cfi_endproc
+  48              	.LFE1:
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 3
+
+
+  49              		.size	UART_UartCyBtldrCommStop, .-UART_UartCyBtldrCommStop
+  50              		.section	.text.UART_UartCyBtldrCommReset,"ax",%progbits
+  51              		.align	1
+  52              		.global	UART_UartCyBtldrCommReset
+  53              		.code	16
+  54              		.thumb_func
+  55              		.type	UART_UartCyBtldrCommReset, %function
+  56              	UART_UartCyBtldrCommReset:
+  57              	.LFB2:
+  67:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  68:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  69:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+  70:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommReset
+  71:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** ********************************************************************************
+  72:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  73:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Summary:
+  74:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  This fucntion does nothing.
+  75:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  SCB in UART mode does not support bootloader communication.
+  76:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  77:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Parameters:
+  78:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  None
+  79:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  80:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Return:
+  81:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  None
+  82:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  83:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+  84:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** void UART_UartCyBtldrCommReset(void)
+  85:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+  58              		.loc 1 85 0
+  59              		.cfi_startproc
+  86:.\Generated_Source\PSoC4/UART_UART_BOOT.c ****     ; /* Does nothing */
+  87:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+  60              		.loc 1 87 0
+  61              		@ sp needed for prologue
+  62 0000 7047     		bx	lr
+  63              		.cfi_endproc
+  64              	.LFE2:
+  65              		.size	UART_UartCyBtldrCommReset, .-UART_UartCyBtldrCommReset
+  66              		.section	.text.UART_UartCyBtldrCommRead,"ax",%progbits
+  67              		.align	1
+  68              		.global	UART_UartCyBtldrCommRead
+  69              		.code	16
+  70              		.thumb_func
+  71              		.type	UART_UartCyBtldrCommRead, %function
+  72              	UART_UartCyBtldrCommRead:
+  73              	.LFB3:
+  88:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  89:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+  90:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+  91:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommRead
+  92:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** ********************************************************************************
+  93:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  94:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Summary:
+  95:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  This fucntion does nothing.
+  96:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  SCB in UART mode does not support bootloader communication.
+  97:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+  98:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Parameters:
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 4
+
+
+  99:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  pData:    Pointer to storage for the block of data to be read from the
+ 100:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *            bootloader host
+ 101:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  size:     Number of bytes to be read.
+ 102:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  count:    Pointer to the variable to write the number of bytes actually
+ 103:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *            read.
+ 104:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  timeOut:  Number of units in 10 ms to wait before returning because of a
+ 105:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *            timeout.
+ 106:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ 107:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Return:
+ 108:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  Returns CYRET_SUCCESS if no problem was encountered or returns the value
+ 109:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  that best describes the problem.
+ 110:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ 111:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+ 112:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** cystatus UART_UartCyBtldrCommRead(uint8 pData[], uint16 size, uint16 * count, uint8 timeOut)
+ 113:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+  74              		.loc 1 113 0
+  75              		.cfi_startproc
+  76              	.LVL0:
+ 114:.\Generated_Source\PSoC4/UART_UART_BOOT.c ****     cystatus status;
+ 115:.\Generated_Source\PSoC4/UART_UART_BOOT.c ****     status = CYRET_BAD_PARAM;
+ 116:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 117:.\Generated_Source\PSoC4/UART_UART_BOOT.c ****     return(status);
+ 118:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+  77              		.loc 1 118 0
+  78 0000 0120     		mov	r0, #1
+  79              	.LVL1:
+  80              		@ sp needed for prologue
+  81 0002 7047     		bx	lr
+  82              		.cfi_endproc
+  83              	.LFE3:
+  84              		.size	UART_UartCyBtldrCommRead, .-UART_UartCyBtldrCommRead
+  85              		.section	.text.UART_UartCyBtldrCommWrite,"ax",%progbits
+  86              		.align	1
+  87              		.global	UART_UartCyBtldrCommWrite
+  88              		.code	16
+  89              		.thumb_func
+  90              		.type	UART_UartCyBtldrCommWrite, %function
+  91              	UART_UartCyBtldrCommWrite:
+  92              	.LFB4:
+ 119:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 120:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 121:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** /*******************************************************************************
+ 122:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Function Name: UART_UartCyBtldrCommWrite
+ 123:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** ********************************************************************************
+ 124:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ 125:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Summary:
+ 126:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  This fucntion does nothing.
+ 127:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  SCB in UART mode does not support bootloader communication.
+ 128:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ 129:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Parameters:
+ 130:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  pData:    Pointer to the block of data to be written to the bootloader host.
+ 131:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  size:     Number of bytes to be written.
+ 132:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  count:    Pointer to the variable to write the number of bytes actually
+ 133:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *            written.
+ 134:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  timeOut:  Number of units in 10 ms to wait before returning because of a
+ 135:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *            timeout.
+ 136:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 5
+
+
+ 137:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** * Return:
+ 138:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  Returns CYRET_SUCCESS if no problem was encountered or returns the value
+ 139:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *  that best describes the problem.
+ 140:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *
+ 141:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** *******************************************************************************/
+ 142:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** cystatus UART_UartCyBtldrCommWrite(const uint8 pData[], uint16 size, uint16 * count, uint8 timeOut)
+ 143:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** {
+  93              		.loc 1 143 0
+  94              		.cfi_startproc
+  95              	.LVL2:
+ 144:.\Generated_Source\PSoC4/UART_UART_BOOT.c ****     cystatus status;
+ 145:.\Generated_Source\PSoC4/UART_UART_BOOT.c ****     status = CYRET_BAD_PARAM;
+ 146:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** 
+ 147:.\Generated_Source\PSoC4/UART_UART_BOOT.c ****     return(status);
+ 148:.\Generated_Source\PSoC4/UART_UART_BOOT.c **** }
+  96              		.loc 1 148 0
+  97 0000 0120     		mov	r0, #1
+  98              	.LVL3:
+  99              		@ sp needed for prologue
+ 100 0002 7047     		bx	lr
+ 101              		.cfi_endproc
+ 102              	.LFE4:
+ 103              		.size	UART_UartCyBtldrCommWrite, .-UART_UartCyBtldrCommWrite
+ 104              		.text
+ 105              	.Letext0:
+ 106              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 107              		.section	.debug_info,"",%progbits
+ 108              	.Ldebug_info0:
+ 109 0000 BF010000 		.4byte	0x1bf
+ 110 0004 0200     		.2byte	0x2
+ 111 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 112 000a 04       		.byte	0x4
+ 113 000b 01       		.uleb128 0x1
+ 114 000c 34000000 		.4byte	.LASF26
+ 115 0010 01       		.byte	0x1
+ 116 0011 F5000000 		.4byte	.LASF27
+ 117 0015 24010000 		.4byte	.LASF28
+ 118 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 119 001d 00000000 		.4byte	0
+ 120 0021 00000000 		.4byte	0
+ 121 0025 00000000 		.4byte	.Ldebug_line0
+ 122 0029 02       		.uleb128 0x2
+ 123 002a 01       		.byte	0x1
+ 124 002b 06       		.byte	0x6
+ 125 002c C8010000 		.4byte	.LASF0
+ 126 0030 02       		.uleb128 0x2
+ 127 0031 01       		.byte	0x1
+ 128 0032 08       		.byte	0x8
+ 129 0033 E7000000 		.4byte	.LASF1
+ 130 0037 02       		.uleb128 0x2
+ 131 0038 02       		.byte	0x2
+ 132 0039 05       		.byte	0x5
+ 133 003a DF010000 		.4byte	.LASF2
+ 134 003e 02       		.uleb128 0x2
+ 135 003f 02       		.byte	0x2
+ 136 0040 07       		.byte	0x7
+ 137 0041 B5010000 		.4byte	.LASF3
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 6
+
+
+ 138 0045 02       		.uleb128 0x2
+ 139 0046 04       		.byte	0x4
+ 140 0047 05       		.byte	0x5
+ 141 0048 7B010000 		.4byte	.LASF4
+ 142 004c 02       		.uleb128 0x2
+ 143 004d 04       		.byte	0x4
+ 144 004e 07       		.byte	0x7
+ 145 004f 83000000 		.4byte	.LASF5
+ 146 0053 02       		.uleb128 0x2
+ 147 0054 08       		.byte	0x8
+ 148 0055 05       		.byte	0x5
+ 149 0056 00000000 		.4byte	.LASF6
+ 150 005a 02       		.uleb128 0x2
+ 151 005b 08       		.byte	0x8
+ 152 005c 07       		.byte	0x7
+ 153 005d 9C000000 		.4byte	.LASF7
+ 154 0061 03       		.uleb128 0x3
+ 155 0062 04       		.byte	0x4
+ 156 0063 05       		.byte	0x5
+ 157 0064 696E7400 		.ascii	"int\000"
+ 158 0068 02       		.uleb128 0x2
+ 159 0069 04       		.byte	0x4
+ 160 006a 07       		.byte	0x7
+ 161 006b 0E000000 		.4byte	.LASF8
+ 162 006f 04       		.uleb128 0x4
+ 163 0070 7D000000 		.4byte	.LASF9
+ 164 0074 02       		.byte	0x2
+ 165 0075 5B       		.byte	0x5b
+ 166 0076 30000000 		.4byte	0x30
+ 167 007a 04       		.uleb128 0x4
+ 168 007b E9010000 		.4byte	.LASF10
+ 169 007f 02       		.byte	0x2
+ 170 0080 5C       		.byte	0x5c
+ 171 0081 3E000000 		.4byte	0x3e
+ 172 0085 02       		.uleb128 0x2
+ 173 0086 04       		.byte	0x4
+ 174 0087 04       		.byte	0x4
+ 175 0088 D9010000 		.4byte	.LASF11
+ 176 008c 02       		.uleb128 0x2
+ 177 008d 08       		.byte	0x8
+ 178 008e 04       		.byte	0x4
+ 179 008f A5010000 		.4byte	.LASF12
+ 180 0093 02       		.uleb128 0x2
+ 181 0094 01       		.byte	0x1
+ 182 0095 08       		.byte	0x8
+ 183 0096 1F010000 		.4byte	.LASF13
+ 184 009a 04       		.uleb128 0x4
+ 185 009b AC010000 		.4byte	.LASF14
+ 186 009f 02       		.byte	0x2
+ 187 00a0 E8       		.byte	0xe8
+ 188 00a1 4C000000 		.4byte	0x4c
+ 189 00a5 02       		.uleb128 0x2
+ 190 00a6 04       		.byte	0x4
+ 191 00a7 07       		.byte	0x7
+ 192 00a8 F6010000 		.4byte	.LASF15
+ 193 00ac 05       		.uleb128 0x5
+ 194 00ad 04       		.byte	0x4
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 7
+
+
+ 195 00ae 6F000000 		.4byte	0x6f
+ 196 00b2 06       		.uleb128 0x6
+ 197 00b3 01       		.byte	0x1
+ 198 00b4 CD000000 		.4byte	.LASF16
+ 199 00b8 01       		.byte	0x1
+ 200 00b9 2A       		.byte	0x2a
+ 201 00ba 01       		.byte	0x1
+ 202 00bb 00000000 		.4byte	.LFB0
+ 203 00bf 02000000 		.4byte	.LFE0
+ 204 00c3 02       		.byte	0x2
+ 205 00c4 7D       		.byte	0x7d
+ 206 00c5 00       		.sleb128 0
+ 207 00c6 01       		.byte	0x1
+ 208 00c7 06       		.uleb128 0x6
+ 209 00c8 01       		.byte	0x1
+ 210 00c9 84010000 		.4byte	.LASF17
+ 211 00cd 01       		.byte	0x1
+ 212 00ce 3F       		.byte	0x3f
+ 213 00cf 01       		.byte	0x1
+ 214 00d0 00000000 		.4byte	.LFB1
+ 215 00d4 02000000 		.4byte	.LFE1
+ 216 00d8 02       		.byte	0x2
+ 217 00d9 7D       		.byte	0x7d
+ 218 00da 00       		.sleb128 0
+ 219 00db 01       		.byte	0x1
+ 220 00dc 06       		.uleb128 0x6
+ 221 00dd 01       		.byte	0x1
+ 222 00de B3000000 		.4byte	.LASF18
+ 223 00e2 01       		.byte	0x1
+ 224 00e3 54       		.byte	0x54
+ 225 00e4 01       		.byte	0x1
+ 226 00e5 00000000 		.4byte	.LFB2
+ 227 00e9 02000000 		.4byte	.LFE2
+ 228 00ed 02       		.byte	0x2
+ 229 00ee 7D       		.byte	0x7d
+ 230 00ef 00       		.sleb128 0
+ 231 00f0 01       		.byte	0x1
+ 232 00f1 07       		.uleb128 0x7
+ 233 00f2 01       		.byte	0x1
+ 234 00f3 1B000000 		.4byte	.LASF23
+ 235 00f7 01       		.byte	0x1
+ 236 00f8 70       		.byte	0x70
+ 237 00f9 01       		.byte	0x1
+ 238 00fa 9A000000 		.4byte	0x9a
+ 239 00fe 00000000 		.4byte	.LFB3
+ 240 0102 04000000 		.4byte	.LFE3
+ 241 0106 02       		.byte	0x2
+ 242 0107 7D       		.byte	0x7d
+ 243 0108 00       		.sleb128 0
+ 244 0109 01       		.byte	0x1
+ 245 010a 51010000 		.4byte	0x151
+ 246 010e 08       		.uleb128 0x8
+ 247 010f F0010000 		.4byte	.LASF19
+ 248 0113 01       		.byte	0x1
+ 249 0114 70       		.byte	0x70
+ 250 0115 AC000000 		.4byte	0xac
+ 251 0119 00000000 		.4byte	.LLST0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 8
+
+
+ 252 011d 09       		.uleb128 0x9
+ 253 011e D4010000 		.4byte	.LASF20
+ 254 0122 01       		.byte	0x1
+ 255 0123 70       		.byte	0x70
+ 256 0124 7A000000 		.4byte	0x7a
+ 257 0128 01       		.byte	0x1
+ 258 0129 51       		.byte	0x51
+ 259 012a 09       		.uleb128 0x9
+ 260 012b 75010000 		.4byte	.LASF21
+ 261 012f 01       		.byte	0x1
+ 262 0130 70       		.byte	0x70
+ 263 0131 51010000 		.4byte	0x151
+ 264 0135 01       		.byte	0x1
+ 265 0136 52       		.byte	0x52
+ 266 0137 09       		.uleb128 0x9
+ 267 0138 9D010000 		.4byte	.LASF22
+ 268 013c 01       		.byte	0x1
+ 269 013d 70       		.byte	0x70
+ 270 013e 6F000000 		.4byte	0x6f
+ 271 0142 01       		.byte	0x1
+ 272 0143 53       		.byte	0x53
+ 273 0144 0A       		.uleb128 0xa
+ 274 0145 95000000 		.4byte	.LASF25
+ 275 0149 01       		.byte	0x1
+ 276 014a 72       		.byte	0x72
+ 277 014b 9A000000 		.4byte	0x9a
+ 278 014f 01       		.byte	0x1
+ 279 0150 00       		.byte	0
+ 280 0151 05       		.uleb128 0x5
+ 281 0152 04       		.byte	0x4
+ 282 0153 7A000000 		.4byte	0x7a
+ 283 0157 07       		.uleb128 0x7
+ 284 0158 01       		.byte	0x1
+ 285 0159 FF010000 		.4byte	.LASF24
+ 286 015d 01       		.byte	0x1
+ 287 015e 8E       		.byte	0x8e
+ 288 015f 01       		.byte	0x1
+ 289 0160 9A000000 		.4byte	0x9a
+ 290 0164 00000000 		.4byte	.LFB4
+ 291 0168 04000000 		.4byte	.LFE4
+ 292 016c 02       		.byte	0x2
+ 293 016d 7D       		.byte	0x7d
+ 294 016e 00       		.sleb128 0
+ 295 016f 01       		.byte	0x1
+ 296 0170 B7010000 		.4byte	0x1b7
+ 297 0174 08       		.uleb128 0x8
+ 298 0175 F0010000 		.4byte	.LASF19
+ 299 0179 01       		.byte	0x1
+ 300 017a 8E       		.byte	0x8e
+ 301 017b B7010000 		.4byte	0x1b7
+ 302 017f 21000000 		.4byte	.LLST1
+ 303 0183 09       		.uleb128 0x9
+ 304 0184 D4010000 		.4byte	.LASF20
+ 305 0188 01       		.byte	0x1
+ 306 0189 8E       		.byte	0x8e
+ 307 018a 7A000000 		.4byte	0x7a
+ 308 018e 01       		.byte	0x1
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 9
+
+
+ 309 018f 51       		.byte	0x51
+ 310 0190 09       		.uleb128 0x9
+ 311 0191 75010000 		.4byte	.LASF21
+ 312 0195 01       		.byte	0x1
+ 313 0196 8E       		.byte	0x8e
+ 314 0197 51010000 		.4byte	0x151
+ 315 019b 01       		.byte	0x1
+ 316 019c 52       		.byte	0x52
+ 317 019d 09       		.uleb128 0x9
+ 318 019e 9D010000 		.4byte	.LASF22
+ 319 01a2 01       		.byte	0x1
+ 320 01a3 8E       		.byte	0x8e
+ 321 01a4 6F000000 		.4byte	0x6f
+ 322 01a8 01       		.byte	0x1
+ 323 01a9 53       		.byte	0x53
+ 324 01aa 0A       		.uleb128 0xa
+ 325 01ab 95000000 		.4byte	.LASF25
+ 326 01af 01       		.byte	0x1
+ 327 01b0 90       		.byte	0x90
+ 328 01b1 9A000000 		.4byte	0x9a
+ 329 01b5 01       		.byte	0x1
+ 330 01b6 00       		.byte	0
+ 331 01b7 05       		.uleb128 0x5
+ 332 01b8 04       		.byte	0x4
+ 333 01b9 BD010000 		.4byte	0x1bd
+ 334 01bd 0B       		.uleb128 0xb
+ 335 01be 6F000000 		.4byte	0x6f
+ 336 01c2 00       		.byte	0
+ 337              		.section	.debug_abbrev,"",%progbits
+ 338              	.Ldebug_abbrev0:
+ 339 0000 01       		.uleb128 0x1
+ 340 0001 11       		.uleb128 0x11
+ 341 0002 01       		.byte	0x1
+ 342 0003 25       		.uleb128 0x25
+ 343 0004 0E       		.uleb128 0xe
+ 344 0005 13       		.uleb128 0x13
+ 345 0006 0B       		.uleb128 0xb
+ 346 0007 03       		.uleb128 0x3
+ 347 0008 0E       		.uleb128 0xe
+ 348 0009 1B       		.uleb128 0x1b
+ 349 000a 0E       		.uleb128 0xe
+ 350 000b 55       		.uleb128 0x55
+ 351 000c 06       		.uleb128 0x6
+ 352 000d 11       		.uleb128 0x11
+ 353 000e 01       		.uleb128 0x1
+ 354 000f 52       		.uleb128 0x52
+ 355 0010 01       		.uleb128 0x1
+ 356 0011 10       		.uleb128 0x10
+ 357 0012 06       		.uleb128 0x6
+ 358 0013 00       		.byte	0
+ 359 0014 00       		.byte	0
+ 360 0015 02       		.uleb128 0x2
+ 361 0016 24       		.uleb128 0x24
+ 362 0017 00       		.byte	0
+ 363 0018 0B       		.uleb128 0xb
+ 364 0019 0B       		.uleb128 0xb
+ 365 001a 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 10
+
+
+ 366 001b 0B       		.uleb128 0xb
+ 367 001c 03       		.uleb128 0x3
+ 368 001d 0E       		.uleb128 0xe
+ 369 001e 00       		.byte	0
+ 370 001f 00       		.byte	0
+ 371 0020 03       		.uleb128 0x3
+ 372 0021 24       		.uleb128 0x24
+ 373 0022 00       		.byte	0
+ 374 0023 0B       		.uleb128 0xb
+ 375 0024 0B       		.uleb128 0xb
+ 376 0025 3E       		.uleb128 0x3e
+ 377 0026 0B       		.uleb128 0xb
+ 378 0027 03       		.uleb128 0x3
+ 379 0028 08       		.uleb128 0x8
+ 380 0029 00       		.byte	0
+ 381 002a 00       		.byte	0
+ 382 002b 04       		.uleb128 0x4
+ 383 002c 16       		.uleb128 0x16
+ 384 002d 00       		.byte	0
+ 385 002e 03       		.uleb128 0x3
+ 386 002f 0E       		.uleb128 0xe
+ 387 0030 3A       		.uleb128 0x3a
+ 388 0031 0B       		.uleb128 0xb
+ 389 0032 3B       		.uleb128 0x3b
+ 390 0033 0B       		.uleb128 0xb
+ 391 0034 49       		.uleb128 0x49
+ 392 0035 13       		.uleb128 0x13
+ 393 0036 00       		.byte	0
+ 394 0037 00       		.byte	0
+ 395 0038 05       		.uleb128 0x5
+ 396 0039 0F       		.uleb128 0xf
+ 397 003a 00       		.byte	0
+ 398 003b 0B       		.uleb128 0xb
+ 399 003c 0B       		.uleb128 0xb
+ 400 003d 49       		.uleb128 0x49
+ 401 003e 13       		.uleb128 0x13
+ 402 003f 00       		.byte	0
+ 403 0040 00       		.byte	0
+ 404 0041 06       		.uleb128 0x6
+ 405 0042 2E       		.uleb128 0x2e
+ 406 0043 00       		.byte	0
+ 407 0044 3F       		.uleb128 0x3f
+ 408 0045 0C       		.uleb128 0xc
+ 409 0046 03       		.uleb128 0x3
+ 410 0047 0E       		.uleb128 0xe
+ 411 0048 3A       		.uleb128 0x3a
+ 412 0049 0B       		.uleb128 0xb
+ 413 004a 3B       		.uleb128 0x3b
+ 414 004b 0B       		.uleb128 0xb
+ 415 004c 27       		.uleb128 0x27
+ 416 004d 0C       		.uleb128 0xc
+ 417 004e 11       		.uleb128 0x11
+ 418 004f 01       		.uleb128 0x1
+ 419 0050 12       		.uleb128 0x12
+ 420 0051 01       		.uleb128 0x1
+ 421 0052 40       		.uleb128 0x40
+ 422 0053 0A       		.uleb128 0xa
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 11
+
+
+ 423 0054 9742     		.uleb128 0x2117
+ 424 0056 0C       		.uleb128 0xc
+ 425 0057 00       		.byte	0
+ 426 0058 00       		.byte	0
+ 427 0059 07       		.uleb128 0x7
+ 428 005a 2E       		.uleb128 0x2e
+ 429 005b 01       		.byte	0x1
+ 430 005c 3F       		.uleb128 0x3f
+ 431 005d 0C       		.uleb128 0xc
+ 432 005e 03       		.uleb128 0x3
+ 433 005f 0E       		.uleb128 0xe
+ 434 0060 3A       		.uleb128 0x3a
+ 435 0061 0B       		.uleb128 0xb
+ 436 0062 3B       		.uleb128 0x3b
+ 437 0063 0B       		.uleb128 0xb
+ 438 0064 27       		.uleb128 0x27
+ 439 0065 0C       		.uleb128 0xc
+ 440 0066 49       		.uleb128 0x49
+ 441 0067 13       		.uleb128 0x13
+ 442 0068 11       		.uleb128 0x11
+ 443 0069 01       		.uleb128 0x1
+ 444 006a 12       		.uleb128 0x12
+ 445 006b 01       		.uleb128 0x1
+ 446 006c 40       		.uleb128 0x40
+ 447 006d 0A       		.uleb128 0xa
+ 448 006e 9742     		.uleb128 0x2117
+ 449 0070 0C       		.uleb128 0xc
+ 450 0071 01       		.uleb128 0x1
+ 451 0072 13       		.uleb128 0x13
+ 452 0073 00       		.byte	0
+ 453 0074 00       		.byte	0
+ 454 0075 08       		.uleb128 0x8
+ 455 0076 05       		.uleb128 0x5
+ 456 0077 00       		.byte	0
+ 457 0078 03       		.uleb128 0x3
+ 458 0079 0E       		.uleb128 0xe
+ 459 007a 3A       		.uleb128 0x3a
+ 460 007b 0B       		.uleb128 0xb
+ 461 007c 3B       		.uleb128 0x3b
+ 462 007d 0B       		.uleb128 0xb
+ 463 007e 49       		.uleb128 0x49
+ 464 007f 13       		.uleb128 0x13
+ 465 0080 02       		.uleb128 0x2
+ 466 0081 06       		.uleb128 0x6
+ 467 0082 00       		.byte	0
+ 468 0083 00       		.byte	0
+ 469 0084 09       		.uleb128 0x9
+ 470 0085 05       		.uleb128 0x5
+ 471 0086 00       		.byte	0
+ 472 0087 03       		.uleb128 0x3
+ 473 0088 0E       		.uleb128 0xe
+ 474 0089 3A       		.uleb128 0x3a
+ 475 008a 0B       		.uleb128 0xb
+ 476 008b 3B       		.uleb128 0x3b
+ 477 008c 0B       		.uleb128 0xb
+ 478 008d 49       		.uleb128 0x49
+ 479 008e 13       		.uleb128 0x13
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 12
+
+
+ 480 008f 02       		.uleb128 0x2
+ 481 0090 0A       		.uleb128 0xa
+ 482 0091 00       		.byte	0
+ 483 0092 00       		.byte	0
+ 484 0093 0A       		.uleb128 0xa
+ 485 0094 34       		.uleb128 0x34
+ 486 0095 00       		.byte	0
+ 487 0096 03       		.uleb128 0x3
+ 488 0097 0E       		.uleb128 0xe
+ 489 0098 3A       		.uleb128 0x3a
+ 490 0099 0B       		.uleb128 0xb
+ 491 009a 3B       		.uleb128 0x3b
+ 492 009b 0B       		.uleb128 0xb
+ 493 009c 49       		.uleb128 0x49
+ 494 009d 13       		.uleb128 0x13
+ 495 009e 1C       		.uleb128 0x1c
+ 496 009f 0B       		.uleb128 0xb
+ 497 00a0 00       		.byte	0
+ 498 00a1 00       		.byte	0
+ 499 00a2 0B       		.uleb128 0xb
+ 500 00a3 26       		.uleb128 0x26
+ 501 00a4 00       		.byte	0
+ 502 00a5 49       		.uleb128 0x49
+ 503 00a6 13       		.uleb128 0x13
+ 504 00a7 00       		.byte	0
+ 505 00a8 00       		.byte	0
+ 506 00a9 00       		.byte	0
+ 507              		.section	.debug_loc,"",%progbits
+ 508              	.Ldebug_loc0:
+ 509              	.LLST0:
+ 510 0000 00000000 		.4byte	.LVL0
+ 511 0004 02000000 		.4byte	.LVL1
+ 512 0008 0100     		.2byte	0x1
+ 513 000a 50       		.byte	0x50
+ 514 000b 02000000 		.4byte	.LVL1
+ 515 000f 04000000 		.4byte	.LFE3
+ 516 0013 0400     		.2byte	0x4
+ 517 0015 F3       		.byte	0xf3
+ 518 0016 01       		.uleb128 0x1
+ 519 0017 50       		.byte	0x50
+ 520 0018 9F       		.byte	0x9f
+ 521 0019 00000000 		.4byte	0
+ 522 001d 00000000 		.4byte	0
+ 523              	.LLST1:
+ 524 0021 00000000 		.4byte	.LVL2
+ 525 0025 02000000 		.4byte	.LVL3
+ 526 0029 0100     		.2byte	0x1
+ 527 002b 50       		.byte	0x50
+ 528 002c 02000000 		.4byte	.LVL3
+ 529 0030 04000000 		.4byte	.LFE4
+ 530 0034 0400     		.2byte	0x4
+ 531 0036 F3       		.byte	0xf3
+ 532 0037 01       		.uleb128 0x1
+ 533 0038 50       		.byte	0x50
+ 534 0039 9F       		.byte	0x9f
+ 535 003a 00000000 		.4byte	0
+ 536 003e 00000000 		.4byte	0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 13
+
+
+ 537              		.section	.debug_aranges,"",%progbits
+ 538 0000 3C000000 		.4byte	0x3c
+ 539 0004 0200     		.2byte	0x2
+ 540 0006 00000000 		.4byte	.Ldebug_info0
+ 541 000a 04       		.byte	0x4
+ 542 000b 00       		.byte	0
+ 543 000c 0000     		.2byte	0
+ 544 000e 0000     		.2byte	0
+ 545 0010 00000000 		.4byte	.LFB0
+ 546 0014 02000000 		.4byte	.LFE0-.LFB0
+ 547 0018 00000000 		.4byte	.LFB1
+ 548 001c 02000000 		.4byte	.LFE1-.LFB1
+ 549 0020 00000000 		.4byte	.LFB2
+ 550 0024 02000000 		.4byte	.LFE2-.LFB2
+ 551 0028 00000000 		.4byte	.LFB3
+ 552 002c 04000000 		.4byte	.LFE3-.LFB3
+ 553 0030 00000000 		.4byte	.LFB4
+ 554 0034 04000000 		.4byte	.LFE4-.LFB4
+ 555 0038 00000000 		.4byte	0
+ 556 003c 00000000 		.4byte	0
+ 557              		.section	.debug_ranges,"",%progbits
+ 558              	.Ldebug_ranges0:
+ 559 0000 00000000 		.4byte	.LFB0
+ 560 0004 02000000 		.4byte	.LFE0
+ 561 0008 00000000 		.4byte	.LFB1
+ 562 000c 02000000 		.4byte	.LFE1
+ 563 0010 00000000 		.4byte	.LFB2
+ 564 0014 02000000 		.4byte	.LFE2
+ 565 0018 00000000 		.4byte	.LFB3
+ 566 001c 04000000 		.4byte	.LFE3
+ 567 0020 00000000 		.4byte	.LFB4
+ 568 0024 04000000 		.4byte	.LFE4
+ 569 0028 00000000 		.4byte	0
+ 570 002c 00000000 		.4byte	0
+ 571              		.section	.debug_line,"",%progbits
+ 572              	.Ldebug_line0:
+ 573 0000 A6000000 		.section	.debug_str,"MS",%progbits,1
+ 573      02004D00 
+ 573      00000201 
+ 573      FB0E0D00 
+ 573      01010101 
+ 574              	.LASF6:
+ 575 0000 6C6F6E67 		.ascii	"long long int\000"
+ 575      206C6F6E 
+ 575      6720696E 
+ 575      7400
+ 576              	.LASF8:
+ 577 000e 756E7369 		.ascii	"unsigned int\000"
+ 577      676E6564 
+ 577      20696E74 
+ 577      00
+ 578              	.LASF23:
+ 579 001b 55415254 		.ascii	"UART_UartCyBtldrCommRead\000"
+ 579      5F556172 
+ 579      74437942 
+ 579      746C6472 
+ 579      436F6D6D 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 14
+
+
+ 580              	.LASF26:
+ 581 0034 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 581      4320342E 
+ 581      372E3320 
+ 581      32303133 
+ 581      30333132 
+ 582 0067 616E6368 		.ascii	"anch revision 196615]\000"
+ 582      20726576 
+ 582      6973696F 
+ 582      6E203139 
+ 582      36363135 
+ 583              	.LASF9:
+ 584 007d 75696E74 		.ascii	"uint8\000"
+ 584      3800
+ 585              	.LASF5:
+ 586 0083 6C6F6E67 		.ascii	"long unsigned int\000"
+ 586      20756E73 
+ 586      69676E65 
+ 586      6420696E 
+ 586      7400
+ 587              	.LASF25:
+ 588 0095 73746174 		.ascii	"status\000"
+ 588      757300
+ 589              	.LASF7:
+ 590 009c 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 590      206C6F6E 
+ 590      6720756E 
+ 590      7369676E 
+ 590      65642069 
+ 591              	.LASF18:
+ 592 00b3 55415254 		.ascii	"UART_UartCyBtldrCommReset\000"
+ 592      5F556172 
+ 592      74437942 
+ 592      746C6472 
+ 592      436F6D6D 
+ 593              	.LASF16:
+ 594 00cd 55415254 		.ascii	"UART_UartCyBtldrCommStart\000"
+ 594      5F556172 
+ 594      74437942 
+ 594      746C6472 
+ 594      436F6D6D 
+ 595              	.LASF1:
+ 596 00e7 756E7369 		.ascii	"unsigned char\000"
+ 596      676E6564 
+ 596      20636861 
+ 596      7200
+ 597              	.LASF27:
+ 598 00f5 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\UART_UART_BOOT.c\000"
+ 598      6E657261 
+ 598      7465645F 
+ 598      536F7572 
+ 598      63655C50 
+ 599              	.LASF13:
+ 600 011f 63686172 		.ascii	"char\000"
+ 600      00
+ 601              	.LASF28:
+ 602 0124 433A5C55 		.ascii	"C:\\Users\\vrnk\\Desktop\\ES100 FW -049\\FW\\SCB_Bo"
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 15
+
+
+ 602      73657273 
+ 602      5C76726E 
+ 602      6B5C4465 
+ 602      736B746F 
+ 603 0151 6F746C6F 		.ascii	"otloader_42xx\\UART_Bootloader.cydsn\000"
+ 603      61646572 
+ 603      5F343278 
+ 603      785C5541 
+ 603      52545F42 
+ 604              	.LASF21:
+ 605 0175 636F756E 		.ascii	"count\000"
+ 605      7400
+ 606              	.LASF4:
+ 607 017b 6C6F6E67 		.ascii	"long int\000"
+ 607      20696E74 
+ 607      00
+ 608              	.LASF17:
+ 609 0184 55415254 		.ascii	"UART_UartCyBtldrCommStop\000"
+ 609      5F556172 
+ 609      74437942 
+ 609      746C6472 
+ 609      436F6D6D 
+ 610              	.LASF22:
+ 611 019d 74696D65 		.ascii	"timeOut\000"
+ 611      4F757400 
+ 612              	.LASF12:
+ 613 01a5 646F7562 		.ascii	"double\000"
+ 613      6C6500
+ 614              	.LASF14:
+ 615 01ac 63797374 		.ascii	"cystatus\000"
+ 615      61747573 
+ 615      00
+ 616              	.LASF3:
+ 617 01b5 73686F72 		.ascii	"short unsigned int\000"
+ 617      7420756E 
+ 617      7369676E 
+ 617      65642069 
+ 617      6E7400
+ 618              	.LASF0:
+ 619 01c8 7369676E 		.ascii	"signed char\000"
+ 619      65642063 
+ 619      68617200 
+ 620              	.LASF20:
+ 621 01d4 73697A65 		.ascii	"size\000"
+ 621      00
+ 622              	.LASF11:
+ 623 01d9 666C6F61 		.ascii	"float\000"
+ 623      7400
+ 624              	.LASF2:
+ 625 01df 73686F72 		.ascii	"short int\000"
+ 625      7420696E 
+ 625      7400
+ 626              	.LASF10:
+ 627 01e9 75696E74 		.ascii	"uint16\000"
+ 627      313600
+ 628              	.LASF19:
+ 629 01f0 70446174 		.ascii	"pData\000"
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccE3Prdt.s 			page 16
+
+
+ 629      6100
+ 630              	.LASF15:
+ 631 01f6 73697A65 		.ascii	"sizetype\000"
+ 631      74797065 
+ 631      00
+ 632              	.LASF24:
+ 633 01ff 55415254 		.ascii	"UART_UartCyBtldrCommWrite\000"
+ 633      5F556172 
+ 633      74437942 
+ 633      746C6472 
+ 633      436F6D6D 
+ 634              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

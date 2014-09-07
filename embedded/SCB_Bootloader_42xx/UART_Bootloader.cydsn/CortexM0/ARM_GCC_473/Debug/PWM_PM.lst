@@ -1,0 +1,873 @@
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"PWM_PM.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.PWM_SaveConfig,"ax",%progbits
+  18              		.align	1
+  19              		.global	PWM_SaveConfig
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	PWM_SaveConfig, %function
+  23              	PWM_SaveConfig:
+  24              	.LFB0:
+  25              		.file 1 ".\\Generated_Source\\PSoC4\\PWM_PM.c"
+   1:.\Generated_Source\PSoC4/PWM_PM.c **** /*******************************************************************************
+   2:.\Generated_Source\PSoC4/PWM_PM.c **** * File Name: PWM_PM.c
+   3:.\Generated_Source\PSoC4/PWM_PM.c **** * Version 1.0
+   4:.\Generated_Source\PSoC4/PWM_PM.c **** *
+   5:.\Generated_Source\PSoC4/PWM_PM.c **** * Description:
+   6:.\Generated_Source\PSoC4/PWM_PM.c **** *  This file contains the setup, control and status commands to support
+   7:.\Generated_Source\PSoC4/PWM_PM.c **** *  component operations in low power mode.
+   8:.\Generated_Source\PSoC4/PWM_PM.c **** *
+   9:.\Generated_Source\PSoC4/PWM_PM.c **** * Note:
+  10:.\Generated_Source\PSoC4/PWM_PM.c **** *  None
+  11:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  12:.\Generated_Source\PSoC4/PWM_PM.c **** ********************************************************************************
+  13:.\Generated_Source\PSoC4/PWM_PM.c **** * Copyright 2013, Cypress Semiconductor Corporation.  All rights reserved.
+  14:.\Generated_Source\PSoC4/PWM_PM.c **** * You may use this file only in accordance with the license, terms, conditions,
+  15:.\Generated_Source\PSoC4/PWM_PM.c **** * disclaimers, and limitations in the end user license agreement accompanying
+  16:.\Generated_Source\PSoC4/PWM_PM.c **** * the software package with which this file was provided.
+  17:.\Generated_Source\PSoC4/PWM_PM.c **** *******************************************************************************/
+  18:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  19:.\Generated_Source\PSoC4/PWM_PM.c **** #include "PWM.h"
+  20:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  21:.\Generated_Source\PSoC4/PWM_PM.c **** static PWM_BACKUP_STRUCT PWM_backup;
+  22:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  23:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  24:.\Generated_Source\PSoC4/PWM_PM.c **** /*******************************************************************************
+  25:.\Generated_Source\PSoC4/PWM_PM.c **** * Function Name: PWM_SaveConfig
+  26:.\Generated_Source\PSoC4/PWM_PM.c **** ********************************************************************************
+  27:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  28:.\Generated_Source\PSoC4/PWM_PM.c **** * Summary:
+  29:.\Generated_Source\PSoC4/PWM_PM.c **** *  All configuration registers are retention. Nothing to save here.
+  30:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  31:.\Generated_Source\PSoC4/PWM_PM.c **** * Parameters:
+  32:.\Generated_Source\PSoC4/PWM_PM.c **** *  None
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 2
+
+
+  33:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  34:.\Generated_Source\PSoC4/PWM_PM.c **** * Return:
+  35:.\Generated_Source\PSoC4/PWM_PM.c **** *  None
+  36:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  37:.\Generated_Source\PSoC4/PWM_PM.c **** *******************************************************************************/
+  38:.\Generated_Source\PSoC4/PWM_PM.c **** void PWM_SaveConfig(void)
+  39:.\Generated_Source\PSoC4/PWM_PM.c **** {
+  26              		.loc 1 39 0
+  27              		.cfi_startproc
+  40:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  41:.\Generated_Source\PSoC4/PWM_PM.c **** }
+  28              		.loc 1 41 0
+  29              		@ sp needed for prologue
+  30 0000 7047     		bx	lr
+  31              		.cfi_endproc
+  32              	.LFE0:
+  33              		.size	PWM_SaveConfig, .-PWM_SaveConfig
+  34              		.section	.text.PWM_Sleep,"ax",%progbits
+  35              		.align	1
+  36              		.global	PWM_Sleep
+  37              		.code	16
+  38              		.thumb_func
+  39              		.type	PWM_Sleep, %function
+  40              	PWM_Sleep:
+  41              	.LFB1:
+  42:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  43:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  44:.\Generated_Source\PSoC4/PWM_PM.c **** /*******************************************************************************
+  45:.\Generated_Source\PSoC4/PWM_PM.c **** * Function Name: PWM_Sleep
+  46:.\Generated_Source\PSoC4/PWM_PM.c **** ********************************************************************************
+  47:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  48:.\Generated_Source\PSoC4/PWM_PM.c **** * Summary:
+  49:.\Generated_Source\PSoC4/PWM_PM.c **** *  Stops the component operation and saves the user configuration.
+  50:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  51:.\Generated_Source\PSoC4/PWM_PM.c **** * Parameters:
+  52:.\Generated_Source\PSoC4/PWM_PM.c **** *  None
+  53:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  54:.\Generated_Source\PSoC4/PWM_PM.c **** * Return:
+  55:.\Generated_Source\PSoC4/PWM_PM.c **** *  None
+  56:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  57:.\Generated_Source\PSoC4/PWM_PM.c **** *******************************************************************************/
+  58:.\Generated_Source\PSoC4/PWM_PM.c **** void PWM_Sleep(void)
+  59:.\Generated_Source\PSoC4/PWM_PM.c **** {
+  42              		.loc 1 59 0
+  43              		.cfi_startproc
+  44 0000 08B5     		push	{r3, lr}
+  45              	.LCFI0:
+  46              		.cfi_def_cfa_offset 8
+  47              		.cfi_offset 3, -8
+  48              		.cfi_offset 14, -4
+  60:.\Generated_Source\PSoC4/PWM_PM.c ****     if(0u != (PWM_BLOCK_CONTROL_REG & PWM_MASK))
+  49              		.loc 1 60 0
+  50 0002 064B     		ldr	r3, .L6
+  51 0004 0121     		mov	r1, #1
+  52 0006 1A68     		ldr	r2, [r3]
+  53 0008 0548     		ldr	r0, .L6+4
+  54 000a 0A40     		and	r2, r1
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 3
+
+
+  55 000c 01D0     		beq	.L3
+  61:.\Generated_Source\PSoC4/PWM_PM.c ****     {
+  62:.\Generated_Source\PSoC4/PWM_PM.c ****         PWM_backup.enableState = 1u;
+  56              		.loc 1 62 0
+  57 000e 0170     		strb	r1, [r0]
+  58 0010 00E0     		b	.L4
+  59              	.L3:
+  63:.\Generated_Source\PSoC4/PWM_PM.c ****     }
+  64:.\Generated_Source\PSoC4/PWM_PM.c ****     else
+  65:.\Generated_Source\PSoC4/PWM_PM.c ****     {
+  66:.\Generated_Source\PSoC4/PWM_PM.c ****         PWM_backup.enableState = 0u;
+  60              		.loc 1 66 0
+  61 0012 0270     		strb	r2, [r0]
+  62              	.L4:
+  67:.\Generated_Source\PSoC4/PWM_PM.c ****     }
+  68:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  69:.\Generated_Source\PSoC4/PWM_PM.c ****     PWM_Stop();
+  63              		.loc 1 69 0
+  64 0014 FFF7FEFF 		bl	PWM_Stop
+  65              	.LVL0:
+  70:.\Generated_Source\PSoC4/PWM_PM.c ****     PWM_SaveConfig();
+  71:.\Generated_Source\PSoC4/PWM_PM.c **** }
+  66              		.loc 1 71 0
+  67              		@ sp needed for prologue
+  68 0018 08BD     		pop	{r3, pc}
+  69              	.L7:
+  70 001a C046     		.align	2
+  71              	.L6:
+  72 001c 00000540 		.word	1074069504
+  73 0020 00000000 		.word	.LANCHOR0
+  74              		.cfi_endproc
+  75              	.LFE1:
+  76              		.size	PWM_Sleep, .-PWM_Sleep
+  77              		.section	.text.PWM_RestoreConfig,"ax",%progbits
+  78              		.align	1
+  79              		.global	PWM_RestoreConfig
+  80              		.code	16
+  81              		.thumb_func
+  82              		.type	PWM_RestoreConfig, %function
+  83              	PWM_RestoreConfig:
+  84              	.LFB2:
+  72:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  73:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  74:.\Generated_Source\PSoC4/PWM_PM.c **** /*******************************************************************************
+  75:.\Generated_Source\PSoC4/PWM_PM.c **** * Function Name: PWM_RestoreConfig
+  76:.\Generated_Source\PSoC4/PWM_PM.c **** ********************************************************************************
+  77:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  78:.\Generated_Source\PSoC4/PWM_PM.c **** * Summary:
+  79:.\Generated_Source\PSoC4/PWM_PM.c **** *  All configuration registers are retention. Nothing to restore here.
+  80:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  81:.\Generated_Source\PSoC4/PWM_PM.c **** * Parameters:
+  82:.\Generated_Source\PSoC4/PWM_PM.c **** *  None
+  83:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  84:.\Generated_Source\PSoC4/PWM_PM.c **** * Return:
+  85:.\Generated_Source\PSoC4/PWM_PM.c **** *  None
+  86:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  87:.\Generated_Source\PSoC4/PWM_PM.c **** *******************************************************************************/
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 4
+
+
+  88:.\Generated_Source\PSoC4/PWM_PM.c **** void PWM_RestoreConfig(void)
+  89:.\Generated_Source\PSoC4/PWM_PM.c **** {
+  85              		.loc 1 89 0
+  86              		.cfi_startproc
+  90:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  91:.\Generated_Source\PSoC4/PWM_PM.c **** }
+  87              		.loc 1 91 0
+  88              		@ sp needed for prologue
+  89 0000 7047     		bx	lr
+  90              		.cfi_endproc
+  91              	.LFE2:
+  92              		.size	PWM_RestoreConfig, .-PWM_RestoreConfig
+  93              		.section	.text.PWM_Wakeup,"ax",%progbits
+  94              		.align	1
+  95              		.global	PWM_Wakeup
+  96              		.code	16
+  97              		.thumb_func
+  98              		.type	PWM_Wakeup, %function
+  99              	PWM_Wakeup:
+ 100              	.LFB3:
+  92:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  93:.\Generated_Source\PSoC4/PWM_PM.c **** 
+  94:.\Generated_Source\PSoC4/PWM_PM.c **** /*******************************************************************************
+  95:.\Generated_Source\PSoC4/PWM_PM.c **** * Function Name: PWM_Wakeup
+  96:.\Generated_Source\PSoC4/PWM_PM.c **** ********************************************************************************
+  97:.\Generated_Source\PSoC4/PWM_PM.c **** *
+  98:.\Generated_Source\PSoC4/PWM_PM.c **** * Summary:
+  99:.\Generated_Source\PSoC4/PWM_PM.c **** *  Restores the user configuration and restores the enable state.
+ 100:.\Generated_Source\PSoC4/PWM_PM.c **** *
+ 101:.\Generated_Source\PSoC4/PWM_PM.c **** * Parameters:
+ 102:.\Generated_Source\PSoC4/PWM_PM.c **** *  None
+ 103:.\Generated_Source\PSoC4/PWM_PM.c **** *
+ 104:.\Generated_Source\PSoC4/PWM_PM.c **** * Return:
+ 105:.\Generated_Source\PSoC4/PWM_PM.c **** *  None
+ 106:.\Generated_Source\PSoC4/PWM_PM.c **** *
+ 107:.\Generated_Source\PSoC4/PWM_PM.c **** *******************************************************************************/
+ 108:.\Generated_Source\PSoC4/PWM_PM.c **** void PWM_Wakeup(void)
+ 109:.\Generated_Source\PSoC4/PWM_PM.c **** {
+ 101              		.loc 1 109 0
+ 102              		.cfi_startproc
+ 103 0000 08B5     		push	{r3, lr}
+ 104              	.LCFI1:
+ 105              		.cfi_def_cfa_offset 8
+ 106              		.cfi_offset 3, -8
+ 107              		.cfi_offset 14, -4
+ 110:.\Generated_Source\PSoC4/PWM_PM.c ****     PWM_RestoreConfig();
+ 111:.\Generated_Source\PSoC4/PWM_PM.c **** 
+ 112:.\Generated_Source\PSoC4/PWM_PM.c ****     if(0u != PWM_backup.enableState)
+ 108              		.loc 1 112 0
+ 109 0002 034B     		ldr	r3, .L14
+ 110 0004 1878     		ldrb	r0, [r3]
+ 111 0006 0028     		cmp	r0, #0
+ 112 0008 01D0     		beq	.L9
+ 113:.\Generated_Source\PSoC4/PWM_PM.c ****     {
+ 114:.\Generated_Source\PSoC4/PWM_PM.c ****         PWM_Enable();
+ 113              		.loc 1 114 0
+ 114 000a FFF7FEFF 		bl	PWM_Enable
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 5
+
+
+ 115              	.LVL1:
+ 116              	.L9:
+ 115:.\Generated_Source\PSoC4/PWM_PM.c ****     }
+ 116:.\Generated_Source\PSoC4/PWM_PM.c **** }
+ 117              		.loc 1 116 0
+ 118              		@ sp needed for prologue
+ 119 000e 08BD     		pop	{r3, pc}
+ 120              	.L15:
+ 121              		.align	2
+ 122              	.L14:
+ 123 0010 00000000 		.word	.LANCHOR0
+ 124              		.cfi_endproc
+ 125              	.LFE3:
+ 126              		.size	PWM_Wakeup, .-PWM_Wakeup
+ 127              		.bss
+ 128              		.set	.LANCHOR0,. + 0
+ 129              		.type	PWM_backup, %object
+ 130              		.size	PWM_backup, 1
+ 131              	PWM_backup:
+ 132 0000 00       		.space	1
+ 133              		.text
+ 134              	.Letext0:
+ 135              		.file 2 ".\\Generated_Source\\PSoC4\\cytypes.h"
+ 136              		.file 3 ".\\Generated_Source\\PSoC4\\PWM.h"
+ 137              		.section	.debug_info,"",%progbits
+ 138              	.Ldebug_info0:
+ 139 0000 6E010000 		.4byte	0x16e
+ 140 0004 0200     		.2byte	0x2
+ 141 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 142 000a 04       		.byte	0x4
+ 143 000b 01       		.uleb128 0x1
+ 144 000c 5A010000 		.4byte	.LASF22
+ 145 0010 01       		.byte	0x1
+ 146 0011 48000000 		.4byte	.LASF23
+ 147 0015 C5000000 		.4byte	.LASF24
+ 148 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 149 001d 00000000 		.4byte	0
+ 150 0021 00000000 		.4byte	0
+ 151 0025 00000000 		.4byte	.Ldebug_line0
+ 152 0029 02       		.uleb128 0x2
+ 153 002a 01       		.byte	0x1
+ 154 002b 06       		.byte	0x6
+ 155 002c C1010000 		.4byte	.LASF0
+ 156 0030 02       		.uleb128 0x2
+ 157 0031 01       		.byte	0x1
+ 158 0032 08       		.byte	0x8
+ 159 0033 6A000000 		.4byte	.LASF1
+ 160 0037 02       		.uleb128 0x2
+ 161 0038 02       		.byte	0x2
+ 162 0039 05       		.byte	0x5
+ 163 003a 4A010000 		.4byte	.LASF2
+ 164 003e 02       		.uleb128 0x2
+ 165 003f 02       		.byte	0x2
+ 166 0040 07       		.byte	0x7
+ 167 0041 8A000000 		.4byte	.LASF3
+ 168 0045 02       		.uleb128 0x2
+ 169 0046 04       		.byte	0x4
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 6
+
+
+ 170 0047 05       		.byte	0x5
+ 171 0048 AC010000 		.4byte	.LASF4
+ 172 004c 02       		.uleb128 0x2
+ 173 004d 04       		.byte	0x4
+ 174 004e 07       		.byte	0x7
+ 175 004f 78000000 		.4byte	.LASF5
+ 176 0053 02       		.uleb128 0x2
+ 177 0054 08       		.byte	0x8
+ 178 0055 05       		.byte	0x5
+ 179 0056 37010000 		.4byte	.LASF6
+ 180 005a 02       		.uleb128 0x2
+ 181 005b 08       		.byte	0x8
+ 182 005c 07       		.byte	0x7
+ 183 005d 16010000 		.4byte	.LASF7
+ 184 0061 03       		.uleb128 0x3
+ 185 0062 04       		.byte	0x4
+ 186 0063 05       		.byte	0x5
+ 187 0064 696E7400 		.ascii	"int\000"
+ 188 0068 02       		.uleb128 0x2
+ 189 0069 04       		.byte	0x4
+ 190 006a 07       		.byte	0x7
+ 191 006b 23000000 		.4byte	.LASF8
+ 192 006f 04       		.uleb128 0x4
+ 193 0070 54010000 		.4byte	.LASF9
+ 194 0074 02       		.byte	0x2
+ 195 0075 5B       		.byte	0x5b
+ 196 0076 30000000 		.4byte	0x30
+ 197 007a 04       		.uleb128 0x4
+ 198 007b BE000000 		.4byte	.LASF10
+ 199 007f 02       		.byte	0x2
+ 200 0080 5D       		.byte	0x5d
+ 201 0081 4C000000 		.4byte	0x4c
+ 202 0085 02       		.uleb128 0x2
+ 203 0086 04       		.byte	0x4
+ 204 0087 04       		.byte	0x4
+ 205 0088 42000000 		.4byte	.LASF11
+ 206 008c 02       		.uleb128 0x2
+ 207 008d 08       		.byte	0x8
+ 208 008e 04       		.byte	0x4
+ 209 008f A8000000 		.4byte	.LASF12
+ 210 0093 02       		.uleb128 0x2
+ 211 0094 01       		.byte	0x1
+ 212 0095 08       		.byte	0x8
+ 213 0096 45010000 		.4byte	.LASF13
+ 214 009a 04       		.uleb128 0x4
+ 215 009b 12000000 		.4byte	.LASF14
+ 216 009f 02       		.byte	0x2
+ 217 00a0 F2       		.byte	0xf2
+ 218 00a1 A5000000 		.4byte	0xa5
+ 219 00a5 05       		.uleb128 0x5
+ 220 00a6 7A000000 		.4byte	0x7a
+ 221 00aa 06       		.uleb128 0x6
+ 222 00ab 01       		.byte	0x1
+ 223 00ac 03       		.byte	0x3
+ 224 00ad 1F       		.byte	0x1f
+ 225 00ae C1000000 		.4byte	0xc1
+ 226 00b2 07       		.uleb128 0x7
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 7
+
+
+ 227 00b3 B5010000 		.4byte	.LASF25
+ 228 00b7 03       		.byte	0x3
+ 229 00b8 21       		.byte	0x21
+ 230 00b9 6F000000 		.4byte	0x6f
+ 231 00bd 02       		.byte	0x2
+ 232 00be 23       		.byte	0x23
+ 233 00bf 00       		.uleb128 0
+ 234 00c0 00       		.byte	0
+ 235 00c1 04       		.uleb128 0x4
+ 236 00c2 00000000 		.4byte	.LASF15
+ 237 00c6 03       		.byte	0x3
+ 238 00c7 22       		.byte	0x22
+ 239 00c8 AA000000 		.4byte	0xaa
+ 240 00cc 08       		.uleb128 0x8
+ 241 00cd 01       		.byte	0x1
+ 242 00ce AF000000 		.4byte	.LASF16
+ 243 00d2 01       		.byte	0x1
+ 244 00d3 26       		.byte	0x26
+ 245 00d4 01       		.byte	0x1
+ 246 00d5 01       		.byte	0x1
+ 247 00d6 08       		.uleb128 0x8
+ 248 00d7 01       		.byte	0x1
+ 249 00d8 30000000 		.4byte	.LASF17
+ 250 00dc 01       		.byte	0x1
+ 251 00dd 58       		.byte	0x58
+ 252 00de 01       		.byte	0x1
+ 253 00df 01       		.byte	0x1
+ 254 00e0 09       		.uleb128 0x9
+ 255 00e1 CC000000 		.4byte	0xcc
+ 256 00e5 00000000 		.4byte	.LFB0
+ 257 00e9 02000000 		.4byte	.LFE0
+ 258 00ed 02       		.byte	0x2
+ 259 00ee 7D       		.byte	0x7d
+ 260 00ef 00       		.sleb128 0
+ 261 00f0 01       		.byte	0x1
+ 262 00f1 0A       		.uleb128 0xa
+ 263 00f2 01       		.byte	0x1
+ 264 00f3 2D010000 		.4byte	.LASF18
+ 265 00f7 01       		.byte	0x1
+ 266 00f8 3A       		.byte	0x3a
+ 267 00f9 01       		.byte	0x1
+ 268 00fa 00000000 		.4byte	.LFB1
+ 269 00fe 24000000 		.4byte	.LFE1
+ 270 0102 00000000 		.4byte	.LLST0
+ 271 0106 01       		.byte	0x1
+ 272 0107 15010000 		.4byte	0x115
+ 273 010b 0B       		.uleb128 0xb
+ 274 010c 18000000 		.4byte	.LVL0
+ 275 0110 5B010000 		.4byte	0x15b
+ 276 0114 00       		.byte	0
+ 277 0115 09       		.uleb128 0x9
+ 278 0116 D6000000 		.4byte	0xd6
+ 279 011a 00000000 		.4byte	.LFB2
+ 280 011e 02000000 		.4byte	.LFE2
+ 281 0122 02       		.byte	0x2
+ 282 0123 7D       		.byte	0x7d
+ 283 0124 00       		.sleb128 0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 8
+
+
+ 284 0125 01       		.byte	0x1
+ 285 0126 0A       		.uleb128 0xa
+ 286 0127 01       		.byte	0x1
+ 287 0128 9D000000 		.4byte	.LASF19
+ 288 012c 01       		.byte	0x1
+ 289 012d 6C       		.byte	0x6c
+ 290 012e 01       		.byte	0x1
+ 291 012f 00000000 		.4byte	.LFB3
+ 292 0133 14000000 		.4byte	.LFE3
+ 293 0137 20000000 		.4byte	.LLST1
+ 294 013b 01       		.byte	0x1
+ 295 013c 4A010000 		.4byte	0x14a
+ 296 0140 0B       		.uleb128 0xb
+ 297 0141 0E000000 		.4byte	.LVL1
+ 298 0145 66010000 		.4byte	0x166
+ 299 0149 00       		.byte	0
+ 300 014a 0C       		.uleb128 0xc
+ 301 014b 18000000 		.4byte	.LASF26
+ 302 014f 01       		.byte	0x1
+ 303 0150 15       		.byte	0x15
+ 304 0151 C1000000 		.4byte	0xc1
+ 305 0155 05       		.byte	0x5
+ 306 0156 03       		.byte	0x3
+ 307 0157 00000000 		.4byte	PWM_backup
+ 308 015b 0D       		.uleb128 0xd
+ 309 015c 01       		.byte	0x1
+ 310 015d A3010000 		.4byte	.LASF20
+ 311 0161 03       		.byte	0x3
+ 312 0162 2001     		.2byte	0x120
+ 313 0164 01       		.byte	0x1
+ 314 0165 01       		.byte	0x1
+ 315 0166 0D       		.uleb128 0xd
+ 316 0167 01       		.byte	0x1
+ 317 0168 CD010000 		.4byte	.LASF21
+ 318 016c 03       		.byte	0x3
+ 319 016d 1E01     		.2byte	0x11e
+ 320 016f 01       		.byte	0x1
+ 321 0170 01       		.byte	0x1
+ 322 0171 00       		.byte	0
+ 323              		.section	.debug_abbrev,"",%progbits
+ 324              	.Ldebug_abbrev0:
+ 325 0000 01       		.uleb128 0x1
+ 326 0001 11       		.uleb128 0x11
+ 327 0002 01       		.byte	0x1
+ 328 0003 25       		.uleb128 0x25
+ 329 0004 0E       		.uleb128 0xe
+ 330 0005 13       		.uleb128 0x13
+ 331 0006 0B       		.uleb128 0xb
+ 332 0007 03       		.uleb128 0x3
+ 333 0008 0E       		.uleb128 0xe
+ 334 0009 1B       		.uleb128 0x1b
+ 335 000a 0E       		.uleb128 0xe
+ 336 000b 55       		.uleb128 0x55
+ 337 000c 06       		.uleb128 0x6
+ 338 000d 11       		.uleb128 0x11
+ 339 000e 01       		.uleb128 0x1
+ 340 000f 52       		.uleb128 0x52
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 9
+
+
+ 341 0010 01       		.uleb128 0x1
+ 342 0011 10       		.uleb128 0x10
+ 343 0012 06       		.uleb128 0x6
+ 344 0013 00       		.byte	0
+ 345 0014 00       		.byte	0
+ 346 0015 02       		.uleb128 0x2
+ 347 0016 24       		.uleb128 0x24
+ 348 0017 00       		.byte	0
+ 349 0018 0B       		.uleb128 0xb
+ 350 0019 0B       		.uleb128 0xb
+ 351 001a 3E       		.uleb128 0x3e
+ 352 001b 0B       		.uleb128 0xb
+ 353 001c 03       		.uleb128 0x3
+ 354 001d 0E       		.uleb128 0xe
+ 355 001e 00       		.byte	0
+ 356 001f 00       		.byte	0
+ 357 0020 03       		.uleb128 0x3
+ 358 0021 24       		.uleb128 0x24
+ 359 0022 00       		.byte	0
+ 360 0023 0B       		.uleb128 0xb
+ 361 0024 0B       		.uleb128 0xb
+ 362 0025 3E       		.uleb128 0x3e
+ 363 0026 0B       		.uleb128 0xb
+ 364 0027 03       		.uleb128 0x3
+ 365 0028 08       		.uleb128 0x8
+ 366 0029 00       		.byte	0
+ 367 002a 00       		.byte	0
+ 368 002b 04       		.uleb128 0x4
+ 369 002c 16       		.uleb128 0x16
+ 370 002d 00       		.byte	0
+ 371 002e 03       		.uleb128 0x3
+ 372 002f 0E       		.uleb128 0xe
+ 373 0030 3A       		.uleb128 0x3a
+ 374 0031 0B       		.uleb128 0xb
+ 375 0032 3B       		.uleb128 0x3b
+ 376 0033 0B       		.uleb128 0xb
+ 377 0034 49       		.uleb128 0x49
+ 378 0035 13       		.uleb128 0x13
+ 379 0036 00       		.byte	0
+ 380 0037 00       		.byte	0
+ 381 0038 05       		.uleb128 0x5
+ 382 0039 35       		.uleb128 0x35
+ 383 003a 00       		.byte	0
+ 384 003b 49       		.uleb128 0x49
+ 385 003c 13       		.uleb128 0x13
+ 386 003d 00       		.byte	0
+ 387 003e 00       		.byte	0
+ 388 003f 06       		.uleb128 0x6
+ 389 0040 13       		.uleb128 0x13
+ 390 0041 01       		.byte	0x1
+ 391 0042 0B       		.uleb128 0xb
+ 392 0043 0B       		.uleb128 0xb
+ 393 0044 3A       		.uleb128 0x3a
+ 394 0045 0B       		.uleb128 0xb
+ 395 0046 3B       		.uleb128 0x3b
+ 396 0047 0B       		.uleb128 0xb
+ 397 0048 01       		.uleb128 0x1
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 10
+
+
+ 398 0049 13       		.uleb128 0x13
+ 399 004a 00       		.byte	0
+ 400 004b 00       		.byte	0
+ 401 004c 07       		.uleb128 0x7
+ 402 004d 0D       		.uleb128 0xd
+ 403 004e 00       		.byte	0
+ 404 004f 03       		.uleb128 0x3
+ 405 0050 0E       		.uleb128 0xe
+ 406 0051 3A       		.uleb128 0x3a
+ 407 0052 0B       		.uleb128 0xb
+ 408 0053 3B       		.uleb128 0x3b
+ 409 0054 0B       		.uleb128 0xb
+ 410 0055 49       		.uleb128 0x49
+ 411 0056 13       		.uleb128 0x13
+ 412 0057 38       		.uleb128 0x38
+ 413 0058 0A       		.uleb128 0xa
+ 414 0059 00       		.byte	0
+ 415 005a 00       		.byte	0
+ 416 005b 08       		.uleb128 0x8
+ 417 005c 2E       		.uleb128 0x2e
+ 418 005d 00       		.byte	0
+ 419 005e 3F       		.uleb128 0x3f
+ 420 005f 0C       		.uleb128 0xc
+ 421 0060 03       		.uleb128 0x3
+ 422 0061 0E       		.uleb128 0xe
+ 423 0062 3A       		.uleb128 0x3a
+ 424 0063 0B       		.uleb128 0xb
+ 425 0064 3B       		.uleb128 0x3b
+ 426 0065 0B       		.uleb128 0xb
+ 427 0066 27       		.uleb128 0x27
+ 428 0067 0C       		.uleb128 0xc
+ 429 0068 20       		.uleb128 0x20
+ 430 0069 0B       		.uleb128 0xb
+ 431 006a 00       		.byte	0
+ 432 006b 00       		.byte	0
+ 433 006c 09       		.uleb128 0x9
+ 434 006d 2E       		.uleb128 0x2e
+ 435 006e 00       		.byte	0
+ 436 006f 31       		.uleb128 0x31
+ 437 0070 13       		.uleb128 0x13
+ 438 0071 11       		.uleb128 0x11
+ 439 0072 01       		.uleb128 0x1
+ 440 0073 12       		.uleb128 0x12
+ 441 0074 01       		.uleb128 0x1
+ 442 0075 40       		.uleb128 0x40
+ 443 0076 0A       		.uleb128 0xa
+ 444 0077 9742     		.uleb128 0x2117
+ 445 0079 0C       		.uleb128 0xc
+ 446 007a 00       		.byte	0
+ 447 007b 00       		.byte	0
+ 448 007c 0A       		.uleb128 0xa
+ 449 007d 2E       		.uleb128 0x2e
+ 450 007e 01       		.byte	0x1
+ 451 007f 3F       		.uleb128 0x3f
+ 452 0080 0C       		.uleb128 0xc
+ 453 0081 03       		.uleb128 0x3
+ 454 0082 0E       		.uleb128 0xe
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 11
+
+
+ 455 0083 3A       		.uleb128 0x3a
+ 456 0084 0B       		.uleb128 0xb
+ 457 0085 3B       		.uleb128 0x3b
+ 458 0086 0B       		.uleb128 0xb
+ 459 0087 27       		.uleb128 0x27
+ 460 0088 0C       		.uleb128 0xc
+ 461 0089 11       		.uleb128 0x11
+ 462 008a 01       		.uleb128 0x1
+ 463 008b 12       		.uleb128 0x12
+ 464 008c 01       		.uleb128 0x1
+ 465 008d 40       		.uleb128 0x40
+ 466 008e 06       		.uleb128 0x6
+ 467 008f 9742     		.uleb128 0x2117
+ 468 0091 0C       		.uleb128 0xc
+ 469 0092 01       		.uleb128 0x1
+ 470 0093 13       		.uleb128 0x13
+ 471 0094 00       		.byte	0
+ 472 0095 00       		.byte	0
+ 473 0096 0B       		.uleb128 0xb
+ 474 0097 898201   		.uleb128 0x4109
+ 475 009a 00       		.byte	0
+ 476 009b 11       		.uleb128 0x11
+ 477 009c 01       		.uleb128 0x1
+ 478 009d 31       		.uleb128 0x31
+ 479 009e 13       		.uleb128 0x13
+ 480 009f 00       		.byte	0
+ 481 00a0 00       		.byte	0
+ 482 00a1 0C       		.uleb128 0xc
+ 483 00a2 34       		.uleb128 0x34
+ 484 00a3 00       		.byte	0
+ 485 00a4 03       		.uleb128 0x3
+ 486 00a5 0E       		.uleb128 0xe
+ 487 00a6 3A       		.uleb128 0x3a
+ 488 00a7 0B       		.uleb128 0xb
+ 489 00a8 3B       		.uleb128 0x3b
+ 490 00a9 0B       		.uleb128 0xb
+ 491 00aa 49       		.uleb128 0x49
+ 492 00ab 13       		.uleb128 0x13
+ 493 00ac 02       		.uleb128 0x2
+ 494 00ad 0A       		.uleb128 0xa
+ 495 00ae 00       		.byte	0
+ 496 00af 00       		.byte	0
+ 497 00b0 0D       		.uleb128 0xd
+ 498 00b1 2E       		.uleb128 0x2e
+ 499 00b2 00       		.byte	0
+ 500 00b3 3F       		.uleb128 0x3f
+ 501 00b4 0C       		.uleb128 0xc
+ 502 00b5 03       		.uleb128 0x3
+ 503 00b6 0E       		.uleb128 0xe
+ 504 00b7 3A       		.uleb128 0x3a
+ 505 00b8 0B       		.uleb128 0xb
+ 506 00b9 3B       		.uleb128 0x3b
+ 507 00ba 05       		.uleb128 0x5
+ 508 00bb 27       		.uleb128 0x27
+ 509 00bc 0C       		.uleb128 0xc
+ 510 00bd 3C       		.uleb128 0x3c
+ 511 00be 0C       		.uleb128 0xc
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 12
+
+
+ 512 00bf 00       		.byte	0
+ 513 00c0 00       		.byte	0
+ 514 00c1 00       		.byte	0
+ 515              		.section	.debug_loc,"",%progbits
+ 516              	.Ldebug_loc0:
+ 517              	.LLST0:
+ 518 0000 00000000 		.4byte	.LFB1
+ 519 0004 02000000 		.4byte	.LCFI0
+ 520 0008 0200     		.2byte	0x2
+ 521 000a 7D       		.byte	0x7d
+ 522 000b 00       		.sleb128 0
+ 523 000c 02000000 		.4byte	.LCFI0
+ 524 0010 24000000 		.4byte	.LFE1
+ 525 0014 0200     		.2byte	0x2
+ 526 0016 7D       		.byte	0x7d
+ 527 0017 08       		.sleb128 8
+ 528 0018 00000000 		.4byte	0
+ 529 001c 00000000 		.4byte	0
+ 530              	.LLST1:
+ 531 0020 00000000 		.4byte	.LFB3
+ 532 0024 02000000 		.4byte	.LCFI1
+ 533 0028 0200     		.2byte	0x2
+ 534 002a 7D       		.byte	0x7d
+ 535 002b 00       		.sleb128 0
+ 536 002c 02000000 		.4byte	.LCFI1
+ 537 0030 14000000 		.4byte	.LFE3
+ 538 0034 0200     		.2byte	0x2
+ 539 0036 7D       		.byte	0x7d
+ 540 0037 08       		.sleb128 8
+ 541 0038 00000000 		.4byte	0
+ 542 003c 00000000 		.4byte	0
+ 543              		.section	.debug_aranges,"",%progbits
+ 544 0000 34000000 		.4byte	0x34
+ 545 0004 0200     		.2byte	0x2
+ 546 0006 00000000 		.4byte	.Ldebug_info0
+ 547 000a 04       		.byte	0x4
+ 548 000b 00       		.byte	0
+ 549 000c 0000     		.2byte	0
+ 550 000e 0000     		.2byte	0
+ 551 0010 00000000 		.4byte	.LFB0
+ 552 0014 02000000 		.4byte	.LFE0-.LFB0
+ 553 0018 00000000 		.4byte	.LFB1
+ 554 001c 24000000 		.4byte	.LFE1-.LFB1
+ 555 0020 00000000 		.4byte	.LFB2
+ 556 0024 02000000 		.4byte	.LFE2-.LFB2
+ 557 0028 00000000 		.4byte	.LFB3
+ 558 002c 14000000 		.4byte	.LFE3-.LFB3
+ 559 0030 00000000 		.4byte	0
+ 560 0034 00000000 		.4byte	0
+ 561              		.section	.debug_ranges,"",%progbits
+ 562              	.Ldebug_ranges0:
+ 563 0000 00000000 		.4byte	.LFB0
+ 564 0004 02000000 		.4byte	.LFE0
+ 565 0008 00000000 		.4byte	.LFB1
+ 566 000c 24000000 		.4byte	.LFE1
+ 567 0010 00000000 		.4byte	.LFB2
+ 568 0014 02000000 		.4byte	.LFE2
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 13
+
+
+ 569 0018 00000000 		.4byte	.LFB3
+ 570 001c 14000000 		.4byte	.LFE3
+ 571 0020 00000000 		.4byte	0
+ 572 0024 00000000 		.4byte	0
+ 573              		.section	.debug_line,"",%progbits
+ 574              	.Ldebug_line0:
+ 575 0000 9C000000 		.section	.debug_str,"MS",%progbits,1
+ 575      02004E00 
+ 575      00000201 
+ 575      FB0E0D00 
+ 575      01010101 
+ 576              	.LASF15:
+ 577 0000 50574D5F 		.ascii	"PWM_BACKUP_STRUCT\000"
+ 577      4241434B 
+ 577      55505F53 
+ 577      54525543 
+ 577      5400
+ 578              	.LASF14:
+ 579 0012 72656733 		.ascii	"reg32\000"
+ 579      3200
+ 580              	.LASF26:
+ 581 0018 50574D5F 		.ascii	"PWM_backup\000"
+ 581      6261636B 
+ 581      757000
+ 582              	.LASF8:
+ 583 0023 756E7369 		.ascii	"unsigned int\000"
+ 583      676E6564 
+ 583      20696E74 
+ 583      00
+ 584              	.LASF17:
+ 585 0030 50574D5F 		.ascii	"PWM_RestoreConfig\000"
+ 585      52657374 
+ 585      6F726543 
+ 585      6F6E6669 
+ 585      6700
+ 586              	.LASF11:
+ 587 0042 666C6F61 		.ascii	"float\000"
+ 587      7400
+ 588              	.LASF23:
+ 589 0048 2E5C4765 		.ascii	".\\Generated_Source\\PSoC4\\PWM_PM.c\000"
+ 589      6E657261 
+ 589      7465645F 
+ 589      536F7572 
+ 589      63655C50 
+ 590              	.LASF1:
+ 591 006a 756E7369 		.ascii	"unsigned char\000"
+ 591      676E6564 
+ 591      20636861 
+ 591      7200
+ 592              	.LASF5:
+ 593 0078 6C6F6E67 		.ascii	"long unsigned int\000"
+ 593      20756E73 
+ 593      69676E65 
+ 593      6420696E 
+ 593      7400
+ 594              	.LASF3:
+ 595 008a 73686F72 		.ascii	"short unsigned int\000"
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 14
+
+
+ 595      7420756E 
+ 595      7369676E 
+ 595      65642069 
+ 595      6E7400
+ 596              	.LASF19:
+ 597 009d 50574D5F 		.ascii	"PWM_Wakeup\000"
+ 597      57616B65 
+ 597      757000
+ 598              	.LASF12:
+ 599 00a8 646F7562 		.ascii	"double\000"
+ 599      6C6500
+ 600              	.LASF16:
+ 601 00af 50574D5F 		.ascii	"PWM_SaveConfig\000"
+ 601      53617665 
+ 601      436F6E66 
+ 601      696700
+ 602              	.LASF10:
+ 603 00be 75696E74 		.ascii	"uint32\000"
+ 603      333200
+ 604              	.LASF24:
+ 605 00c5 433A5C55 		.ascii	"C:\\Users\\vrnk\\Desktop\\ES100 FW -049\\FW\\SCB_Bo"
+ 605      73657273 
+ 605      5C76726E 
+ 605      6B5C4465 
+ 605      736B746F 
+ 606 00f2 6F746C6F 		.ascii	"otloader_42xx\\UART_Bootloader.cydsn\000"
+ 606      61646572 
+ 606      5F343278 
+ 606      785C5541 
+ 606      52545F42 
+ 607              	.LASF7:
+ 608 0116 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 608      206C6F6E 
+ 608      6720756E 
+ 608      7369676E 
+ 608      65642069 
+ 609              	.LASF18:
+ 610 012d 50574D5F 		.ascii	"PWM_Sleep\000"
+ 610      536C6565 
+ 610      7000
+ 611              	.LASF6:
+ 612 0137 6C6F6E67 		.ascii	"long long int\000"
+ 612      206C6F6E 
+ 612      6720696E 
+ 612      7400
+ 613              	.LASF13:
+ 614 0145 63686172 		.ascii	"char\000"
+ 614      00
+ 615              	.LASF2:
+ 616 014a 73686F72 		.ascii	"short int\000"
+ 616      7420696E 
+ 616      7400
+ 617              	.LASF9:
+ 618 0154 75696E74 		.ascii	"uint8\000"
+ 618      3800
+ 619              	.LASF22:
+ 620 015a 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccGCXIK9.s 			page 15
+
+
+ 620      4320342E 
+ 620      372E3320 
+ 620      32303133 
+ 620      30333132 
+ 621 018d 616E6368 		.ascii	"anch revision 196615]\000"
+ 621      20726576 
+ 621      6973696F 
+ 621      6E203139 
+ 621      36363135 
+ 622              	.LASF20:
+ 623 01a3 50574D5F 		.ascii	"PWM_Stop\000"
+ 623      53746F70 
+ 623      00
+ 624              	.LASF4:
+ 625 01ac 6C6F6E67 		.ascii	"long int\000"
+ 625      20696E74 
+ 625      00
+ 626              	.LASF25:
+ 627 01b5 656E6162 		.ascii	"enableState\000"
+ 627      6C655374 
+ 627      61746500 
+ 628              	.LASF0:
+ 629 01c1 7369676E 		.ascii	"signed char\000"
+ 629      65642063 
+ 629      68617200 
+ 630              	.LASF21:
+ 631 01cd 50574D5F 		.ascii	"PWM_Enable\000"
+ 631      456E6162 
+ 631      6C6500
+ 632              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

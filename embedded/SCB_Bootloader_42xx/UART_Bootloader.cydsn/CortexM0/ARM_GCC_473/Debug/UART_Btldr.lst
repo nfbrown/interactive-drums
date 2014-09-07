@@ -1,0 +1,2062 @@
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 1
+
+
+   1              		.cpu cortex-m0
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"UART_Btldr.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.CyBtldrCommStart,"ax",%progbits
+  18              		.align	1
+  19              		.global	CyBtldrCommStart
+  20              		.code	16
+  21              		.thumb_func
+  22              		.type	CyBtldrCommStart, %function
+  23              	CyBtldrCommStart:
+  24              	.LFB33:
+  25              		.file 1 ".\\UART_Btldr.c"
+   1:.\UART_Btldr.c **** /******************************************************************************
+   2:.\UART_Btldr.c **** * Project Name		: UART_Bootloader
+   3:.\UART_Btldr.c **** * File Name			: UART_Btldr.c
+   4:.\UART_Btldr.c **** * Version 			: 1.0
+   5:.\UART_Btldr.c **** * Device Used		: CY8C4245AXI-483
+   6:.\UART_Btldr.c **** * Software Used		: PSoC Creator 3.0
+   7:.\UART_Btldr.c **** * Compiler    		: ARMGCC 4.7.3, ARM RVDS Generic, ARM MDK Generic
+   8:.\UART_Btldr.c **** * Related Hardware	: CY8CKIT-049-42xx PSoC 4 Prototyping Kit 
+   9:.\UART_Btldr.c **** *
+  10:.\UART_Btldr.c **** ********************************************************************************
+  11:.\UART_Btldr.c **** * Copyright (2014), Cypress Semiconductor Corporation. All Rights Reserved.
+  12:.\UART_Btldr.c **** ********************************************************************************
+  13:.\UART_Btldr.c **** * This software is owned by Cypress Semiconductor Corporation (Cypress)
+  14:.\UART_Btldr.c **** * and is protected by and subject to worldwide patent protection (United
+  15:.\UART_Btldr.c **** * States and foreign), United States copyright laws and international treaty
+  16:.\UART_Btldr.c **** * provisions. Cypress hereby grants to licensee a personal, non-exclusive,
+  17:.\UART_Btldr.c **** * non-transferable license to copy, use, modify, create derivative works of,
+  18:.\UART_Btldr.c **** * and compile the Cypress Source Code and derivative works for the sole
+  19:.\UART_Btldr.c **** * purpose of creating custom software in support of licensee product to be
+  20:.\UART_Btldr.c **** * used only in conjunction with a Cypress integrated circuit as specified in
+  21:.\UART_Btldr.c **** * the applicable agreement. Any reproduction, modification, translation,
+  22:.\UART_Btldr.c **** * compilation, or representation of this software except as specified above 
+  23:.\UART_Btldr.c **** * is prohibited without the express written permission of Cypress.
+  24:.\UART_Btldr.c **** *
+  25:.\UART_Btldr.c **** * Disclaimer: CYPRESS MAKES NO WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, WITH 
+  26:.\UART_Btldr.c **** * REGARD TO THIS MATERIAL, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+  27:.\UART_Btldr.c **** * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+  28:.\UART_Btldr.c **** * Cypress reserves the right to make changes without further notice to the 
+  29:.\UART_Btldr.c **** * materials described herein. Cypress does not assume any liability arising out 
+  30:.\UART_Btldr.c **** * of the application or use of any product or circuit described herein. Cypress 
+  31:.\UART_Btldr.c **** * does not authorize its products for use as critical components in life-support 
+  32:.\UART_Btldr.c **** * systems where a malfunction or failure may reasonably be expected to result in 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 2
+
+
+  33:.\UART_Btldr.c **** * significant injury to the user. The inclusion of Cypress' product in a life-
+  34:.\UART_Btldr.c **** * support systems application implies that the manufacturer assumes all risk of 
+  35:.\UART_Btldr.c **** * such use and in doing so indemnifies Cypress against all charges. 
+  36:.\UART_Btldr.c **** *
+  37:.\UART_Btldr.c **** * Use of this Software may be limited by and subject to the applicable Cypress
+  38:.\UART_Btldr.c **** * software license agreement. 
+  39:.\UART_Btldr.c **** *******************************************************************************/
+  40:.\UART_Btldr.c **** /*******************************************************************************
+  41:.\UART_Btldr.c **** * Description:
+  42:.\UART_Btldr.c **** * This file contains the bootloader communication functions implemented using 
+  43:.\UART_Btldr.c **** * UART. Some portion of this code depends on the code placed in UART receive 
+  44:.\UART_Btldr.c **** * interrupt routine in main.c file.
+  45:.\UART_Btldr.c **** ********************************************************************************/
+  46:.\UART_Btldr.c **** 
+  47:.\UART_Btldr.c **** #include "UART.h" 
+  48:.\UART_Btldr.c **** #include "project.h"
+  49:.\UART_Btldr.c **** 
+  50:.\UART_Btldr.c **** /* Byte to Byte time out in ms for detecting end of block data from host*/
+  51:.\UART_Btldr.c **** #define BYTE2BYTE_TIME_OUT 2
+  52:.\UART_Btldr.c **** 
+  53:.\UART_Btldr.c **** #define BTLDR_SIZEOF_READ_BUFFER 0xff
+  54:.\UART_Btldr.c **** #define BTLDR_SIZEOF_WRITE_BUFFER 0xff
+  55:.\UART_Btldr.c **** #define END_OF_PACKET 0x17
+  56:.\UART_Btldr.c **** 
+  57:.\UART_Btldr.c **** /***************************************
+  58:.\UART_Btldr.c **** *Global variables
+  59:.\UART_Btldr.c **** ***************************************/
+  60:.\UART_Btldr.c **** 
+  61:.\UART_Btldr.c **** /* UART receive data count variable  */
+  62:.\UART_Btldr.c **** volatile uint16 receivedDataCount=0;
+  63:.\UART_Btldr.c **** 
+  64:.\UART_Btldr.c **** /*******************************************************************************
+  65:.\UART_Btldr.c **** * Function Name: CyBtldrCommStart
+  66:.\UART_Btldr.c **** ********************************************************************************
+  67:.\UART_Btldr.c **** *
+  68:.\UART_Btldr.c **** * Summary:
+  69:.\UART_Btldr.c **** *  Starts the UART communication component 
+  70:.\UART_Btldr.c **** *
+  71:.\UART_Btldr.c **** * Parameters:  
+  72:.\UART_Btldr.c **** *  void
+  73:.\UART_Btldr.c **** *
+  74:.\UART_Btldr.c **** * Return: 
+  75:.\UART_Btldr.c **** *  void 
+  76:.\UART_Btldr.c **** *
+  77:.\UART_Btldr.c **** * Side Effects:
+  78:.\UART_Btldr.c **** *   None  
+  79:.\UART_Btldr.c **** *
+  80:.\UART_Btldr.c **** *******************************************************************************/
+  81:.\UART_Btldr.c **** void CyBtldrCommStart(void)
+  82:.\UART_Btldr.c **** {        
+  26              		.loc 1 82 0
+  27              		.cfi_startproc
+  28 0000 08B5     		push	{r3, lr}
+  29              	.LCFI0:
+  30              		.cfi_def_cfa_offset 8
+  31              		.cfi_offset 3, -8
+  32              		.cfi_offset 14, -4
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 3
+
+
+  83:.\UART_Btldr.c **** 	/* Start UART component and clear the TX,RX buffers */
+  84:.\UART_Btldr.c **** 	UART_Start();
+  33              		.loc 1 84 0
+  34 0002 FFF7FEFF 		bl	UART_Start
+  35              	.LVL0:
+  85:.\UART_Btldr.c **** 	UART_SpiUartClearRxBuffer();
+  86:.\UART_Btldr.c **** 	UART_SpiUartClearTxBuffer();
+  87:.\UART_Btldr.c **** }
+  36              		.loc 1 87 0
+  37              		@ sp needed for prologue
+  85:.\UART_Btldr.c **** 	UART_SpiUartClearRxBuffer();
+  38              		.loc 1 85 0
+  39 0006 FFF7FEFF 		bl	UART_SpiUartClearRxBuffer
+  40              	.LVL1:
+  86:.\UART_Btldr.c **** 	UART_SpiUartClearTxBuffer();
+  41              		.loc 1 86 0
+  42 000a FFF7FEFF 		bl	UART_SpiUartClearTxBuffer
+  43              	.LVL2:
+  44              		.loc 1 87 0
+  45 000e 08BD     		pop	{r3, pc}
+  46              		.cfi_endproc
+  47              	.LFE33:
+  48              		.size	CyBtldrCommStart, .-CyBtldrCommStart
+  49              		.section	.text.CyBtldrCommStop,"ax",%progbits
+  50              		.align	1
+  51              		.global	CyBtldrCommStop
+  52              		.code	16
+  53              		.thumb_func
+  54              		.type	CyBtldrCommStop, %function
+  55              	CyBtldrCommStop:
+  56              	.LFB34:
+  88:.\UART_Btldr.c **** 
+  89:.\UART_Btldr.c **** /*******************************************************************************
+  90:.\UART_Btldr.c **** * Function Name: CyBtldrCommStop
+  91:.\UART_Btldr.c **** ********************************************************************************
+  92:.\UART_Btldr.c **** *
+  93:.\UART_Btldr.c **** * Summary:
+  94:.\UART_Btldr.c **** *  Disable the component.
+  95:.\UART_Btldr.c **** *
+  96:.\UART_Btldr.c **** * Parameters:  
+  97:.\UART_Btldr.c **** *  void 
+  98:.\UART_Btldr.c **** *
+  99:.\UART_Btldr.c **** * Return: 
+ 100:.\UART_Btldr.c **** *  void 
+ 101:.\UART_Btldr.c **** *
+ 102:.\UART_Btldr.c **** *******************************************************************************/
+ 103:.\UART_Btldr.c **** void CyBtldrCommStop(void) 
+ 104:.\UART_Btldr.c **** {
+  57              		.loc 1 104 0
+  58              		.cfi_startproc
+  59 0000 08B5     		push	{r3, lr}
+  60              	.LCFI1:
+  61              		.cfi_def_cfa_offset 8
+  62              		.cfi_offset 3, -8
+  63              		.cfi_offset 14, -4
+ 105:.\UART_Btldr.c ****     /* Stop UART */
+ 106:.\UART_Btldr.c ****     UART_Stop();
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 4
+
+
+  64              		.loc 1 106 0
+  65 0002 FFF7FEFF 		bl	UART_Stop
+  66              	.LVL3:
+ 107:.\UART_Btldr.c **** }
+  67              		.loc 1 107 0
+  68              		@ sp needed for prologue
+  69 0006 08BD     		pop	{r3, pc}
+  70              		.cfi_endproc
+  71              	.LFE34:
+  72              		.size	CyBtldrCommStop, .-CyBtldrCommStop
+  73              		.section	.text.CyBtldrCommReset,"ax",%progbits
+  74              		.align	1
+  75              		.global	CyBtldrCommReset
+  76              		.code	16
+  77              		.thumb_func
+  78              		.type	CyBtldrCommReset, %function
+  79              	CyBtldrCommReset:
+  80              	.LFB35:
+ 108:.\UART_Btldr.c **** 
+ 109:.\UART_Btldr.c **** /*******************************************************************************
+ 110:.\UART_Btldr.c **** * Function Name: CyBtldrCommReset
+ 111:.\UART_Btldr.c **** ********************************************************************************
+ 112:.\UART_Btldr.c **** *
+ 113:.\UART_Btldr.c **** * Summary:
+ 114:.\UART_Btldr.c **** *  Resets the receive and transmit communication Buffers.
+ 115:.\UART_Btldr.c **** *
+ 116:.\UART_Btldr.c **** * Parameters:  
+ 117:.\UART_Btldr.c **** *  void 
+ 118:.\UART_Btldr.c **** *
+ 119:.\UART_Btldr.c **** * Return: 
+ 120:.\UART_Btldr.c **** *  void 
+ 121:.\UART_Btldr.c **** *
+ 122:.\UART_Btldr.c **** * Side Effects:
+ 123:.\UART_Btldr.c **** *  
+ 124:.\UART_Btldr.c **** *******************************************************************************/
+ 125:.\UART_Btldr.c **** void CyBtldrCommReset(void)
+ 126:.\UART_Btldr.c **** {
+  81              		.loc 1 126 0
+  82              		.cfi_startproc
+  83 0000 08B5     		push	{r3, lr}
+  84              	.LCFI2:
+  85              		.cfi_def_cfa_offset 8
+  86              		.cfi_offset 3, -8
+  87              		.cfi_offset 14, -4
+ 127:.\UART_Btldr.c ****     /* Clear RX and TX buffers */
+ 128:.\UART_Btldr.c ****     UART_SpiUartClearRxBuffer();
+  88              		.loc 1 128 0
+  89 0002 FFF7FEFF 		bl	UART_SpiUartClearRxBuffer
+  90              	.LVL4:
+ 129:.\UART_Btldr.c ****     UART_SpiUartClearTxBuffer();
+ 130:.\UART_Btldr.c **** }
+  91              		.loc 1 130 0
+  92              		@ sp needed for prologue
+ 129:.\UART_Btldr.c ****     UART_SpiUartClearTxBuffer();
+  93              		.loc 1 129 0
+  94 0006 FFF7FEFF 		bl	UART_SpiUartClearTxBuffer
+  95              	.LVL5:
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 5
+
+
+  96              		.loc 1 130 0
+  97 000a 08BD     		pop	{r3, pc}
+  98              		.cfi_endproc
+  99              	.LFE35:
+ 100              		.size	CyBtldrCommReset, .-CyBtldrCommReset
+ 101              		.section	.text.CyBtldrCommWrite,"ax",%progbits
+ 102              		.align	1
+ 103              		.global	CyBtldrCommWrite
+ 104              		.code	16
+ 105              		.thumb_func
+ 106              		.type	CyBtldrCommWrite, %function
+ 107              	CyBtldrCommWrite:
+ 108              	.LFB36:
+ 131:.\UART_Btldr.c **** 
+ 132:.\UART_Btldr.c **** /*******************************************************************************
+ 133:.\UART_Btldr.c **** * Function Name: CyBtldrCommWrite
+ 134:.\UART_Btldr.c **** ********************************************************************************
+ 135:.\UART_Btldr.c **** *
+ 136:.\UART_Btldr.c **** * Summary:
+ 137:.\UART_Btldr.c **** *  Allows the caller to write data to the bootloader host. This function uses 
+ 138:.\UART_Btldr.c **** * a block write function for writing data using UART communication component. 
+ 139:.\UART_Btldr.c **** *
+ 140:.\UART_Btldr.c **** * Parameters:
+ 141:.\UART_Btldr.c **** *  pData:    A pointer to the block of data to send to the device
+ 142:.\UART_Btldr.c **** *  size:     The number of bytes to write.
+ 143:.\UART_Btldr.c **** *  count:    Pointer to an unsigned short variable to write the number of
+ 144:.\UART_Btldr.c **** *             bytes actually written.
+ 145:.\UART_Btldr.c **** *  timeOut:  Number of units to wait before returning because of a timeout.
+ 146:.\UART_Btldr.c **** *
+ 147:.\UART_Btldr.c **** * Return: 
+ 148:.\UART_Btldr.c **** *   cystatus: This function will return CYRET_SUCCESS if data is sent successfully.
+ 149:.\UART_Btldr.c **** *
+ 150:.\UART_Btldr.c **** * Side Effects:
+ 151:.\UART_Btldr.c **** *  This function should be called after command was received .
+ 152:.\UART_Btldr.c **** *
+ 153:.\UART_Btldr.c **** *******************************************************************************/
+ 154:.\UART_Btldr.c **** cystatus CyBtldrCommWrite(uint8 * pData, uint16 Size, uint16 * Count, uint8 TimeOut)
+ 155:.\UART_Btldr.c **** {
+ 109              		.loc 1 155 0
+ 110              		.cfi_startproc
+ 111              	.LVL6:
+ 112 0000 70B5     		push	{r4, r5, r6, lr}
+ 113              	.LCFI3:
+ 114              		.cfi_def_cfa_offset 16
+ 115              		.cfi_offset 4, -16
+ 116              		.cfi_offset 5, -12
+ 117              		.cfi_offset 6, -8
+ 118              		.cfi_offset 14, -4
+ 156:.\UART_Btldr.c ****     cystatus status = CYRET_EMPTY;
+ 157:.\UART_Btldr.c **** 	
+ 158:.\UART_Btldr.c ****     uint8 timeOutms = TimeOut; /* This timeout is not used in this function, defined to avoid compi
+ 159:.\UART_Btldr.c **** 	timeOutms += 10;
+ 160:.\UART_Btldr.c **** 	
+ 161:.\UART_Btldr.c ****    	receivedDataCount=0;
+ 119              		.loc 1 161 0
+ 120 0002 054B     		ldr	r3, .L5
+ 121              	.LVL7:
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 6
+
+
+ 155:.\UART_Btldr.c **** {
+ 122              		.loc 1 155 0
+ 123 0004 0D1C     		mov	r5, r1
+ 124 0006 161C     		mov	r6, r2
+ 125              		.loc 1 161 0
+ 126 0008 0024     		mov	r4, #0
+ 162:.\UART_Btldr.c ****     
+ 163:.\UART_Btldr.c **** 	/* Write TX data using blocking function */
+ 164:.\UART_Btldr.c **** 	UART_SpiUartPutArray(pData, (uint8)Size);
+ 127              		.loc 1 164 0
+ 128 000a C9B2     		uxtb	r1, r1
+ 129              	.LVL8:
+ 161:.\UART_Btldr.c ****    	receivedDataCount=0;
+ 130              		.loc 1 161 0
+ 131 000c 1C80     		strh	r4, [r3]
+ 165:.\UART_Btldr.c **** 	
+ 166:.\UART_Btldr.c **** 	/* Return success code */
+ 167:.\UART_Btldr.c **** 	*Count = Size;
+ 168:.\UART_Btldr.c **** 	status = CYRET_SUCCESS;
+ 169:.\UART_Btldr.c **** 	
+ 170:.\UART_Btldr.c ****     return status;
+ 171:.\UART_Btldr.c **** }
+ 132              		.loc 1 171 0
+ 133              		@ sp needed for prologue
+ 164:.\UART_Btldr.c **** 	UART_SpiUartPutArray(pData, (uint8)Size);
+ 134              		.loc 1 164 0
+ 135 000e FFF7FEFF 		bl	UART_SpiUartPutArray
+ 136              	.LVL9:
+ 167:.\UART_Btldr.c **** 	*Count = Size;
+ 137              		.loc 1 167 0
+ 138 0012 3580     		strh	r5, [r6]
+ 139              	.LVL10:
+ 140              		.loc 1 171 0
+ 141 0014 201C     		mov	r0, r4
+ 142              	.LVL11:
+ 143 0016 70BD     		pop	{r4, r5, r6, pc}
+ 144              	.L6:
+ 145              		.align	2
+ 146              	.L5:
+ 147 0018 00000000 		.word	.LANCHOR0
+ 148              		.cfi_endproc
+ 149              	.LFE36:
+ 150              		.size	CyBtldrCommWrite, .-CyBtldrCommWrite
+ 151              		.section	.text.CyBtldrCommRead,"ax",%progbits
+ 152              		.align	1
+ 153              		.global	CyBtldrCommRead
+ 154              		.code	16
+ 155              		.thumb_func
+ 156              		.type	CyBtldrCommRead, %function
+ 157              	CyBtldrCommRead:
+ 158              	.LFB37:
+ 172:.\UART_Btldr.c **** 
+ 173:.\UART_Btldr.c **** /*******************************************************************************
+ 174:.\UART_Btldr.c **** * Function Name: CyBtldrCommRead
+ 175:.\UART_Btldr.c **** ********************************************************************************
+ 176:.\UART_Btldr.c **** *
+ 177:.\UART_Btldr.c **** * Summary:
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 7
+
+
+ 178:.\UART_Btldr.c **** *  Receives the command. 
+ 179:.\UART_Btldr.c **** *
+ 180:.\UART_Btldr.c **** * Parameters:  
+ 181:.\UART_Btldr.c **** *  pData:    A pointer to the area to store the block of data received
+ 182:.\UART_Btldr.c **** *             from the device.
+ 183:.\UART_Btldr.c **** *  size:     Maximum size of the read buffer
+ 184:.\UART_Btldr.c **** *  count:    Pointer to an unsigned short variable to write the number
+ 185:.\UART_Btldr.c **** *             of bytes actually read.
+ 186:.\UART_Btldr.c **** *  timeOut:  Number of units to wait before returning because of a timeOut.
+ 187:.\UART_Btldr.c **** *            Timeout is measured in 10s of ms.
+ 188:.\UART_Btldr.c **** *
+ 189:.\UART_Btldr.c **** * Return: 
+ 190:.\UART_Btldr.c **** *  cystatus: This function will return CYRET_SUCCESS if at least one byte is received
+ 191:.\UART_Btldr.c **** *			 successfully within the timeout interval. If no data is received this 
+ 192:.\UART_Btldr.c **** *			 function will return CYRET_EMPTY.
+ 193:.\UART_Btldr.c **** *
+ 194:.\UART_Btldr.c **** * Theory: 
+ 195:.\UART_Btldr.c **** *  'receivedDataCount' is updated with number of bytes received in the UART RX 
+ 196:.\UART_Btldr.c **** *  interrupt routine. This variable is used to check whether some data is received 
+ 197:.\UART_Btldr.c **** *  within the timeout period specified in *.cydwr. If data is received before the timeout, 
+ 198:.\UART_Btldr.c **** *  the control will remain in another loop waiting for more data until no data is 
+ 199:.\UART_Btldr.c **** *  received for a BYTE2BYTE_TIME_OUT(2 ms) interval.
+ 200:.\UART_Btldr.c **** *
+ 201:.\UART_Btldr.c **** *  Note: Increase the BYTE2BYTE_TIME_OUT to 10 ms for baud rates less than 9600.  
+ 202:.\UART_Btldr.c **** * 
+ 203:.\UART_Btldr.c **** *  BYTE2BYTE_TIME_OUT is used for detecting timeout marking end of block data from host. 
+ 204:.\UART_Btldr.c **** *  This has to be set to a value which is greater than the expected maximum delay 
+ 205:.\UART_Btldr.c **** *  between two bytes during a block/packet transmission from the host. 
+ 206:.\UART_Btldr.c **** *  You have to account for the delay in hardware converters while calculating this value,
+ 207:.\UART_Btldr.c **** *  if you are using any USB-UART bridges.   
+ 208:.\UART_Btldr.c **** *******************************************************************************/
+ 209:.\UART_Btldr.c **** cystatus CyBtldrCommRead(uint8 * pData, uint16 Size, uint16 * Count, uint8 TimeOut)
+ 210:.\UART_Btldr.c **** {
+ 159              		.loc 1 210 0
+ 160              		.cfi_startproc
+ 161              	.LVL12:
+ 162 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 163              	.LCFI4:
+ 164              		.cfi_def_cfa_offset 20
+ 165              		.cfi_offset 4, -20
+ 166              		.cfi_offset 5, -16
+ 167              		.cfi_offset 6, -12
+ 168              		.cfi_offset 7, -8
+ 169              		.cfi_offset 14, -4
+ 211:.\UART_Btldr.c ****     uint16 cntr,dataIndexCntr;
+ 212:.\UART_Btldr.c ****     uint16 tempCount,oldDataCount;
+ 213:.\UART_Btldr.c **** 	
+ 214:.\UART_Btldr.c ****     cystatus status = CYRET_EMPTY;
+ 215:.\UART_Btldr.c **** 
+ 216:.\UART_Btldr.c ****     /* Check whether data is received within the timeout period. 
+ 217:.\UART_Btldr.c **** 	*  Timeout period is in units of 10ms.
+ 218:.\UART_Btldr.c **** 	*  If at least one byte is received within the timeout interval, wait for more data */
+ 219:.\UART_Btldr.c **** 	for (cntr = 0; cntr < TimeOut*10; cntr++)
+ 170              		.loc 1 219 0
+ 171 0002 0A27     		mov	r7, #10
+ 172 0004 5F43     		mul	r7, r3
+ 210:.\UART_Btldr.c **** {
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 8
+
+
+ 173              		.loc 1 210 0
+ 174 0006 87B0     		sub	sp, sp, #28
+ 175              	.LCFI5:
+ 176              		.cfi_def_cfa_offset 48
+ 210:.\UART_Btldr.c **** {
+ 177              		.loc 1 210 0
+ 178 0008 0290     		str	r0, [sp, #8]
+ 179 000a 0591     		str	r1, [sp, #20]
+ 180 000c 161C     		mov	r6, r2
+ 181              		.loc 1 219 0
+ 182 000e 0025     		mov	r5, #0
+ 183              	.LVL13:
+ 184              	.L8:
+ 185 0010 2A4C     		ldr	r4, .L31
+ 186              		.loc 1 219 0 is_stmt 0 discriminator 1
+ 187 0012 BD42     		cmp	r5, r7
+ 188 0014 19DA     		bge	.L29
+ 189              	.L12:
+ 220:.\UART_Btldr.c ****     {
+ 221:.\UART_Btldr.c **** 	    receivedDataCount = UART_SpiUartGetRxBufferSize();
+ 190              		.loc 1 221 0 is_stmt 1
+ 191 0016 FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 192              	.LVL14:
+ 193 001a 80B2     		uxth	r0, r0
+ 194 001c 2080     		strh	r0, [r4]
+ 222:.\UART_Btldr.c **** 		
+ 223:.\UART_Btldr.c **** 		/* If at least one byte is received within the timeout interval enter the next loop
+ 224:.\UART_Btldr.c **** 		* waiting for more data reception */
+ 225:.\UART_Btldr.c **** 		if(receivedDataCount!=0) 
+ 195              		.loc 1 225 0
+ 196 001e 2388     		ldrh	r3, [r4]
+ 197 0020 002B     		cmp	r3, #0
+ 198 0022 0CD0     		beq	.L9
+ 199              	.L23:
+ 226:.\UART_Btldr.c **** 	   	{
+ 227:.\UART_Btldr.c **** 			/* Wait for more data until 2 ms byte to byte time out interval receivedDataCount 
+ 228:.\UART_Btldr.c **** 			* variable is updated in on each data reception. If no data is received during the 
+ 229:.\UART_Btldr.c **** 			* last 2 ms (BYTE2BYTE_TIME_OUT) then it is considered as end of transmitted data 
+ 230:.\UART_Btldr.c **** 			* block (packet) from the host and the program execution will break from the data 
+ 231:.\UART_Btldr.c **** 			* awaiting loop with status=CYRET_SUCCESS */
+ 232:.\UART_Btldr.c **** 			do{
+ 233:.\UART_Btldr.c **** 			   	oldDataCount = receivedDataCount;
+ 234:.\UART_Btldr.c **** 				CyDelay(BYTE2BYTE_TIME_OUT);
+ 200              		.loc 1 234 0
+ 201 0024 0220     		mov	r0, #2
+ 233:.\UART_Btldr.c **** 			   	oldDataCount = receivedDataCount;
+ 202              		.loc 1 233 0
+ 203 0026 2788     		ldrh	r7, [r4]
+ 204              	.LVL15:
+ 205              		.loc 1 234 0
+ 206 0028 FFF7FEFF 		bl	CyDelay
+ 207              	.LVL16:
+ 235:.\UART_Btldr.c **** 				receivedDataCount = UART_SpiUartGetRxBufferSize();			    
+ 208              		.loc 1 235 0
+ 209 002c FFF7FEFF 		bl	UART_SpiUartGetRxBufferSize
+ 210              	.LVL17:
+ 211 0030 81B2     		uxth	r1, r0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 9
+
+
+ 212 0032 2180     		strh	r1, [r4]
+ 236:.\UART_Btldr.c **** 			}while(receivedDataCount > oldDataCount);
+ 213              		.loc 1 236 0
+ 214 0034 2288     		ldrh	r2, [r4]
+ 215 0036 BA42     		cmp	r2, r7
+ 216 0038 F4D8     		bhi	.L23
+ 237:.\UART_Btldr.c **** 			status = CYRET_SUCCESS;	
+ 217              		.loc 1 237 0
+ 218 003a 0027     		mov	r7, #0
+ 219              	.LVL18:
+ 220 003c 06E0     		b	.L11
+ 221              	.L9:
+ 238:.\UART_Btldr.c **** 			break;
+ 239:.\UART_Btldr.c **** 		}
+ 240:.\UART_Btldr.c **** 		/* If no data is received, give a delay of 1ms and check again until the Timeout specified in .cy
+ 241:.\UART_Btldr.c **** 		else 
+ 242:.\UART_Btldr.c **** 		{
+ 243:.\UART_Btldr.c **** 			CyDelay(1);
+ 222              		.loc 1 243 0
+ 223 003e 0120     		mov	r0, #1
+ 219:.\UART_Btldr.c **** 	for (cntr = 0; cntr < TimeOut*10; cntr++)
+ 224              		.loc 1 219 0
+ 225 0040 0135     		add	r5, r5, #1
+ 226              	.LVL19:
+ 227              		.loc 1 243 0
+ 228 0042 FFF7FEFF 		bl	CyDelay
+ 229              	.LVL20:
+ 219:.\UART_Btldr.c **** 	for (cntr = 0; cntr < TimeOut*10; cntr++)
+ 230              		.loc 1 219 0
+ 231 0046 ADB2     		uxth	r5, r5
+ 232              	.LVL21:
+ 233 0048 E2E7     		b	.L8
+ 234              	.L29:
+ 214:.\UART_Btldr.c ****     cystatus status = CYRET_EMPTY;
+ 235              		.loc 1 214 0
+ 236 004a 0527     		mov	r7, #5
+ 237              	.L11:
+ 238              	.LVL22:
+ 244:.\UART_Btldr.c **** 		}
+ 245:.\UART_Btldr.c ****     }
+ 246:.\UART_Btldr.c **** 	
+ 247:.\UART_Btldr.c **** 	/* Initialize the data read indexes and Count value*/
+ 248:.\UART_Btldr.c **** 	*Count = 0;
+ 239              		.loc 1 248 0
+ 240 004c 0025     		mov	r5, #0
+ 241              	.LVL23:
+ 242 004e 3580     		strh	r5, [r6]
+ 243              	.LVL24:
+ 244              	.L27:
+ 249:.\UART_Btldr.c **** 	dataIndexCntr = 0;
+ 250:.\UART_Btldr.c **** 	
+ 251:.\UART_Btldr.c **** 	/* If receivedDataCount>0 , move the received data to the pData buffer */
+ 252:.\UART_Btldr.c **** 	while(receivedDataCount > 0)
+ 245              		.loc 1 252 0 discriminator 1
+ 246 0050 2088     		ldrh	r0, [r4]
+ 247 0052 0028     		cmp	r0, #0
+ 248 0054 2FD0     		beq	.L18
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 10
+
+
+ 249              	.L19:
+ 253:.\UART_Btldr.c **** 	{
+ 254:.\UART_Btldr.c **** 		tempCount=receivedDataCount;
+ 250              		.loc 1 254 0
+ 251 0056 2388     		ldrh	r3, [r4]
+ 255:.\UART_Btldr.c **** 		*Count  =(*Count ) + tempCount;
+ 252              		.loc 1 255 0
+ 253 0058 3088     		ldrh	r0, [r6]
+ 254:.\UART_Btldr.c **** 		tempCount=receivedDataCount;
+ 254              		.loc 1 254 0
+ 255 005a 0193     		str	r3, [sp, #4]
+ 256              	.LVL25:
+ 257              		.loc 1 255 0
+ 258 005c 0199     		ldr	r1, [sp, #4]
+ 259 005e 4218     		add	r2, r0, r1
+ 256:.\UART_Btldr.c **** 		
+ 257:.\UART_Btldr.c **** 		/* Check if buffer overflow will occur before moving the data */
+ 258:.\UART_Btldr.c **** 		if(*Count < Size)
+ 260              		.loc 1 258 0
+ 261 0060 0599     		ldr	r1, [sp, #20]
+ 255:.\UART_Btldr.c **** 		*Count  =(*Count ) + tempCount;
+ 262              		.loc 1 255 0
+ 263 0062 93B2     		uxth	r3, r2
+ 264              	.LVL26:
+ 265 0064 3380     		strh	r3, [r6]
+ 266              		.loc 1 258 0
+ 267 0066 8B42     		cmp	r3, r1
+ 268 0068 21D2     		bcs	.L14
+ 209:.\UART_Btldr.c **** cystatus CyBtldrCommRead(uint8 * pData, uint16 Size, uint16 * Count, uint8 TimeOut)
+ 269              		.loc 1 209 0
+ 270 006a 0198     		ldr	r0, [sp, #4]
+ 271 006c 2A18     		add	r2, r5, r0
+ 272 006e 93B2     		uxth	r3, r2
+ 273 0070 0493     		str	r3, [sp, #16]
+ 274              	.LVL27:
+ 275              	.L15:
+ 259:.\UART_Btldr.c **** 		{
+ 260:.\UART_Btldr.c **** 			for (cntr = 0;((cntr < tempCount) ); cntr++)
+ 276              		.loc 1 260 0 discriminator 1
+ 277 0072 0499     		ldr	r1, [sp, #16]
+ 278 0074 8D42     		cmp	r5, r1
+ 279 0076 09D0     		beq	.L30
+ 280              	.L16:
+ 261:.\UART_Btldr.c **** 			{
+ 262:.\UART_Btldr.c **** 				/* Read the data and move it to the pData buffer */
+ 263:.\UART_Btldr.c **** 				pData[dataIndexCntr++] = UART_SpiUartReadRxData();   
+ 281              		.loc 1 263 0 discriminator 2
+ 282 0078 0299     		ldr	r1, [sp, #8]
+ 283 007a 4819     		add	r0, r1, r5
+ 284 007c 0390     		str	r0, [sp, #12]
+ 285 007e FFF7FEFF 		bl	UART_SpiUartReadRxData
+ 286              	.LVL28:
+ 287 0082 039A     		ldr	r2, [sp, #12]
+ 288 0084 0135     		add	r5, r5, #1
+ 289              	.LVL29:
+ 290 0086 1070     		strb	r0, [r2]
+ 291 0088 ADB2     		uxth	r5, r5
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 11
+
+
+ 292              	.LVL30:
+ 293 008a F2E7     		b	.L15
+ 294              	.L30:
+ 264:.\UART_Btldr.c **** 			}
+ 265:.\UART_Btldr.c **** 			/* Disable the interrupts before updating the receivedDataCount and 
+ 266:.\UART_Btldr.c **** 			*  re-enable the interrupts after updating */
+ 267:.\UART_Btldr.c **** 			CyGlobalIntDisable;
+ 295              		.loc 1 267 0
+ 296              	@ 267 ".\UART_Btldr.c" 1
+ 297 008c 72B6     		CPSID   i
+ 298              	@ 0 "" 2
+ 268:.\UART_Btldr.c **** 			
+ 269:.\UART_Btldr.c **** 			/* subtract the read data count from received data count */
+ 270:.\UART_Btldr.c **** 			receivedDataCount=receivedDataCount-tempCount;
+ 299              		.loc 1 270 0
+ 300              		.code	16
+ 301 008e 2088     		ldrh	r0, [r4]
+ 302 0090 019A     		ldr	r2, [sp, #4]
+ 303 0092 831A     		sub	r3, r0, r2
+ 304 0094 99B2     		uxth	r1, r3
+ 305 0096 2180     		strh	r1, [r4]
+ 271:.\UART_Btldr.c **** 			
+ 272:.\UART_Btldr.c **** 			CyGlobalIntEnable;
+ 306              		.loc 1 272 0
+ 307              	@ 272 ".\UART_Btldr.c" 1
+ 308 0098 62B6     		CPSIE   i
+ 309              	@ 0 "" 2
+ 273:.\UART_Btldr.c **** 			
+ 274:.\UART_Btldr.c **** 			/* Check if the last data received is End of packet(0x17) 
+ 275:.\UART_Btldr.c **** 			*  If not wait for additional 5ms */
+ 276:.\UART_Btldr.c **** 			if(pData[dataIndexCntr-1]!= END_OF_PACKET)
+ 310              		.loc 1 276 0
+ 311              		.code	16
+ 312 009a 0298     		ldr	r0, [sp, #8]
+ 313 009c 4219     		add	r2, r0, r5
+ 314 009e 013A     		sub	r2, r2, #1
+ 315 00a0 1378     		ldrb	r3, [r2]
+ 316 00a2 172B     		cmp	r3, #23
+ 317 00a4 D4D0     		beq	.L27
+ 277:.\UART_Btldr.c **** 			    CyDelay(5);
+ 318              		.loc 1 277 0
+ 319 00a6 0520     		mov	r0, #5
+ 320 00a8 FFF7FEFF 		bl	CyDelay
+ 321              	.LVL31:
+ 322 00ac D0E7     		b	.L27
+ 323              	.L14:
+ 278:.\UART_Btldr.c **** 	 	}	
+ 279:.\UART_Btldr.c **** 		
+ 280:.\UART_Btldr.c **** 		/* If there is no space to move data, break from the loop */
+ 281:.\UART_Btldr.c **** 		else
+ 282:.\UART_Btldr.c **** 		{
+ 283:.\UART_Btldr.c **** 			*Count=(*Count)-tempCount;
+ 324              		.loc 1 283 0
+ 325 00ae 3080     		strh	r0, [r6]
+ 284:.\UART_Btldr.c **** 			UART_SpiUartClearRxBuffer();
+ 326              		.loc 1 284 0
+ 327 00b0 FFF7FEFF 		bl	UART_SpiUartClearRxBuffer
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 12
+
+
+ 328              	.LVL32:
+ 285:.\UART_Btldr.c **** 			status = CYRET_EMPTY;
+ 329              		.loc 1 285 0
+ 330 00b4 0527     		mov	r7, #5
+ 331              	.LVL33:
+ 332              	.L18:
+ 286:.\UART_Btldr.c **** 			break;
+ 287:.\UART_Btldr.c **** 		}
+ 288:.\UART_Btldr.c **** 	}
+ 289:.\UART_Btldr.c **** 	return status;
+ 290:.\UART_Btldr.c **** }
+ 333              		.loc 1 290 0
+ 334 00b6 381C     		mov	r0, r7
+ 335 00b8 07B0     		add	sp, sp, #28
+ 336              		@ sp needed for prologue
+ 337              	.LVL34:
+ 338              	.LVL35:
+ 339              	.LVL36:
+ 340 00ba F0BD     		pop	{r4, r5, r6, r7, pc}
+ 341              	.L32:
+ 342              		.align	2
+ 343              	.L31:
+ 344 00bc 00000000 		.word	.LANCHOR0
+ 345              		.cfi_endproc
+ 346              	.LFE37:
+ 347              		.size	CyBtldrCommRead, .-CyBtldrCommRead
+ 348              		.global	receivedDataCount
+ 349              		.bss
+ 350              		.align	1
+ 351              		.set	.LANCHOR0,. + 0
+ 352              		.type	receivedDataCount, %object
+ 353              		.size	receivedDataCount, 2
+ 354              	receivedDataCount:
+ 355 0000 0000     		.space	2
+ 356              		.text
+ 357              	.Letext0:
+ 358              		.file 2 "./Generated_Source/PSoC4/cytypes.h"
+ 359              		.file 3 "./Generated_Source/PSoC4/UART.h"
+ 360              		.file 4 "./Generated_Source/PSoC4/UART_SPI_UART.h"
+ 361              		.file 5 "./Generated_Source/PSoC4/CyLib.h"
+ 362              		.section	.debug_info,"",%progbits
+ 363              	.Ldebug_info0:
+ 364 0000 79030000 		.4byte	0x379
+ 365 0004 0200     		.2byte	0x2
+ 366 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 367 000a 04       		.byte	0x4
+ 368 000b 01       		.uleb128 0x1
+ 369 000c FC010000 		.4byte	.LASF40
+ 370 0010 01       		.byte	0x1
+ 371 0011 1B010000 		.4byte	.LASF41
+ 372 0015 A7000000 		.4byte	.LASF42
+ 373 0019 00000000 		.4byte	.Ldebug_ranges0+0
+ 374 001d 00000000 		.4byte	0
+ 375 0021 00000000 		.4byte	0
+ 376 0025 00000000 		.4byte	.Ldebug_line0
+ 377 0029 02       		.uleb128 0x2
+ 378 002a 01       		.byte	0x1
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 13
+
+
+ 379 002b 06       		.byte	0x6
+ 380 002c 87020000 		.4byte	.LASF0
+ 381 0030 02       		.uleb128 0x2
+ 382 0031 01       		.byte	0x1
+ 383 0032 08       		.byte	0x8
+ 384 0033 89000000 		.4byte	.LASF1
+ 385 0037 02       		.uleb128 0x2
+ 386 0038 02       		.byte	0x2
+ 387 0039 05       		.byte	0x5
+ 388 003a F2010000 		.4byte	.LASF2
+ 389 003e 02       		.uleb128 0x2
+ 390 003f 02       		.byte	0x2
+ 391 0040 07       		.byte	0x7
+ 392 0041 43000000 		.4byte	.LASF3
+ 393 0045 02       		.uleb128 0x2
+ 394 0046 04       		.byte	0x4
+ 395 0047 05       		.byte	0x5
+ 396 0048 5C020000 		.4byte	.LASF4
+ 397 004c 02       		.uleb128 0x2
+ 398 004d 04       		.byte	0x4
+ 399 004e 07       		.byte	0x7
+ 400 004f F8000000 		.4byte	.LASF5
+ 401 0053 02       		.uleb128 0x2
+ 402 0054 08       		.byte	0x8
+ 403 0055 05       		.byte	0x5
+ 404 0056 CD010000 		.4byte	.LASF6
+ 405 005a 02       		.uleb128 0x2
+ 406 005b 08       		.byte	0x8
+ 407 005c 07       		.byte	0x7
+ 408 005d 99010000 		.4byte	.LASF7
+ 409 0061 03       		.uleb128 0x3
+ 410 0062 04       		.byte	0x4
+ 411 0063 05       		.byte	0x5
+ 412 0064 696E7400 		.ascii	"int\000"
+ 413 0068 02       		.uleb128 0x2
+ 414 0069 04       		.byte	0x4
+ 415 006a 07       		.byte	0x7
+ 416 006b 8C010000 		.4byte	.LASF8
+ 417 006f 04       		.uleb128 0x4
+ 418 0070 0A010000 		.4byte	.LASF9
+ 419 0074 02       		.byte	0x2
+ 420 0075 5B       		.byte	0x5b
+ 421 0076 30000000 		.4byte	0x30
+ 422 007a 04       		.uleb128 0x4
+ 423 007b 42010000 		.4byte	.LASF10
+ 424 007f 02       		.byte	0x2
+ 425 0080 5C       		.byte	0x5c
+ 426 0081 3E000000 		.4byte	0x3e
+ 427 0085 04       		.uleb128 0x4
+ 428 0086 56010000 		.4byte	.LASF11
+ 429 008a 02       		.byte	0x2
+ 430 008b 5D       		.byte	0x5d
+ 431 008c 4C000000 		.4byte	0x4c
+ 432 0090 02       		.uleb128 0x2
+ 433 0091 04       		.byte	0x4
+ 434 0092 04       		.byte	0x4
+ 435 0093 7D000000 		.4byte	.LASF12
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 14
+
+
+ 436 0097 02       		.uleb128 0x2
+ 437 0098 08       		.byte	0x8
+ 438 0099 04       		.byte	0x4
+ 439 009a 3B010000 		.4byte	.LASF13
+ 440 009e 02       		.uleb128 0x2
+ 441 009f 01       		.byte	0x1
+ 442 00a0 08       		.byte	0x8
+ 443 00a1 DB010000 		.4byte	.LASF14
+ 444 00a5 04       		.uleb128 0x4
+ 445 00a6 00000000 		.4byte	.LASF15
+ 446 00aa 02       		.byte	0x2
+ 447 00ab E8       		.byte	0xe8
+ 448 00ac 4C000000 		.4byte	0x4c
+ 449 00b0 05       		.uleb128 0x5
+ 450 00b1 7A000000 		.4byte	0x7a
+ 451 00b5 02       		.uleb128 0x2
+ 452 00b6 04       		.byte	0x4
+ 453 00b7 07       		.byte	0x7
+ 454 00b8 BF010000 		.4byte	.LASF16
+ 455 00bc 06       		.uleb128 0x6
+ 456 00bd 04       		.byte	0x4
+ 457 00be 6F000000 		.4byte	0x6f
+ 458 00c2 07       		.uleb128 0x7
+ 459 00c3 01       		.byte	0x1
+ 460 00c4 32000000 		.4byte	.LASF17
+ 461 00c8 01       		.byte	0x1
+ 462 00c9 51       		.byte	0x51
+ 463 00ca 01       		.byte	0x1
+ 464 00cb 00000000 		.4byte	.LFB33
+ 465 00cf 10000000 		.4byte	.LFE33
+ 466 00d3 00000000 		.4byte	.LLST0
+ 467 00d7 01       		.byte	0x1
+ 468 00d8 F8000000 		.4byte	0xf8
+ 469 00dc 08       		.uleb128 0x8
+ 470 00dd 06000000 		.4byte	.LVL0
+ 471 00e1 FB020000 		.4byte	0x2fb
+ 472 00e5 08       		.uleb128 0x8
+ 473 00e6 0A000000 		.4byte	.LVL1
+ 474 00ea 05030000 		.4byte	0x305
+ 475 00ee 08       		.uleb128 0x8
+ 476 00ef 0E000000 		.4byte	.LVL2
+ 477 00f3 10030000 		.4byte	0x310
+ 478 00f7 00       		.byte	0
+ 479 00f8 07       		.uleb128 0x7
+ 480 00f9 01       		.byte	0x1
+ 481 00fa 67000000 		.4byte	.LASF18
+ 482 00fe 01       		.byte	0x1
+ 483 00ff 67       		.byte	0x67
+ 484 0100 01       		.byte	0x1
+ 485 0101 00000000 		.4byte	.LFB34
+ 486 0105 08000000 		.4byte	.LFE34
+ 487 0109 20000000 		.4byte	.LLST1
+ 488 010d 01       		.byte	0x1
+ 489 010e 1C010000 		.4byte	0x11c
+ 490 0112 08       		.uleb128 0x8
+ 491 0113 06000000 		.4byte	.LVL3
+ 492 0117 1B030000 		.4byte	0x31b
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 15
+
+
+ 493 011b 00       		.byte	0
+ 494 011c 07       		.uleb128 0x7
+ 495 011d 01       		.byte	0x1
+ 496 011e 21000000 		.4byte	.LASF19
+ 497 0122 01       		.byte	0x1
+ 498 0123 7D       		.byte	0x7d
+ 499 0124 01       		.byte	0x1
+ 500 0125 00000000 		.4byte	.LFB35
+ 501 0129 0C000000 		.4byte	.LFE35
+ 502 012d 40000000 		.4byte	.LLST2
+ 503 0131 01       		.byte	0x1
+ 504 0132 49010000 		.4byte	0x149
+ 505 0136 08       		.uleb128 0x8
+ 506 0137 06000000 		.4byte	.LVL4
+ 507 013b 05030000 		.4byte	0x305
+ 508 013f 08       		.uleb128 0x8
+ 509 0140 0A000000 		.4byte	.LVL5
+ 510 0144 10030000 		.4byte	0x310
+ 511 0148 00       		.byte	0
+ 512 0149 09       		.uleb128 0x9
+ 513 014a 01       		.byte	0x1
+ 514 014b 2A010000 		.4byte	.LASF26
+ 515 014f 01       		.byte	0x1
+ 516 0150 9A       		.byte	0x9a
+ 517 0151 01       		.byte	0x1
+ 518 0152 A5000000 		.4byte	0xa5
+ 519 0156 00000000 		.4byte	.LFB36
+ 520 015a 1C000000 		.4byte	.LFE36
+ 521 015e 60000000 		.4byte	.LLST3
+ 522 0162 01       		.byte	0x1
+ 523 0163 E0010000 		.4byte	0x1e0
+ 524 0167 0A       		.uleb128 0xa
+ 525 0168 77000000 		.4byte	.LASF20
+ 526 016c 01       		.byte	0x1
+ 527 016d 9A       		.byte	0x9a
+ 528 016e BC000000 		.4byte	0xbc
+ 529 0172 80000000 		.4byte	.LLST4
+ 530 0176 0A       		.uleb128 0xa
+ 531 0177 B0010000 		.4byte	.LASF21
+ 532 017b 01       		.byte	0x1
+ 533 017c 9A       		.byte	0x9a
+ 534 017d 7A000000 		.4byte	0x7a
+ 535 0181 A1000000 		.4byte	.LLST5
+ 536 0185 0A       		.uleb128 0xa
+ 537 0186 83000000 		.4byte	.LASF22
+ 538 018a 01       		.byte	0x1
+ 539 018b 9A       		.byte	0x9a
+ 540 018c E0010000 		.4byte	0x1e0
+ 541 0190 C2000000 		.4byte	.LLST6
+ 542 0194 0A       		.uleb128 0xa
+ 543 0195 65020000 		.4byte	.LASF23
+ 544 0199 01       		.byte	0x1
+ 545 019a 9A       		.byte	0x9a
+ 546 019b 6F000000 		.4byte	0x6f
+ 547 019f EE000000 		.4byte	.LLST7
+ 548 01a3 0B       		.uleb128 0xb
+ 549 01a4 60000000 		.4byte	.LASF24
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 16
+
+
+ 550 01a8 01       		.byte	0x1
+ 551 01a9 9C       		.byte	0x9c
+ 552 01aa A5000000 		.4byte	0xa5
+ 553 01ae 0F010000 		.4byte	.LLST8
+ 554 01b2 0C       		.uleb128 0xc
+ 555 01b3 56000000 		.4byte	.LASF25
+ 556 01b7 01       		.byte	0x1
+ 557 01b8 9E       		.byte	0x9e
+ 558 01b9 6F000000 		.4byte	0x6f
+ 559 01bd 06       		.byte	0x6
+ 560 01be F3       		.byte	0xf3
+ 561 01bf 01       		.uleb128 0x1
+ 562 01c0 53       		.byte	0x53
+ 563 01c1 23       		.byte	0x23
+ 564 01c2 0A       		.uleb128 0xa
+ 565 01c3 9F       		.byte	0x9f
+ 566 01c4 0D       		.uleb128 0xd
+ 567 01c5 12000000 		.4byte	.LVL9
+ 568 01c9 25030000 		.4byte	0x325
+ 569 01cd 0E       		.uleb128 0xe
+ 570 01ce 01       		.byte	0x1
+ 571 01cf 51       		.byte	0x51
+ 572 01d0 06       		.byte	0x6
+ 573 01d1 F3       		.byte	0xf3
+ 574 01d2 01       		.uleb128 0x1
+ 575 01d3 51       		.byte	0x51
+ 576 01d4 08       		.byte	0x8
+ 577 01d5 FF       		.byte	0xff
+ 578 01d6 1A       		.byte	0x1a
+ 579 01d7 0E       		.uleb128 0xe
+ 580 01d8 01       		.byte	0x1
+ 581 01d9 50       		.byte	0x50
+ 582 01da 03       		.byte	0x3
+ 583 01db F3       		.byte	0xf3
+ 584 01dc 01       		.uleb128 0x1
+ 585 01dd 50       		.byte	0x50
+ 586 01de 00       		.byte	0
+ 587 01df 00       		.byte	0
+ 588 01e0 06       		.uleb128 0x6
+ 589 01e1 04       		.byte	0x4
+ 590 01e2 7A000000 		.4byte	0x7a
+ 591 01e6 09       		.uleb128 0x9
+ 592 01e7 01       		.byte	0x1
+ 593 01e8 97000000 		.4byte	.LASF27
+ 594 01ec 01       		.byte	0x1
+ 595 01ed D1       		.byte	0xd1
+ 596 01ee 01       		.byte	0x1
+ 597 01ef A5000000 		.4byte	0xa5
+ 598 01f3 00000000 		.4byte	.LFB37
+ 599 01f7 C0000000 		.4byte	.LFE37
+ 600 01fb 2F010000 		.4byte	.LLST9
+ 601 01ff 01       		.byte	0x1
+ 602 0200 E9020000 		.4byte	0x2e9
+ 603 0204 0A       		.uleb128 0xa
+ 604 0205 77000000 		.4byte	.LASF20
+ 605 0209 01       		.byte	0x1
+ 606 020a D1       		.byte	0xd1
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 17
+
+
+ 607 020b BC000000 		.4byte	0xbc
+ 608 020f 5B010000 		.4byte	.LLST10
+ 609 0213 0A       		.uleb128 0xa
+ 610 0214 B0010000 		.4byte	.LASF21
+ 611 0218 01       		.byte	0x1
+ 612 0219 D1       		.byte	0xd1
+ 613 021a 7A000000 		.4byte	0x7a
+ 614 021e 7A010000 		.4byte	.LLST11
+ 615 0222 0A       		.uleb128 0xa
+ 616 0223 83000000 		.4byte	.LASF22
+ 617 0227 01       		.byte	0x1
+ 618 0228 D1       		.byte	0xd1
+ 619 0229 E0010000 		.4byte	0x1e0
+ 620 022d 9B010000 		.4byte	.LLST12
+ 621 0231 0A       		.uleb128 0xa
+ 622 0232 65020000 		.4byte	.LASF23
+ 623 0236 01       		.byte	0x1
+ 624 0237 D1       		.byte	0xd1
+ 625 0238 6F000000 		.4byte	0x6f
+ 626 023c C7010000 		.4byte	.LLST13
+ 627 0240 0B       		.uleb128 0xb
+ 628 0241 C8010000 		.4byte	.LASF28
+ 629 0245 01       		.byte	0x1
+ 630 0246 D3       		.byte	0xd3
+ 631 0247 7A000000 		.4byte	0x7a
+ 632 024b E8010000 		.4byte	.LLST14
+ 633 024f 0B       		.uleb128 0xb
+ 634 0250 13000000 		.4byte	.LASF29
+ 635 0254 01       		.byte	0x1
+ 636 0255 D3       		.byte	0xd3
+ 637 0256 7A000000 		.4byte	0x7a
+ 638 025a 1F020000 		.4byte	.LLST15
+ 639 025e 0B       		.uleb128 0xb
+ 640 025f 09000000 		.4byte	.LASF30
+ 641 0263 01       		.byte	0x1
+ 642 0264 D4       		.byte	0xd4
+ 643 0265 7A000000 		.4byte	0x7a
+ 644 0269 4A020000 		.4byte	.LLST16
+ 645 026d 0B       		.uleb128 0xb
+ 646 026e 49010000 		.4byte	.LASF31
+ 647 0272 01       		.byte	0x1
+ 648 0273 D4       		.byte	0xd4
+ 649 0274 7A000000 		.4byte	0x7a
+ 650 0278 69020000 		.4byte	.LLST17
+ 651 027c 0B       		.uleb128 0xb
+ 652 027d 60000000 		.4byte	.LASF24
+ 653 0281 01       		.byte	0x1
+ 654 0282 D6       		.byte	0xd6
+ 655 0283 A5000000 		.4byte	0xa5
+ 656 0287 7C020000 		.4byte	.LLST18
+ 657 028b 08       		.uleb128 0x8
+ 658 028c 1A000000 		.4byte	.LVL14
+ 659 0290 4A030000 		.4byte	0x34a
+ 660 0294 0F       		.uleb128 0xf
+ 661 0295 2C000000 		.4byte	.LVL16
+ 662 0299 59030000 		.4byte	0x359
+ 663 029d A7020000 		.4byte	0x2a7
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 18
+
+
+ 664 02a1 0E       		.uleb128 0xe
+ 665 02a2 01       		.byte	0x1
+ 666 02a3 50       		.byte	0x50
+ 667 02a4 01       		.byte	0x1
+ 668 02a5 32       		.byte	0x32
+ 669 02a6 00       		.byte	0
+ 670 02a7 08       		.uleb128 0x8
+ 671 02a8 30000000 		.4byte	.LVL17
+ 672 02ac 4A030000 		.4byte	0x34a
+ 673 02b0 0F       		.uleb128 0xf
+ 674 02b1 46000000 		.4byte	.LVL20
+ 675 02b5 59030000 		.4byte	0x359
+ 676 02b9 C3020000 		.4byte	0x2c3
+ 677 02bd 0E       		.uleb128 0xe
+ 678 02be 01       		.byte	0x1
+ 679 02bf 50       		.byte	0x50
+ 680 02c0 01       		.byte	0x1
+ 681 02c1 31       		.byte	0x31
+ 682 02c2 00       		.byte	0
+ 683 02c3 08       		.uleb128 0x8
+ 684 02c4 82000000 		.4byte	.LVL28
+ 685 02c8 6D030000 		.4byte	0x36d
+ 686 02cc 0F       		.uleb128 0xf
+ 687 02cd AC000000 		.4byte	.LVL31
+ 688 02d1 59030000 		.4byte	0x359
+ 689 02d5 DF020000 		.4byte	0x2df
+ 690 02d9 0E       		.uleb128 0xe
+ 691 02da 01       		.byte	0x1
+ 692 02db 50       		.byte	0x50
+ 693 02dc 01       		.byte	0x1
+ 694 02dd 35       		.byte	0x35
+ 695 02de 00       		.byte	0
+ 696 02df 08       		.uleb128 0x8
+ 697 02e0 B4000000 		.4byte	.LVL32
+ 698 02e4 05030000 		.4byte	0x305
+ 699 02e8 00       		.byte	0
+ 700 02e9 10       		.uleb128 0x10
+ 701 02ea E0010000 		.4byte	.LASF43
+ 702 02ee 01       		.byte	0x1
+ 703 02ef 3E       		.byte	0x3e
+ 704 02f0 B0000000 		.4byte	0xb0
+ 705 02f4 01       		.byte	0x1
+ 706 02f5 05       		.byte	0x5
+ 707 02f6 03       		.byte	0x3
+ 708 02f7 00000000 		.4byte	receivedDataCount
+ 709 02fb 11       		.uleb128 0x11
+ 710 02fc 01       		.byte	0x1
+ 711 02fd 10010000 		.4byte	.LASF32
+ 712 0301 03       		.byte	0x3
+ 713 0302 6C       		.byte	0x6c
+ 714 0303 01       		.byte	0x1
+ 715 0304 01       		.byte	0x1
+ 716 0305 12       		.uleb128 0x12
+ 717 0306 01       		.byte	0x1
+ 718 0307 6D020000 		.4byte	.LASF33
+ 719 030b 04       		.byte	0x4
+ 720 030c 3601     		.2byte	0x136
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 19
+
+
+ 721 030e 01       		.byte	0x1
+ 722 030f 01       		.byte	0x1
+ 723 0310 12       		.uleb128 0x12
+ 724 0311 01       		.byte	0x1
+ 725 0312 5D010000 		.4byte	.LASF34
+ 726 0316 04       		.byte	0x4
+ 727 0317 3D01     		.2byte	0x13d
+ 728 0319 01       		.byte	0x1
+ 729 031a 01       		.byte	0x1
+ 730 031b 11       		.uleb128 0x11
+ 731 031c 01       		.byte	0x1
+ 732 031d B5010000 		.4byte	.LASF35
+ 733 0321 03       		.byte	0x3
+ 734 0322 6D       		.byte	0x6d
+ 735 0323 01       		.byte	0x1
+ 736 0324 01       		.byte	0x1
+ 737 0325 13       		.uleb128 0x13
+ 738 0326 01       		.byte	0x1
+ 739 0327 77010000 		.4byte	.LASF36
+ 740 032b 04       		.byte	0x4
+ 741 032c 3C01     		.2byte	0x13c
+ 742 032e 01       		.byte	0x1
+ 743 032f 01       		.byte	0x1
+ 744 0330 3F030000 		.4byte	0x33f
+ 745 0334 14       		.uleb128 0x14
+ 746 0335 3F030000 		.4byte	0x33f
+ 747 0339 14       		.uleb128 0x14
+ 748 033a 85000000 		.4byte	0x85
+ 749 033e 00       		.byte	0
+ 750 033f 06       		.uleb128 0x6
+ 751 0340 04       		.byte	0x4
+ 752 0341 45030000 		.4byte	0x345
+ 753 0345 15       		.uleb128 0x15
+ 754 0346 6F000000 		.4byte	0x6f
+ 755 034a 16       		.uleb128 0x16
+ 756 034b 01       		.byte	0x1
+ 757 034c 93020000 		.4byte	.LASF38
+ 758 0350 04       		.byte	0x4
+ 759 0351 3501     		.2byte	0x135
+ 760 0353 01       		.byte	0x1
+ 761 0354 85000000 		.4byte	0x85
+ 762 0358 01       		.byte	0x1
+ 763 0359 17       		.uleb128 0x17
+ 764 035a 01       		.byte	0x1
+ 765 035b AF020000 		.4byte	.LASF37
+ 766 035f 05       		.byte	0x5
+ 767 0360 69       		.byte	0x69
+ 768 0361 01       		.byte	0x1
+ 769 0362 01       		.byte	0x1
+ 770 0363 6D030000 		.4byte	0x36d
+ 771 0367 14       		.uleb128 0x14
+ 772 0368 85000000 		.4byte	0x85
+ 773 036c 00       		.byte	0
+ 774 036d 16       		.uleb128 0x16
+ 775 036e 01       		.byte	0x1
+ 776 036f 45020000 		.4byte	.LASF39
+ 777 0373 04       		.byte	0x4
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 20
+
+
+ 778 0374 3401     		.2byte	0x134
+ 779 0376 01       		.byte	0x1
+ 780 0377 85000000 		.4byte	0x85
+ 781 037b 01       		.byte	0x1
+ 782 037c 00       		.byte	0
+ 783              		.section	.debug_abbrev,"",%progbits
+ 784              	.Ldebug_abbrev0:
+ 785 0000 01       		.uleb128 0x1
+ 786 0001 11       		.uleb128 0x11
+ 787 0002 01       		.byte	0x1
+ 788 0003 25       		.uleb128 0x25
+ 789 0004 0E       		.uleb128 0xe
+ 790 0005 13       		.uleb128 0x13
+ 791 0006 0B       		.uleb128 0xb
+ 792 0007 03       		.uleb128 0x3
+ 793 0008 0E       		.uleb128 0xe
+ 794 0009 1B       		.uleb128 0x1b
+ 795 000a 0E       		.uleb128 0xe
+ 796 000b 55       		.uleb128 0x55
+ 797 000c 06       		.uleb128 0x6
+ 798 000d 11       		.uleb128 0x11
+ 799 000e 01       		.uleb128 0x1
+ 800 000f 52       		.uleb128 0x52
+ 801 0010 01       		.uleb128 0x1
+ 802 0011 10       		.uleb128 0x10
+ 803 0012 06       		.uleb128 0x6
+ 804 0013 00       		.byte	0
+ 805 0014 00       		.byte	0
+ 806 0015 02       		.uleb128 0x2
+ 807 0016 24       		.uleb128 0x24
+ 808 0017 00       		.byte	0
+ 809 0018 0B       		.uleb128 0xb
+ 810 0019 0B       		.uleb128 0xb
+ 811 001a 3E       		.uleb128 0x3e
+ 812 001b 0B       		.uleb128 0xb
+ 813 001c 03       		.uleb128 0x3
+ 814 001d 0E       		.uleb128 0xe
+ 815 001e 00       		.byte	0
+ 816 001f 00       		.byte	0
+ 817 0020 03       		.uleb128 0x3
+ 818 0021 24       		.uleb128 0x24
+ 819 0022 00       		.byte	0
+ 820 0023 0B       		.uleb128 0xb
+ 821 0024 0B       		.uleb128 0xb
+ 822 0025 3E       		.uleb128 0x3e
+ 823 0026 0B       		.uleb128 0xb
+ 824 0027 03       		.uleb128 0x3
+ 825 0028 08       		.uleb128 0x8
+ 826 0029 00       		.byte	0
+ 827 002a 00       		.byte	0
+ 828 002b 04       		.uleb128 0x4
+ 829 002c 16       		.uleb128 0x16
+ 830 002d 00       		.byte	0
+ 831 002e 03       		.uleb128 0x3
+ 832 002f 0E       		.uleb128 0xe
+ 833 0030 3A       		.uleb128 0x3a
+ 834 0031 0B       		.uleb128 0xb
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 21
+
+
+ 835 0032 3B       		.uleb128 0x3b
+ 836 0033 0B       		.uleb128 0xb
+ 837 0034 49       		.uleb128 0x49
+ 838 0035 13       		.uleb128 0x13
+ 839 0036 00       		.byte	0
+ 840 0037 00       		.byte	0
+ 841 0038 05       		.uleb128 0x5
+ 842 0039 35       		.uleb128 0x35
+ 843 003a 00       		.byte	0
+ 844 003b 49       		.uleb128 0x49
+ 845 003c 13       		.uleb128 0x13
+ 846 003d 00       		.byte	0
+ 847 003e 00       		.byte	0
+ 848 003f 06       		.uleb128 0x6
+ 849 0040 0F       		.uleb128 0xf
+ 850 0041 00       		.byte	0
+ 851 0042 0B       		.uleb128 0xb
+ 852 0043 0B       		.uleb128 0xb
+ 853 0044 49       		.uleb128 0x49
+ 854 0045 13       		.uleb128 0x13
+ 855 0046 00       		.byte	0
+ 856 0047 00       		.byte	0
+ 857 0048 07       		.uleb128 0x7
+ 858 0049 2E       		.uleb128 0x2e
+ 859 004a 01       		.byte	0x1
+ 860 004b 3F       		.uleb128 0x3f
+ 861 004c 0C       		.uleb128 0xc
+ 862 004d 03       		.uleb128 0x3
+ 863 004e 0E       		.uleb128 0xe
+ 864 004f 3A       		.uleb128 0x3a
+ 865 0050 0B       		.uleb128 0xb
+ 866 0051 3B       		.uleb128 0x3b
+ 867 0052 0B       		.uleb128 0xb
+ 868 0053 27       		.uleb128 0x27
+ 869 0054 0C       		.uleb128 0xc
+ 870 0055 11       		.uleb128 0x11
+ 871 0056 01       		.uleb128 0x1
+ 872 0057 12       		.uleb128 0x12
+ 873 0058 01       		.uleb128 0x1
+ 874 0059 40       		.uleb128 0x40
+ 875 005a 06       		.uleb128 0x6
+ 876 005b 9742     		.uleb128 0x2117
+ 877 005d 0C       		.uleb128 0xc
+ 878 005e 01       		.uleb128 0x1
+ 879 005f 13       		.uleb128 0x13
+ 880 0060 00       		.byte	0
+ 881 0061 00       		.byte	0
+ 882 0062 08       		.uleb128 0x8
+ 883 0063 898201   		.uleb128 0x4109
+ 884 0066 00       		.byte	0
+ 885 0067 11       		.uleb128 0x11
+ 886 0068 01       		.uleb128 0x1
+ 887 0069 31       		.uleb128 0x31
+ 888 006a 13       		.uleb128 0x13
+ 889 006b 00       		.byte	0
+ 890 006c 00       		.byte	0
+ 891 006d 09       		.uleb128 0x9
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 22
+
+
+ 892 006e 2E       		.uleb128 0x2e
+ 893 006f 01       		.byte	0x1
+ 894 0070 3F       		.uleb128 0x3f
+ 895 0071 0C       		.uleb128 0xc
+ 896 0072 03       		.uleb128 0x3
+ 897 0073 0E       		.uleb128 0xe
+ 898 0074 3A       		.uleb128 0x3a
+ 899 0075 0B       		.uleb128 0xb
+ 900 0076 3B       		.uleb128 0x3b
+ 901 0077 0B       		.uleb128 0xb
+ 902 0078 27       		.uleb128 0x27
+ 903 0079 0C       		.uleb128 0xc
+ 904 007a 49       		.uleb128 0x49
+ 905 007b 13       		.uleb128 0x13
+ 906 007c 11       		.uleb128 0x11
+ 907 007d 01       		.uleb128 0x1
+ 908 007e 12       		.uleb128 0x12
+ 909 007f 01       		.uleb128 0x1
+ 910 0080 40       		.uleb128 0x40
+ 911 0081 06       		.uleb128 0x6
+ 912 0082 9742     		.uleb128 0x2117
+ 913 0084 0C       		.uleb128 0xc
+ 914 0085 01       		.uleb128 0x1
+ 915 0086 13       		.uleb128 0x13
+ 916 0087 00       		.byte	0
+ 917 0088 00       		.byte	0
+ 918 0089 0A       		.uleb128 0xa
+ 919 008a 05       		.uleb128 0x5
+ 920 008b 00       		.byte	0
+ 921 008c 03       		.uleb128 0x3
+ 922 008d 0E       		.uleb128 0xe
+ 923 008e 3A       		.uleb128 0x3a
+ 924 008f 0B       		.uleb128 0xb
+ 925 0090 3B       		.uleb128 0x3b
+ 926 0091 0B       		.uleb128 0xb
+ 927 0092 49       		.uleb128 0x49
+ 928 0093 13       		.uleb128 0x13
+ 929 0094 02       		.uleb128 0x2
+ 930 0095 06       		.uleb128 0x6
+ 931 0096 00       		.byte	0
+ 932 0097 00       		.byte	0
+ 933 0098 0B       		.uleb128 0xb
+ 934 0099 34       		.uleb128 0x34
+ 935 009a 00       		.byte	0
+ 936 009b 03       		.uleb128 0x3
+ 937 009c 0E       		.uleb128 0xe
+ 938 009d 3A       		.uleb128 0x3a
+ 939 009e 0B       		.uleb128 0xb
+ 940 009f 3B       		.uleb128 0x3b
+ 941 00a0 0B       		.uleb128 0xb
+ 942 00a1 49       		.uleb128 0x49
+ 943 00a2 13       		.uleb128 0x13
+ 944 00a3 02       		.uleb128 0x2
+ 945 00a4 06       		.uleb128 0x6
+ 946 00a5 00       		.byte	0
+ 947 00a6 00       		.byte	0
+ 948 00a7 0C       		.uleb128 0xc
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 23
+
+
+ 949 00a8 34       		.uleb128 0x34
+ 950 00a9 00       		.byte	0
+ 951 00aa 03       		.uleb128 0x3
+ 952 00ab 0E       		.uleb128 0xe
+ 953 00ac 3A       		.uleb128 0x3a
+ 954 00ad 0B       		.uleb128 0xb
+ 955 00ae 3B       		.uleb128 0x3b
+ 956 00af 0B       		.uleb128 0xb
+ 957 00b0 49       		.uleb128 0x49
+ 958 00b1 13       		.uleb128 0x13
+ 959 00b2 02       		.uleb128 0x2
+ 960 00b3 0A       		.uleb128 0xa
+ 961 00b4 00       		.byte	0
+ 962 00b5 00       		.byte	0
+ 963 00b6 0D       		.uleb128 0xd
+ 964 00b7 898201   		.uleb128 0x4109
+ 965 00ba 01       		.byte	0x1
+ 966 00bb 11       		.uleb128 0x11
+ 967 00bc 01       		.uleb128 0x1
+ 968 00bd 31       		.uleb128 0x31
+ 969 00be 13       		.uleb128 0x13
+ 970 00bf 00       		.byte	0
+ 971 00c0 00       		.byte	0
+ 972 00c1 0E       		.uleb128 0xe
+ 973 00c2 8A8201   		.uleb128 0x410a
+ 974 00c5 00       		.byte	0
+ 975 00c6 02       		.uleb128 0x2
+ 976 00c7 0A       		.uleb128 0xa
+ 977 00c8 9142     		.uleb128 0x2111
+ 978 00ca 0A       		.uleb128 0xa
+ 979 00cb 00       		.byte	0
+ 980 00cc 00       		.byte	0
+ 981 00cd 0F       		.uleb128 0xf
+ 982 00ce 898201   		.uleb128 0x4109
+ 983 00d1 01       		.byte	0x1
+ 984 00d2 11       		.uleb128 0x11
+ 985 00d3 01       		.uleb128 0x1
+ 986 00d4 31       		.uleb128 0x31
+ 987 00d5 13       		.uleb128 0x13
+ 988 00d6 01       		.uleb128 0x1
+ 989 00d7 13       		.uleb128 0x13
+ 990 00d8 00       		.byte	0
+ 991 00d9 00       		.byte	0
+ 992 00da 10       		.uleb128 0x10
+ 993 00db 34       		.uleb128 0x34
+ 994 00dc 00       		.byte	0
+ 995 00dd 03       		.uleb128 0x3
+ 996 00de 0E       		.uleb128 0xe
+ 997 00df 3A       		.uleb128 0x3a
+ 998 00e0 0B       		.uleb128 0xb
+ 999 00e1 3B       		.uleb128 0x3b
+ 1000 00e2 0B       		.uleb128 0xb
+ 1001 00e3 49       		.uleb128 0x49
+ 1002 00e4 13       		.uleb128 0x13
+ 1003 00e5 3F       		.uleb128 0x3f
+ 1004 00e6 0C       		.uleb128 0xc
+ 1005 00e7 02       		.uleb128 0x2
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 24
+
+
+ 1006 00e8 0A       		.uleb128 0xa
+ 1007 00e9 00       		.byte	0
+ 1008 00ea 00       		.byte	0
+ 1009 00eb 11       		.uleb128 0x11
+ 1010 00ec 2E       		.uleb128 0x2e
+ 1011 00ed 00       		.byte	0
+ 1012 00ee 3F       		.uleb128 0x3f
+ 1013 00ef 0C       		.uleb128 0xc
+ 1014 00f0 03       		.uleb128 0x3
+ 1015 00f1 0E       		.uleb128 0xe
+ 1016 00f2 3A       		.uleb128 0x3a
+ 1017 00f3 0B       		.uleb128 0xb
+ 1018 00f4 3B       		.uleb128 0x3b
+ 1019 00f5 0B       		.uleb128 0xb
+ 1020 00f6 27       		.uleb128 0x27
+ 1021 00f7 0C       		.uleb128 0xc
+ 1022 00f8 3C       		.uleb128 0x3c
+ 1023 00f9 0C       		.uleb128 0xc
+ 1024 00fa 00       		.byte	0
+ 1025 00fb 00       		.byte	0
+ 1026 00fc 12       		.uleb128 0x12
+ 1027 00fd 2E       		.uleb128 0x2e
+ 1028 00fe 00       		.byte	0
+ 1029 00ff 3F       		.uleb128 0x3f
+ 1030 0100 0C       		.uleb128 0xc
+ 1031 0101 03       		.uleb128 0x3
+ 1032 0102 0E       		.uleb128 0xe
+ 1033 0103 3A       		.uleb128 0x3a
+ 1034 0104 0B       		.uleb128 0xb
+ 1035 0105 3B       		.uleb128 0x3b
+ 1036 0106 05       		.uleb128 0x5
+ 1037 0107 27       		.uleb128 0x27
+ 1038 0108 0C       		.uleb128 0xc
+ 1039 0109 3C       		.uleb128 0x3c
+ 1040 010a 0C       		.uleb128 0xc
+ 1041 010b 00       		.byte	0
+ 1042 010c 00       		.byte	0
+ 1043 010d 13       		.uleb128 0x13
+ 1044 010e 2E       		.uleb128 0x2e
+ 1045 010f 01       		.byte	0x1
+ 1046 0110 3F       		.uleb128 0x3f
+ 1047 0111 0C       		.uleb128 0xc
+ 1048 0112 03       		.uleb128 0x3
+ 1049 0113 0E       		.uleb128 0xe
+ 1050 0114 3A       		.uleb128 0x3a
+ 1051 0115 0B       		.uleb128 0xb
+ 1052 0116 3B       		.uleb128 0x3b
+ 1053 0117 05       		.uleb128 0x5
+ 1054 0118 27       		.uleb128 0x27
+ 1055 0119 0C       		.uleb128 0xc
+ 1056 011a 3C       		.uleb128 0x3c
+ 1057 011b 0C       		.uleb128 0xc
+ 1058 011c 01       		.uleb128 0x1
+ 1059 011d 13       		.uleb128 0x13
+ 1060 011e 00       		.byte	0
+ 1061 011f 00       		.byte	0
+ 1062 0120 14       		.uleb128 0x14
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 25
+
+
+ 1063 0121 05       		.uleb128 0x5
+ 1064 0122 00       		.byte	0
+ 1065 0123 49       		.uleb128 0x49
+ 1066 0124 13       		.uleb128 0x13
+ 1067 0125 00       		.byte	0
+ 1068 0126 00       		.byte	0
+ 1069 0127 15       		.uleb128 0x15
+ 1070 0128 26       		.uleb128 0x26
+ 1071 0129 00       		.byte	0
+ 1072 012a 49       		.uleb128 0x49
+ 1073 012b 13       		.uleb128 0x13
+ 1074 012c 00       		.byte	0
+ 1075 012d 00       		.byte	0
+ 1076 012e 16       		.uleb128 0x16
+ 1077 012f 2E       		.uleb128 0x2e
+ 1078 0130 00       		.byte	0
+ 1079 0131 3F       		.uleb128 0x3f
+ 1080 0132 0C       		.uleb128 0xc
+ 1081 0133 03       		.uleb128 0x3
+ 1082 0134 0E       		.uleb128 0xe
+ 1083 0135 3A       		.uleb128 0x3a
+ 1084 0136 0B       		.uleb128 0xb
+ 1085 0137 3B       		.uleb128 0x3b
+ 1086 0138 05       		.uleb128 0x5
+ 1087 0139 27       		.uleb128 0x27
+ 1088 013a 0C       		.uleb128 0xc
+ 1089 013b 49       		.uleb128 0x49
+ 1090 013c 13       		.uleb128 0x13
+ 1091 013d 3C       		.uleb128 0x3c
+ 1092 013e 0C       		.uleb128 0xc
+ 1093 013f 00       		.byte	0
+ 1094 0140 00       		.byte	0
+ 1095 0141 17       		.uleb128 0x17
+ 1096 0142 2E       		.uleb128 0x2e
+ 1097 0143 01       		.byte	0x1
+ 1098 0144 3F       		.uleb128 0x3f
+ 1099 0145 0C       		.uleb128 0xc
+ 1100 0146 03       		.uleb128 0x3
+ 1101 0147 0E       		.uleb128 0xe
+ 1102 0148 3A       		.uleb128 0x3a
+ 1103 0149 0B       		.uleb128 0xb
+ 1104 014a 3B       		.uleb128 0x3b
+ 1105 014b 0B       		.uleb128 0xb
+ 1106 014c 27       		.uleb128 0x27
+ 1107 014d 0C       		.uleb128 0xc
+ 1108 014e 3C       		.uleb128 0x3c
+ 1109 014f 0C       		.uleb128 0xc
+ 1110 0150 01       		.uleb128 0x1
+ 1111 0151 13       		.uleb128 0x13
+ 1112 0152 00       		.byte	0
+ 1113 0153 00       		.byte	0
+ 1114 0154 00       		.byte	0
+ 1115              		.section	.debug_loc,"",%progbits
+ 1116              	.Ldebug_loc0:
+ 1117              	.LLST0:
+ 1118 0000 00000000 		.4byte	.LFB33
+ 1119 0004 02000000 		.4byte	.LCFI0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 26
+
+
+ 1120 0008 0200     		.2byte	0x2
+ 1121 000a 7D       		.byte	0x7d
+ 1122 000b 00       		.sleb128 0
+ 1123 000c 02000000 		.4byte	.LCFI0
+ 1124 0010 10000000 		.4byte	.LFE33
+ 1125 0014 0200     		.2byte	0x2
+ 1126 0016 7D       		.byte	0x7d
+ 1127 0017 08       		.sleb128 8
+ 1128 0018 00000000 		.4byte	0
+ 1129 001c 00000000 		.4byte	0
+ 1130              	.LLST1:
+ 1131 0020 00000000 		.4byte	.LFB34
+ 1132 0024 02000000 		.4byte	.LCFI1
+ 1133 0028 0200     		.2byte	0x2
+ 1134 002a 7D       		.byte	0x7d
+ 1135 002b 00       		.sleb128 0
+ 1136 002c 02000000 		.4byte	.LCFI1
+ 1137 0030 08000000 		.4byte	.LFE34
+ 1138 0034 0200     		.2byte	0x2
+ 1139 0036 7D       		.byte	0x7d
+ 1140 0037 08       		.sleb128 8
+ 1141 0038 00000000 		.4byte	0
+ 1142 003c 00000000 		.4byte	0
+ 1143              	.LLST2:
+ 1144 0040 00000000 		.4byte	.LFB35
+ 1145 0044 02000000 		.4byte	.LCFI2
+ 1146 0048 0200     		.2byte	0x2
+ 1147 004a 7D       		.byte	0x7d
+ 1148 004b 00       		.sleb128 0
+ 1149 004c 02000000 		.4byte	.LCFI2
+ 1150 0050 0C000000 		.4byte	.LFE35
+ 1151 0054 0200     		.2byte	0x2
+ 1152 0056 7D       		.byte	0x7d
+ 1153 0057 08       		.sleb128 8
+ 1154 0058 00000000 		.4byte	0
+ 1155 005c 00000000 		.4byte	0
+ 1156              	.LLST3:
+ 1157 0060 00000000 		.4byte	.LFB36
+ 1158 0064 02000000 		.4byte	.LCFI3
+ 1159 0068 0200     		.2byte	0x2
+ 1160 006a 7D       		.byte	0x7d
+ 1161 006b 00       		.sleb128 0
+ 1162 006c 02000000 		.4byte	.LCFI3
+ 1163 0070 1C000000 		.4byte	.LFE36
+ 1164 0074 0200     		.2byte	0x2
+ 1165 0076 7D       		.byte	0x7d
+ 1166 0077 10       		.sleb128 16
+ 1167 0078 00000000 		.4byte	0
+ 1168 007c 00000000 		.4byte	0
+ 1169              	.LLST4:
+ 1170 0080 00000000 		.4byte	.LVL6
+ 1171 0084 11000000 		.4byte	.LVL9-1
+ 1172 0088 0100     		.2byte	0x1
+ 1173 008a 50       		.byte	0x50
+ 1174 008b 11000000 		.4byte	.LVL9-1
+ 1175 008f 1C000000 		.4byte	.LFE36
+ 1176 0093 0400     		.2byte	0x4
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 27
+
+
+ 1177 0095 F3       		.byte	0xf3
+ 1178 0096 01       		.uleb128 0x1
+ 1179 0097 50       		.byte	0x50
+ 1180 0098 9F       		.byte	0x9f
+ 1181 0099 00000000 		.4byte	0
+ 1182 009d 00000000 		.4byte	0
+ 1183              	.LLST5:
+ 1184 00a1 00000000 		.4byte	.LVL6
+ 1185 00a5 0C000000 		.4byte	.LVL8
+ 1186 00a9 0100     		.2byte	0x1
+ 1187 00ab 51       		.byte	0x51
+ 1188 00ac 0C000000 		.4byte	.LVL8
+ 1189 00b0 1C000000 		.4byte	.LFE36
+ 1190 00b4 0400     		.2byte	0x4
+ 1191 00b6 F3       		.byte	0xf3
+ 1192 00b7 01       		.uleb128 0x1
+ 1193 00b8 51       		.byte	0x51
+ 1194 00b9 9F       		.byte	0x9f
+ 1195 00ba 00000000 		.4byte	0
+ 1196 00be 00000000 		.4byte	0
+ 1197              	.LLST6:
+ 1198 00c2 00000000 		.4byte	.LVL6
+ 1199 00c6 11000000 		.4byte	.LVL9-1
+ 1200 00ca 0100     		.2byte	0x1
+ 1201 00cc 52       		.byte	0x52
+ 1202 00cd 11000000 		.4byte	.LVL9-1
+ 1203 00d1 16000000 		.4byte	.LVL11
+ 1204 00d5 0100     		.2byte	0x1
+ 1205 00d7 56       		.byte	0x56
+ 1206 00d8 16000000 		.4byte	.LVL11
+ 1207 00dc 1C000000 		.4byte	.LFE36
+ 1208 00e0 0400     		.2byte	0x4
+ 1209 00e2 F3       		.byte	0xf3
+ 1210 00e3 01       		.uleb128 0x1
+ 1211 00e4 52       		.byte	0x52
+ 1212 00e5 9F       		.byte	0x9f
+ 1213 00e6 00000000 		.4byte	0
+ 1214 00ea 00000000 		.4byte	0
+ 1215              	.LLST7:
+ 1216 00ee 00000000 		.4byte	.LVL6
+ 1217 00f2 04000000 		.4byte	.LVL7
+ 1218 00f6 0100     		.2byte	0x1
+ 1219 00f8 53       		.byte	0x53
+ 1220 00f9 04000000 		.4byte	.LVL7
+ 1221 00fd 1C000000 		.4byte	.LFE36
+ 1222 0101 0400     		.2byte	0x4
+ 1223 0103 F3       		.byte	0xf3
+ 1224 0104 01       		.uleb128 0x1
+ 1225 0105 53       		.byte	0x53
+ 1226 0106 9F       		.byte	0x9f
+ 1227 0107 00000000 		.4byte	0
+ 1228 010b 00000000 		.4byte	0
+ 1229              	.LLST8:
+ 1230 010f 00000000 		.4byte	.LVL6
+ 1231 0113 14000000 		.4byte	.LVL10
+ 1232 0117 0200     		.2byte	0x2
+ 1233 0119 35       		.byte	0x35
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 28
+
+
+ 1234 011a 9F       		.byte	0x9f
+ 1235 011b 14000000 		.4byte	.LVL10
+ 1236 011f 1C000000 		.4byte	.LFE36
+ 1237 0123 0200     		.2byte	0x2
+ 1238 0125 30       		.byte	0x30
+ 1239 0126 9F       		.byte	0x9f
+ 1240 0127 00000000 		.4byte	0
+ 1241 012b 00000000 		.4byte	0
+ 1242              	.LLST9:
+ 1243 012f 00000000 		.4byte	.LFB37
+ 1244 0133 02000000 		.4byte	.LCFI4
+ 1245 0137 0200     		.2byte	0x2
+ 1246 0139 7D       		.byte	0x7d
+ 1247 013a 00       		.sleb128 0
+ 1248 013b 02000000 		.4byte	.LCFI4
+ 1249 013f 08000000 		.4byte	.LCFI5
+ 1250 0143 0200     		.2byte	0x2
+ 1251 0145 7D       		.byte	0x7d
+ 1252 0146 14       		.sleb128 20
+ 1253 0147 08000000 		.4byte	.LCFI5
+ 1254 014b C0000000 		.4byte	.LFE37
+ 1255 014f 0200     		.2byte	0x2
+ 1256 0151 7D       		.byte	0x7d
+ 1257 0152 30       		.sleb128 48
+ 1258 0153 00000000 		.4byte	0
+ 1259 0157 00000000 		.4byte	0
+ 1260              	.LLST10:
+ 1261 015b 00000000 		.4byte	.LVL12
+ 1262 015f 10000000 		.4byte	.LVL13
+ 1263 0163 0100     		.2byte	0x1
+ 1264 0165 50       		.byte	0x50
+ 1265 0166 10000000 		.4byte	.LVL13
+ 1266 016a C0000000 		.4byte	.LFE37
+ 1267 016e 0200     		.2byte	0x2
+ 1268 0170 91       		.byte	0x91
+ 1269 0171 58       		.sleb128 -40
+ 1270 0172 00000000 		.4byte	0
+ 1271 0176 00000000 		.4byte	0
+ 1272              	.LLST11:
+ 1273 017a 00000000 		.4byte	.LVL12
+ 1274 017e 10000000 		.4byte	.LVL13
+ 1275 0182 0100     		.2byte	0x1
+ 1276 0184 51       		.byte	0x51
+ 1277 0185 10000000 		.4byte	.LVL13
+ 1278 0189 C0000000 		.4byte	.LFE37
+ 1279 018d 0400     		.2byte	0x4
+ 1280 018f F3       		.byte	0xf3
+ 1281 0190 01       		.uleb128 0x1
+ 1282 0191 51       		.byte	0x51
+ 1283 0192 9F       		.byte	0x9f
+ 1284 0193 00000000 		.4byte	0
+ 1285 0197 00000000 		.4byte	0
+ 1286              	.LLST12:
+ 1287 019b 00000000 		.4byte	.LVL12
+ 1288 019f 10000000 		.4byte	.LVL13
+ 1289 01a3 0100     		.2byte	0x1
+ 1290 01a5 52       		.byte	0x52
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 29
+
+
+ 1291 01a6 10000000 		.4byte	.LVL13
+ 1292 01aa BA000000 		.4byte	.LVL35
+ 1293 01ae 0100     		.2byte	0x1
+ 1294 01b0 56       		.byte	0x56
+ 1295 01b1 BA000000 		.4byte	.LVL35
+ 1296 01b5 C0000000 		.4byte	.LFE37
+ 1297 01b9 0400     		.2byte	0x4
+ 1298 01bb F3       		.byte	0xf3
+ 1299 01bc 01       		.uleb128 0x1
+ 1300 01bd 52       		.byte	0x52
+ 1301 01be 9F       		.byte	0x9f
+ 1302 01bf 00000000 		.4byte	0
+ 1303 01c3 00000000 		.4byte	0
+ 1304              	.LLST13:
+ 1305 01c7 00000000 		.4byte	.LVL12
+ 1306 01cb 10000000 		.4byte	.LVL13
+ 1307 01cf 0100     		.2byte	0x1
+ 1308 01d1 53       		.byte	0x53
+ 1309 01d2 10000000 		.4byte	.LVL13
+ 1310 01d6 C0000000 		.4byte	.LFE37
+ 1311 01da 0400     		.2byte	0x4
+ 1312 01dc F3       		.byte	0xf3
+ 1313 01dd 01       		.uleb128 0x1
+ 1314 01de 53       		.byte	0x53
+ 1315 01df 9F       		.byte	0x9f
+ 1316 01e0 00000000 		.4byte	0
+ 1317 01e4 00000000 		.4byte	0
+ 1318              	.LLST14:
+ 1319 01e8 00000000 		.4byte	.LVL12
+ 1320 01ec 10000000 		.4byte	.LVL13
+ 1321 01f0 0200     		.2byte	0x2
+ 1322 01f2 30       		.byte	0x30
+ 1323 01f3 9F       		.byte	0x9f
+ 1324 01f4 10000000 		.4byte	.LVL13
+ 1325 01f8 42000000 		.4byte	.LVL19
+ 1326 01fc 0100     		.2byte	0x1
+ 1327 01fe 55       		.byte	0x55
+ 1328 01ff 42000000 		.4byte	.LVL19
+ 1329 0203 48000000 		.4byte	.LVL21
+ 1330 0207 0300     		.2byte	0x3
+ 1331 0209 75       		.byte	0x75
+ 1332 020a 7F       		.sleb128 -1
+ 1333 020b 9F       		.byte	0x9f
+ 1334 020c 48000000 		.4byte	.LVL21
+ 1335 0210 4E000000 		.4byte	.LVL23
+ 1336 0214 0100     		.2byte	0x1
+ 1337 0216 55       		.byte	0x55
+ 1338 0217 00000000 		.4byte	0
+ 1339 021b 00000000 		.4byte	0
+ 1340              	.LLST15:
+ 1341 021f 50000000 		.4byte	.LVL24
+ 1342 0223 86000000 		.4byte	.LVL29
+ 1343 0227 0100     		.2byte	0x1
+ 1344 0229 55       		.byte	0x55
+ 1345 022a 86000000 		.4byte	.LVL29
+ 1346 022e 8A000000 		.4byte	.LVL30
+ 1347 0232 0300     		.2byte	0x3
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 30
+
+
+ 1348 0234 75       		.byte	0x75
+ 1349 0235 7F       		.sleb128 -1
+ 1350 0236 9F       		.byte	0x9f
+ 1351 0237 8A000000 		.4byte	.LVL30
+ 1352 023b BA000000 		.4byte	.LVL34
+ 1353 023f 0100     		.2byte	0x1
+ 1354 0241 55       		.byte	0x55
+ 1355 0242 00000000 		.4byte	0
+ 1356 0246 00000000 		.4byte	0
+ 1357              	.LLST16:
+ 1358 024a 5C000000 		.4byte	.LVL25
+ 1359 024e 64000000 		.4byte	.LVL26
+ 1360 0252 0100     		.2byte	0x1
+ 1361 0254 53       		.byte	0x53
+ 1362 0255 64000000 		.4byte	.LVL26
+ 1363 0259 B6000000 		.4byte	.LVL33
+ 1364 025d 0200     		.2byte	0x2
+ 1365 025f 91       		.byte	0x91
+ 1366 0260 54       		.sleb128 -44
+ 1367 0261 00000000 		.4byte	0
+ 1368 0265 00000000 		.4byte	0
+ 1369              	.LLST17:
+ 1370 0269 28000000 		.4byte	.LVL15
+ 1371 026d 3C000000 		.4byte	.LVL18
+ 1372 0271 0100     		.2byte	0x1
+ 1373 0273 57       		.byte	0x57
+ 1374 0274 00000000 		.4byte	0
+ 1375 0278 00000000 		.4byte	0
+ 1376              	.LLST18:
+ 1377 027c 00000000 		.4byte	.LVL12
+ 1378 0280 4C000000 		.4byte	.LVL22
+ 1379 0284 0200     		.2byte	0x2
+ 1380 0286 35       		.byte	0x35
+ 1381 0287 9F       		.byte	0x9f
+ 1382 0288 4C000000 		.4byte	.LVL22
+ 1383 028c B4000000 		.4byte	.LVL32
+ 1384 0290 0100     		.2byte	0x1
+ 1385 0292 57       		.byte	0x57
+ 1386 0293 B4000000 		.4byte	.LVL32
+ 1387 0297 B6000000 		.4byte	.LVL33
+ 1388 029b 0200     		.2byte	0x2
+ 1389 029d 35       		.byte	0x35
+ 1390 029e 9F       		.byte	0x9f
+ 1391 029f B6000000 		.4byte	.LVL33
+ 1392 02a3 BA000000 		.4byte	.LVL36
+ 1393 02a7 0100     		.2byte	0x1
+ 1394 02a9 57       		.byte	0x57
+ 1395 02aa BA000000 		.4byte	.LVL36
+ 1396 02ae C0000000 		.4byte	.LFE37
+ 1397 02b2 0100     		.2byte	0x1
+ 1398 02b4 50       		.byte	0x50
+ 1399 02b5 00000000 		.4byte	0
+ 1400 02b9 00000000 		.4byte	0
+ 1401              		.section	.debug_aranges,"",%progbits
+ 1402 0000 3C000000 		.4byte	0x3c
+ 1403 0004 0200     		.2byte	0x2
+ 1404 0006 00000000 		.4byte	.Ldebug_info0
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 31
+
+
+ 1405 000a 04       		.byte	0x4
+ 1406 000b 00       		.byte	0
+ 1407 000c 0000     		.2byte	0
+ 1408 000e 0000     		.2byte	0
+ 1409 0010 00000000 		.4byte	.LFB33
+ 1410 0014 10000000 		.4byte	.LFE33-.LFB33
+ 1411 0018 00000000 		.4byte	.LFB34
+ 1412 001c 08000000 		.4byte	.LFE34-.LFB34
+ 1413 0020 00000000 		.4byte	.LFB35
+ 1414 0024 0C000000 		.4byte	.LFE35-.LFB35
+ 1415 0028 00000000 		.4byte	.LFB36
+ 1416 002c 1C000000 		.4byte	.LFE36-.LFB36
+ 1417 0030 00000000 		.4byte	.LFB37
+ 1418 0034 C0000000 		.4byte	.LFE37-.LFB37
+ 1419 0038 00000000 		.4byte	0
+ 1420 003c 00000000 		.4byte	0
+ 1421              		.section	.debug_ranges,"",%progbits
+ 1422              	.Ldebug_ranges0:
+ 1423 0000 00000000 		.4byte	.LFB33
+ 1424 0004 10000000 		.4byte	.LFE33
+ 1425 0008 00000000 		.4byte	.LFB34
+ 1426 000c 08000000 		.4byte	.LFE34
+ 1427 0010 00000000 		.4byte	.LFB35
+ 1428 0014 0C000000 		.4byte	.LFE35
+ 1429 0018 00000000 		.4byte	.LFB36
+ 1430 001c 1C000000 		.4byte	.LFE36
+ 1431 0020 00000000 		.4byte	.LFB37
+ 1432 0024 C0000000 		.4byte	.LFE37
+ 1433 0028 00000000 		.4byte	0
+ 1434 002c 00000000 		.4byte	0
+ 1435              		.section	.debug_line,"",%progbits
+ 1436              	.Ldebug_line0:
+ 1437 0000 30010000 		.section	.debug_str,"MS",%progbits,1
+ 1437      02007300 
+ 1437      00000201 
+ 1437      FB0E0D00 
+ 1437      01010101 
+ 1438              	.LASF15:
+ 1439 0000 63797374 		.ascii	"cystatus\000"
+ 1439      61747573 
+ 1439      00
+ 1440              	.LASF30:
+ 1441 0009 74656D70 		.ascii	"tempCount\000"
+ 1441      436F756E 
+ 1441      7400
+ 1442              	.LASF29:
+ 1443 0013 64617461 		.ascii	"dataIndexCntr\000"
+ 1443      496E6465 
+ 1443      78436E74 
+ 1443      7200
+ 1444              	.LASF19:
+ 1445 0021 43794274 		.ascii	"CyBtldrCommReset\000"
+ 1445      6C647243 
+ 1445      6F6D6D52 
+ 1445      65736574 
+ 1445      00
+ 1446              	.LASF17:
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 32
+
+
+ 1447 0032 43794274 		.ascii	"CyBtldrCommStart\000"
+ 1447      6C647243 
+ 1447      6F6D6D53 
+ 1447      74617274 
+ 1447      00
+ 1448              	.LASF3:
+ 1449 0043 73686F72 		.ascii	"short unsigned int\000"
+ 1449      7420756E 
+ 1449      7369676E 
+ 1449      65642069 
+ 1449      6E7400
+ 1450              	.LASF25:
+ 1451 0056 74696D65 		.ascii	"timeOutms\000"
+ 1451      4F75746D 
+ 1451      7300
+ 1452              	.LASF24:
+ 1453 0060 73746174 		.ascii	"status\000"
+ 1453      757300
+ 1454              	.LASF18:
+ 1455 0067 43794274 		.ascii	"CyBtldrCommStop\000"
+ 1455      6C647243 
+ 1455      6F6D6D53 
+ 1455      746F7000 
+ 1456              	.LASF20:
+ 1457 0077 70446174 		.ascii	"pData\000"
+ 1457      6100
+ 1458              	.LASF12:
+ 1459 007d 666C6F61 		.ascii	"float\000"
+ 1459      7400
+ 1460              	.LASF22:
+ 1461 0083 436F756E 		.ascii	"Count\000"
+ 1461      7400
+ 1462              	.LASF1:
+ 1463 0089 756E7369 		.ascii	"unsigned char\000"
+ 1463      676E6564 
+ 1463      20636861 
+ 1463      7200
+ 1464              	.LASF27:
+ 1465 0097 43794274 		.ascii	"CyBtldrCommRead\000"
+ 1465      6C647243 
+ 1465      6F6D6D52 
+ 1465      65616400 
+ 1466              	.LASF42:
+ 1467 00a7 433A5C55 		.ascii	"C:\\Users\\vrnk\\Desktop\\ES100 FW -049\\FW\\SCB_Bo"
+ 1467      73657273 
+ 1467      5C76726E 
+ 1467      6B5C4465 
+ 1467      736B746F 
+ 1468 00d4 6F746C6F 		.ascii	"otloader_42xx\\UART_Bootloader.cydsn\000"
+ 1468      61646572 
+ 1468      5F343278 
+ 1468      785C5541 
+ 1468      52545F42 
+ 1469              	.LASF5:
+ 1470 00f8 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1470      20756E73 
+ 1470      69676E65 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 33
+
+
+ 1470      6420696E 
+ 1470      7400
+ 1471              	.LASF9:
+ 1472 010a 75696E74 		.ascii	"uint8\000"
+ 1472      3800
+ 1473              	.LASF32:
+ 1474 0110 55415254 		.ascii	"UART_Start\000"
+ 1474      5F537461 
+ 1474      727400
+ 1475              	.LASF41:
+ 1476 011b 2E5C5541 		.ascii	".\\UART_Btldr.c\000"
+ 1476      52545F42 
+ 1476      746C6472 
+ 1476      2E6300
+ 1477              	.LASF26:
+ 1478 012a 43794274 		.ascii	"CyBtldrCommWrite\000"
+ 1478      6C647243 
+ 1478      6F6D6D57 
+ 1478      72697465 
+ 1478      00
+ 1479              	.LASF13:
+ 1480 013b 646F7562 		.ascii	"double\000"
+ 1480      6C6500
+ 1481              	.LASF10:
+ 1482 0142 75696E74 		.ascii	"uint16\000"
+ 1482      313600
+ 1483              	.LASF31:
+ 1484 0149 6F6C6444 		.ascii	"oldDataCount\000"
+ 1484      61746143 
+ 1484      6F756E74 
+ 1484      00
+ 1485              	.LASF11:
+ 1486 0156 75696E74 		.ascii	"uint32\000"
+ 1486      333200
+ 1487              	.LASF34:
+ 1488 015d 55415254 		.ascii	"UART_SpiUartClearTxBuffer\000"
+ 1488      5F537069 
+ 1488      55617274 
+ 1488      436C6561 
+ 1488      72547842 
+ 1489              	.LASF36:
+ 1490 0177 55415254 		.ascii	"UART_SpiUartPutArray\000"
+ 1490      5F537069 
+ 1490      55617274 
+ 1490      50757441 
+ 1490      72726179 
+ 1491              	.LASF8:
+ 1492 018c 756E7369 		.ascii	"unsigned int\000"
+ 1492      676E6564 
+ 1492      20696E74 
+ 1492      00
+ 1493              	.LASF7:
+ 1494 0199 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1494      206C6F6E 
+ 1494      6720756E 
+ 1494      7369676E 
+ 1494      65642069 
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 34
+
+
+ 1495              	.LASF21:
+ 1496 01b0 53697A65 		.ascii	"Size\000"
+ 1496      00
+ 1497              	.LASF35:
+ 1498 01b5 55415254 		.ascii	"UART_Stop\000"
+ 1498      5F53746F 
+ 1498      7000
+ 1499              	.LASF16:
+ 1500 01bf 73697A65 		.ascii	"sizetype\000"
+ 1500      74797065 
+ 1500      00
+ 1501              	.LASF28:
+ 1502 01c8 636E7472 		.ascii	"cntr\000"
+ 1502      00
+ 1503              	.LASF6:
+ 1504 01cd 6C6F6E67 		.ascii	"long long int\000"
+ 1504      206C6F6E 
+ 1504      6720696E 
+ 1504      7400
+ 1505              	.LASF14:
+ 1506 01db 63686172 		.ascii	"char\000"
+ 1506      00
+ 1507              	.LASF43:
+ 1508 01e0 72656365 		.ascii	"receivedDataCount\000"
+ 1508      69766564 
+ 1508      44617461 
+ 1508      436F756E 
+ 1508      7400
+ 1509              	.LASF2:
+ 1510 01f2 73686F72 		.ascii	"short int\000"
+ 1510      7420696E 
+ 1510      7400
+ 1511              	.LASF40:
+ 1512 01fc 474E5520 		.ascii	"GNU C 4.7.3 20130312 (release) [ARM/embedded-4_7-br"
+ 1512      4320342E 
+ 1512      372E3320 
+ 1512      32303133 
+ 1512      30333132 
+ 1513 022f 616E6368 		.ascii	"anch revision 196615]\000"
+ 1513      20726576 
+ 1513      6973696F 
+ 1513      6E203139 
+ 1513      36363135 
+ 1514              	.LASF39:
+ 1515 0245 55415254 		.ascii	"UART_SpiUartReadRxData\000"
+ 1515      5F537069 
+ 1515      55617274 
+ 1515      52656164 
+ 1515      52784461 
+ 1516              	.LASF4:
+ 1517 025c 6C6F6E67 		.ascii	"long int\000"
+ 1517      20696E74 
+ 1517      00
+ 1518              	.LASF23:
+ 1519 0265 54696D65 		.ascii	"TimeOut\000"
+ 1519      4F757400 
+ 1520              	.LASF33:
+ARM GAS  C:\Users\vrnk\AppData\Local\Temp\ccqpvOyE.s 			page 35
+
+
+ 1521 026d 55415254 		.ascii	"UART_SpiUartClearRxBuffer\000"
+ 1521      5F537069 
+ 1521      55617274 
+ 1521      436C6561 
+ 1521      72527842 
+ 1522              	.LASF0:
+ 1523 0287 7369676E 		.ascii	"signed char\000"
+ 1523      65642063 
+ 1523      68617200 
+ 1524              	.LASF38:
+ 1525 0293 55415254 		.ascii	"UART_SpiUartGetRxBufferSize\000"
+ 1525      5F537069 
+ 1525      55617274 
+ 1525      47657452 
+ 1525      78427566 
+ 1526              	.LASF37:
+ 1527 02af 43794465 		.ascii	"CyDelay\000"
+ 1527      6C617900 
+ 1528              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.7.3 20130312 (release) [ARM/embedded-4_7-br

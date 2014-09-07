@@ -1,0 +1,24 @@
+embedded/SCB_Bootloader_42xx/UART_TEST.cydsn/codegentemp/
+embedded/SCB_Bootloader_42xx/UART_TEST.cydsn/Generated_Source/
+embedded/SCB_Bootloader_42xx/UART_TEST.cydsn/CortexM0/
+
+
+embedded/SCB_Bootloader_42xx/Bootloadable Blinking LED.cydsn/Generated_Source/
+embedded/SCB_Bootloader_42xx/Bootloadable Blinking LED.cydsn/codegentemp/
+embedded/SCB_Bootloader_42xx/Bootloadable Blinking LED.cydsn/CortexM0/
+
+embedded/SCB_Bootloader_42xx/UART_Bootloader.cydsn/codegentemp/
+embedded/SCB_Bootloader_42xx/UART_Bootloader.cydsn/Generated_Source/
+
+embedded/SCB_Bootloader_42xx/interactive_drums.cydsn/codegentemp/
+embedded/SCB_Bootloader_42xx/interactive_drums.cydsn/Generated_Source/
+embedded/SCB_Bootloader_42xx/CortexM0/Generated_Source/
+
+*.cycdx
+*.cyfit
+*.cyversion
+*.rpt
+*.svd
+*_timing.html
+
+embedded/SCB_Bootloader_42xx/Bootloadable Blinking LED.cydsn/Generated_Source/
