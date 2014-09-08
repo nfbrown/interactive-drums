@@ -1,5 +1,4 @@
 import serial
-import numpy as np
 
 
 class DrumSerial:
