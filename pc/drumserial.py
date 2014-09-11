@@ -12,6 +12,7 @@ class DrumSerial:
 
     def send(self, packet):
         self.serial_port.write(packet)
+        self.serial_port.flush()
 
     def readline(self):
         return self.serial_port.readline()
@@ -20,6 +21,9 @@ class DrumSerial:
         b = bytearray(4)
         self.serial_port.readinto(b)
         return b
+
+    def check_for_packet(self):
+        return self.serial_port.inWaiting() >= 4
 
     def close(self):
         self.serial_port.close()
