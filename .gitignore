@@ -12,7 +12,7 @@ embedded/SCB_Bootloader_42xx/UART_Bootloader.cydsn/Generated_Source/
 
 embedded/SCB_Bootloader_42xx/interactive_drums.cydsn/codegentemp/
 embedded/SCB_Bootloader_42xx/interactive_drums.cydsn/Generated_Source/
-embedded/SCB_Bootloader_42xx/CortexM0/Generated_Source/
+embedded/SCB_Bootloader_42xx/interactive_drums.cydsn/CortexM0/
 
 *.cycdx
 *.cyfit
