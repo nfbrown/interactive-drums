@@ -2,6 +2,8 @@ from Tkinter import *
 import tkFont
 
 mode = "none"
+currentSong = None
+
 
 def menuClicked():
 	songSelectionFrame.pack_forget()
@@ -19,6 +21,18 @@ def trainingModeClicked():
 	mainFrame.pack_forget()
 	mode = "training"
 	displaySongs()
+
+def playSong():
+	songSelectionFrame.pack_forget()
+	songPlayingFrame.pack(fill = BOTH, expand = 1)
+	songPlayingLabel['text'] = str(currentSong)
+
+def on_select(event):
+	playButton['state'] = 'active'
+	selected = 1 + reduce(lambda rst, d: rst * 10 + d, event.widget.curselection())
+	global currentSong
+	currentSong = selected
+	print selected
 
 mainWindow = Tk()
 
@@ -53,10 +67,18 @@ trainingModeButton.pack(fill = BOTH, expand = 1)
 ##################################### Start Song Selection frame and buttons ##############################
 songSelectionFrame = Frame(mainWindow)
 
-songSelectionListFrame = Frame(songSelectionFrame)
-songSelectionListFrame.pack(anchor = 'n', side = BOTTOM, expand = 1)
-songSelectionList = Listbox(songSelectionListFrame)
-songSelectionList.pack()
+songList = StringVar()
+songList.set('song1-artist1 song2-artist2 song3-artist3 song4-artist4 song5-artist5 song6-artist6 song7-artist7 song8-artist8 song9-artist9 song10-artist10 song11-artist11 song12-artist12')
+
+songSelectionListFrame = Frame(songSelectionFrame, padx = 40, pady = 20)
+songSelectionListFrame.pack(anchor = 'n', side = BOTTOM, expand = 1, fill = BOTH)
+scrollbar = Scrollbar(songSelectionListFrame, orient = VERTICAL)
+songSelectionList = Listbox(songSelectionListFrame, listvariable = songList)
+scrollbar.config(command = songSelectionList.yview)
+scrollbar.pack(side = RIGHT, fill = Y)
+songSelectionList.pack(fill = BOTH, expand = 1)
+songSelectionList.bind("<ButtonRelease-1>", on_select)
+
 
 menuButtonFrame = Frame(songSelectionFrame)
 menuButtonFrame.pack(anchor = 'nw', side = LEFT, expand = 1)
@@ -70,11 +92,22 @@ songSelectionLabel.pack()
 
 playButtonFrame = Frame(songSelectionFrame)
 playButtonFrame.pack(anchor = 'ne', side = LEFT, expand = 1)
-playButton = Button(playButtonFrame, text = "Play Song", font = smallFont)
+playButton = Button(playButtonFrame, text = "Play Song", font = smallFont, state = DISABLED, command = playSong)
 playButton.pack()
 
 
 ##################################### End Song Selection frame and buttons ##############################
+
+
+##################################### Start Song Playing fram and buttons ###############################
+songPlayingFrame = Frame(mainWindow)
+
+songPlayingLabel = Label(songPlayingFrame, text = "Current Song: ", font = largeFont)
+songPlayingLabel.pack()
+
+
+
+##################################### End Song Playing frame and buttons ##############################
 
 
 # start event loop
