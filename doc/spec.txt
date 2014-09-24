@@ -2,11 +2,9 @@ PC->Embedded Packet Structure:
 	32-bit packet
 		Bits 31-16: Control bits
 			31-30: 	Sequence
-			29: 	Reset
-			28-25: 	Control (mode, play/pause, etc)
-			24:		Reserved for nothing
-			23-16:	Packets/second
-		Bits 15-0: Drum bits
+			29-25: 	Control (mode, play/pause, etc)
+			24-16:	(Clock Cycles Timer period) @32.00Khz >> 5 bits)
+		Bits 	15-0: Drum bits
 			Two bits for each drum
 
 Embedded->PC Packet Structure:
