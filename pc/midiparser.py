@@ -1,11 +1,9 @@
 import mido
 import drumserial as ds
-import math
 
 
 def midi_to_packets(filename):
     mf = mido.MidiFile(filename)
-    ticks_per_beat = mf.ticks_per_beat
     seconds_per_beat = 0.5
     tempo_list = [i for i in mf
                   if type(i) == mido.MetaMessage and i.type == 'tempo']
@@ -15,8 +13,8 @@ def midi_to_packets(filename):
 
     note_ons = [i for i in mf if type(i) == mido.Message
                 and i.type == 'note_on']
-    meta_messages = [i for i in mf
-                     if type(i) == mido.MetaMessage]
+    # meta_messages = [i for i in mf
+    #                 if type(i) == mido.MetaMessage]
     m = [(i.note, i.velocity, float(i.time)) for i in note_ons]
     return tuples_to_packets(delta_time_to_seconds(m, packets_per_second),
                              seconds_per_beat)
