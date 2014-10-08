@@ -28,6 +28,7 @@ def midi_to_packets(filename):
 def delta_time_to_seconds(note_on_tuples, packet_timings_list):
     total = float(0.0)
     new_tuples = []
+
     for i in note_on_tuples:
         total +=  min(packet_timings_list, key=lambda x:abs(x-i[2]))
 	#total += i[2]
