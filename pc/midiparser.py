@@ -27,11 +27,11 @@ def delta_time_to_seconds(note_on_tuples, pps):
     new_tuples = []
 
     for i in note_on_tuples:
-        delta_packets = int(round_to(i[2], 1 / pps) * (16 * pps))
+        delta_packets = int(round_to(i[2], 1 / pps) * pps)
         total += delta_packets
         if (i[1] != 0):
             new_tuples.append((i[0], i[1],
-                               (total * (16 * pps), delta_packets)))
+                               (total * (16 * pps)), delta_packets))
     return [i for i in new_tuples if i[1] != 0]
 
 
@@ -41,11 +41,10 @@ def tuples_to_packets(note_on_tuples, seconds_per_beat):
     while (i < len(note_on_tuples)):
         filtered = [x for x in note_on_tuples if x[2] == note_on_tuples[i][2]]
         drums = 1
-        for x in range(int(i[3])):
+        for x in range(note_on_tuples[i][3]):
             packets.append(ds.create_packet(0, 0, 0, 0, 0))
         for x in filtered:
-            # TODO: modify drums with data from each message
-            # drums |=
+            drums = len(filtered)
             continue
         packets.append(ds.create_packet(0, 0, 0, 0, drums))
         i += len(filtered)
@@ -58,8 +57,8 @@ def round_to(n, precision):
 
 
 def main():
-    p = midi_to_packets("example2.mid")
-    print [ds.parse_packet(i) for i in p]
+    p = midi_to_packets("example.mid")
+    print len([ds.parse_packet(i) for i in p])
 
 
 if __name__ == "__main__":
