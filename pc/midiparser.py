@@ -13,8 +13,6 @@ def midi_to_packets(filename):
 
     note_ons = [i for i in mf if type(i) == mido.Message
                 and i.type == 'note_on']
-    # meta_messages = [i for i in mf
-    #                 if type(i) == mido.MetaMessage]
     m = [(i.note, i.velocity, float(i.time)) for i in note_ons]
     return tuples_to_packets(delta_time_to_seconds(m, packets_per_second),
                              seconds_per_beat)
@@ -38,13 +36,19 @@ def tuples_to_packets(note_on_tuples, seconds_per_beat):
     i = 0
     while (i < len(note_on_tuples)):
         filtered = [x for x in note_on_tuples if x[2] == note_on_tuples[i][2]]
-        drums = 1
+        drums = 0
         for x in range(note_on_tuples[i][3]):
-            packets.append(ds.create_packet(0, 0, 0, 0, 0))
+            packets.append(ds.create_packet(0, 0, 0, 0, drums))
         for x in filtered:
-            drums = len(filtered)
-            continue
-        packets.append(ds.create_packet(0, 0, 0, 0, drums))
+            if (x[0] == 36):
+                drums |= 0x1
+            elif (x[0] == 42):
+                drums |= 0x2
+            elif (x[0] == 47):
+                drums |= 0x4
+            elif (x[0] == 48):
+                drums |= 0x8
+        packets.append(ds.create_packet(i % 4, 0, 0, 0, drums))
         i += len(filtered)
     return packets
 
@@ -55,8 +59,9 @@ def round_to(n, precision):
 
 
 def main():
-    p = midi_to_packets("example.mid")
-    print len([ds.parse_packet(i) for i in p])
+    p = midi_to_packets("example3.mid")
+    for x in [ds.parse_packet(i) for i in p]:
+        print x
 
 
 if __name__ == "__main__":
