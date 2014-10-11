@@ -1,8 +1,19 @@
 from Tkinter import *
+import glob
 import tkFont
+import re
 
 mode = "none"
 currentSong = None
+
+# finds all .mid files in the same directory as this file and displays them alphabetically
+songs = glob.glob("*.mid")
+songs.sort()
+finalSongs = []
+for i in songs:
+    i = re.sub('.mid', ' ', i)
+    finalSongs.append(i)
+
 
 
 def menuClicked():
@@ -22,6 +33,11 @@ def trainingModeClicked():
 	mode = "training"
 	displaySongs()
 
+def freePlayModeClicked():
+	mainFrame.pack_forget()
+	mode = "free"
+	displaySongs()
+
 def playSong():
 	songSelectionFrame.pack_forget()
 	songPlayingFrame.pack(fill = BOTH, expand = 1)
@@ -29,10 +45,14 @@ def playSong():
 
 def on_select(event):
 	playButton['state'] = 'active'
-	selected = 1 + reduce(lambda rst, d: rst * 10 + d, event.widget.curselection())
+	selected = reduce(lambda rst, d: rst * 10 + d, event.widget.curselection())
 	global currentSong
-	currentSong = selected
-	print selected
+	currentSong = finalSongs[selected]
+
+def backClicked():
+    songPlayingFrame.pack_forget()
+    displaySongs()
+
 
 mainWindow = Tk()
 
@@ -56,10 +76,17 @@ scoreFrame.pack(side = TOP, fill = BOTH, expand = 1)
 scoreModeButton = Button(scoreFrame, text = "Score Mode", command = scoreModeClicked, font = largeFont)
 scoreModeButton.pack(fill = BOTH, expand = 1)
 
+freePlayFrame = Frame(mainFrame, bd = 7)
+freePlayFrame.pack(side = BOTTOM, fill = BOTH, expand = 1)
+freePlayButton = Button(freePlayFrame, text = "Free Play Mode", command = freePlayModeClicked, font = largeFont)
+freePlayButton.pack(fill = BOTH, expand = 1)
+
 trainingFrame = Frame(mainFrame, bd = 7)
 trainingFrame.pack(side = BOTTOM, fill = BOTH, expand = 1)
 trainingModeButton = Button(trainingFrame, text = "Training Mode", command = trainingModeClicked, font = largeFont)
 trainingModeButton.pack(fill = BOTH, expand = 1)
+
+
 ##################################### End Main Menu frame and buttons  ##################################
 
 
@@ -68,12 +95,14 @@ trainingModeButton.pack(fill = BOTH, expand = 1)
 songSelectionFrame = Frame(mainWindow)
 
 songList = StringVar()
-songList.set('song1-artist1 song2-artist2 song3-artist3 song4-artist4 song5-artist5 song6-artist6 song7-artist7 song8-artist8 song9-artist9 song10-artist10 song11-artist11 song12-artist12')
+songstring = "".join(finalSongs)
+songList.set(songstring)
+
 
 songSelectionListFrame = Frame(songSelectionFrame, padx = 40, pady = 20)
-songSelectionListFrame.pack(anchor = 'n', side = BOTTOM, expand = 1, fill = BOTH)
+songSelectionListFrame.pack(anchor = "n", side = BOTTOM, expand = 1, fill = BOTH)
 scrollbar = Scrollbar(songSelectionListFrame, orient = VERTICAL)
-songSelectionList = Listbox(songSelectionListFrame, listvariable = songList)
+songSelectionList = Listbox(songSelectionListFrame, listvariable = songList, font = smallFont)
 scrollbar.config(command = songSelectionList.yview)
 scrollbar.pack(side = RIGHT, fill = Y)
 songSelectionList.pack(fill = BOTH, expand = 1)
@@ -102,8 +131,13 @@ playButton.pack()
 ##################################### Start Song Playing fram and buttons ###############################
 songPlayingFrame = Frame(mainWindow)
 
-songPlayingLabel = Label(songPlayingFrame, text = "Current Song: ", font = largeFont)
+songPlayingLabel = Label(songPlayingFrame, font = largeFont)
 songPlayingLabel.pack()
+
+backButtonFrame = Frame(songPlayingFrame)
+backButtonFrame.pack(anchor = 'nw', side = LEFT, expand = 1)
+backButton = Button(backButtonFrame, text = "Back", command = backClicked, font = smallFont)
+backButton.pack()
 
 
 
