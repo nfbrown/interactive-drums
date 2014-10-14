@@ -5,12 +5,13 @@ import tkFont
 import re
 import drumserial as ds
 import midiparser as mp
+import time
 
 mode = "none"
 currentSong = None
 packets = []
-paused = False
-stop = False
+paused = True
+stop = True
 thread = None
 
 drums = ds.DrumSerial('/dev/ttyUSB0')
@@ -59,6 +60,8 @@ def pausePlayClicked():
     global paused, thread, stop
     if stop:
         paused = False
+        stop = False
+        pausePlayButton['text'] = 'Pause'
         thread.start()
     else:
         paused = not paused
@@ -71,7 +74,6 @@ def playSong():
     songPlayingFrame.pack(fill=BOTH, expand=1)
     songPlayingLabel['text'] = currentSong
     createSongThread()
-    thread.start()
 
 
 def createSongThread():
@@ -84,12 +86,13 @@ def createSongThread():
 def songThread():
     global packets, drums
     packetsRemaining = len(packets)
+    time.sleep(3)
     for i in range(12):
-        waitOnPause()
         drums.send(packets.pop(0))
         if handleStop():
             return
 
+    waitOnPause()
     while packetsRemaining > 0:
         if (drums.check_for_packet()):
             print ds.parse_packet(drums.receive())
@@ -241,7 +244,7 @@ backButton.pack()
 
 pausePlayButtonFrame = Frame(songPlayingFrame)
 pausePlayButtonFrame.pack(anchor='ne', side=LEFT, expand=1)
-pausePlayButton = Button(pausePlayButtonFrame, text="Pause",
+pausePlayButton = Button(pausePlayButtonFrame, text="Play",
                          font=smallFont, command=pausePlayClicked)
 pausePlayButton.pack()
 ###################### End Song Playing frame and buttons ######################
