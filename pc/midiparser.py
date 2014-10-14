@@ -1,6 +1,8 @@
 import mido
 import drumserial as ds
 
+supported_drums = [36, 38, 47, 48]
+
 
 def midi_to_packets(filename):
     mf = mido.MidiFile(filename)
@@ -42,14 +44,11 @@ def tuples_to_packets(note_on_tuples, seconds_per_beat):
             packets.append(ds.create_packet(seq % 4, 0, 0, drums))
             seq += 1
         for x in filtered:
-            if (x[0] == 36):
-                drums |= 0x1
-            elif (x[0] == 38):
-                drums |= 0x2
-            elif (x[0] == 47):
-                drums |= 0x4
-            elif (x[0] == 48):
-                drums |= 0x8
+            try:
+                drum_index = supported_drums.index(x[0])
+                drums |= 0x1 << drum_index
+            except ValueError:
+                print str(x[0]) + ' is not in the list of supported MIDI drums.'
         packets.append(ds.create_packet(seq % 4, 0, 0, drums))
         seq += 1
         i += len(filtered)
