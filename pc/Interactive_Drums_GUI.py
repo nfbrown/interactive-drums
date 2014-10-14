@@ -10,12 +10,13 @@ import ttk
 
 mode = "none"
 currentSong = None
+originalLen = 0
 packets = []
 paused = True
 stop = True
 thread = None
 
-drums = ds.DrumSerial('/dev/ttyUSB0')
+drums = ds.DrumSerial()
 
 # finds all .mid files in the same directory as this file and displays
 # them alphabetically
@@ -54,7 +55,8 @@ def freePlayModeClicked():
     mainFrame.pack_forget()
     global mode
     mode = "free"
-    displaySongs()
+    sendMode()
+    displaySongs()  # this needs to be changed to a free play display
 
 
 def pausePlayClicked():
@@ -85,25 +87,42 @@ def createSongThread():
 
 
 def songThread():
-    global packets, drums    
+    global packets, drums, originalLen
     packetsRemaining = len(packets)
+    originalLen = len(packets)
     time.sleep(3)
     for i in range(12):
         drums.send(packets.pop(0))
         if handleStop():
             return
 
+    sendMode()
     waitOnPause()
     while packetsRemaining > 0:
         if (drums.check_for_packet()):
             print ds.parse_packet(drums.receive())
             packetsRemaining -= 1
-            songProgressBar.step(1/len(packets))
+            songProgressBar.event_generate("<<Step>>", when="tail")
             if (len(packets) > 0):
                 drums.send(packets.pop(0))
         waitOnPause()
         if handleStop():
             return
+
+
+def sendMode():
+    global mode, drums
+    if mode == "score":
+        drums.send(ds.create_packet())
+    elif mode == "training":
+        drums.send(ds.create_packet())
+    elif mode == "free":
+        drums.send(ds.create_packet())
+
+
+def doProgressBarStep(*args):
+    global originalLen
+    songProgressBar.step(99.9/originalLen)
 
 
 def waitOnPause():
@@ -246,7 +265,9 @@ backButton.pack()
 
 songProgressBarFrame = Frame(songPlayingFrame)
 songProgressBarFrame.pack(anchor='w', side=TOP, expand=1)
-songProgressBar = ttk.Progressbar(songProgressBarFrame,orient ="horizontal",length = 600, mode ="determinate")
+songProgressBar = ttk.Progressbar(songProgressBarFrame, orient="horizontal",
+                                  length=600, mode="determinate")
+songProgressBar.bind("<<Step>>", doProgressBarStep)
 songProgressBar.pack()
 
 
@@ -260,7 +281,7 @@ pausePlayButton.pack()
 stopButtonFrame = Frame(songPlayingFrame)
 stopButtonFrame.pack(anchor='w', side=LEFT, expand=1)
 stopButton = Button(stopButtonFrame, text=" Stop  ",
-                         font=smallFont, command=stopClicked)
+                    font=smallFont, command=stopClicked)
 stopButton.pack()
 
 
