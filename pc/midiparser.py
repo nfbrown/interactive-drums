@@ -44,7 +44,7 @@ def tuples_to_packets(note_on_tuples, seconds_per_beat):
         for x in filtered:
             if (x[0] == 36):
                 drums |= 0x1
-            elif (x[0] == 42):
+            elif (x[0] == 38):
                 drums |= 0x2
             elif (x[0] == 47):
                 drums |= 0x4
