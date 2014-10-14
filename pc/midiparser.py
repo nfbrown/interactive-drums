@@ -34,11 +34,13 @@ def delta_time_to_seconds(note_on_tuples, pps):
 def tuples_to_packets(note_on_tuples, seconds_per_beat):
     packets = []
     i = 0
+    seq = 0
     while (i < len(note_on_tuples)):
         filtered = [x for x in note_on_tuples if x[2] == note_on_tuples[i][2]]
         drums = 0
         for x in range(note_on_tuples[i][3]):
-            packets.append(ds.create_packet(0, 0, 0, 0, drums))
+            packets.append(ds.create_packet(seq % 4, 0, 0, drums))
+            seq += 1
         for x in filtered:
             if (x[0] == 36):
                 drums |= 0x1
@@ -48,7 +50,8 @@ def tuples_to_packets(note_on_tuples, seconds_per_beat):
                 drums |= 0x4
             elif (x[0] == 48):
                 drums |= 0x8
-        packets.append(ds.create_packet(i % 4, 0, 0, 0, drums))
+        packets.append(ds.create_packet(seq % 4, 0, 0, drums))
+        seq += 1
         i += len(filtered)
     return packets
 

@@ -12,7 +12,7 @@ def main():
         while True:
             if (s.check_for_packet()):
                 print ds.parse_packet(s.receive())
-                s.send(ds.create_packet(n, 0, 0, 0, 0))
+                s.send(ds.create_packet(n, 0, 0, 0))
                 n += 1
                 if n > 3:
                     n = 0

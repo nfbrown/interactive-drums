@@ -1,4 +1,5 @@
 from Tkinter import *
+from threading import Thread
 import glob
 import tkFont
 import re
@@ -7,6 +8,10 @@ import midiparser as mp
 
 mode = "none"
 currentSong = None
+packets = []
+paused = False
+stop = False
+thread = None
 
 drums = ds.DrumSerial('/dev/ttyUSB0')
 
@@ -31,36 +36,87 @@ def displaySongs():
 
 def scoreModeClicked():
     mainFrame.pack_forget()
+    global mode
     mode = "score"
     displaySongs()
 
 
 def trainingModeClicked():
     mainFrame.pack_forget()
+    global mode
     mode = "training"
     displaySongs()
 
 
 def freePlayModeClicked():
     mainFrame.pack_forget()
+    global mode
     mode = "free"
     displaySongs()
 
+
 def pausePlayClicked():
-    return
+    global paused, thread, stop
+    if stop:
+        paused = False
+        thread.start()
+    else:
+        paused = not paused
+        pausePlayButton['text'] = 'Play' if paused else 'Pause'
+
 
 def playSong():
+    global packets, thread, currentSong
     songSelectionFrame.pack_forget()
     songPlayingFrame.pack(fill=BOTH, expand=1)
     songPlayingLabel['text'] = currentSong
-    packets = mp.midi_to_packets(re.sub(' ', '.mid', currentSong))
-    for i in range(12):
-        drums.send(packets.pop(0))
+    createSongThread()
+    thread.start()
 
-    while len(packets) > 0:
+
+def createSongThread():
+    global packets, thread
+    drums.flush_buffers()
+    packets = mp.midi_to_packets(re.sub(' ', '.mid', currentSong))
+    thread = Thread(target=songThread)
+
+
+def songThread():
+    global packets, drums
+    packetsRemaining = len(packets)
+    for i in range(12):
+        waitOnPause()
+        drums.send(packets.pop(0))
+        if handleStop():
+            return
+
+    while packetsRemaining > 0:
         if (drums.check_for_packet()):
-            print ds.parse_packet(s.receive())
-            drums.send(packets.pop(0))
+            print ds.parse_packet(drums.receive())
+            packetsRemaining -= 1
+            if (len(packets) > 0):
+                drums.send(packets.pop(0))
+        waitOnPause()
+        if handleStop():
+            return
+
+
+def waitOnPause():
+    global paused
+    if paused is True:
+        drums.send(ds.create_packet(0, 2, 0, 0))
+        while paused:
+            if handleStop():
+                return
+            pass
+        drums.send(ds.create_packet(0, 3, 0, 0))
+
+
+def handleStop():
+    global stop, drums
+    if stop is True:
+        drums.send(ds.create_packet(0, 1, 0, 0))
+    return stop
 
 
 def on_select(event):
@@ -71,11 +127,32 @@ def on_select(event):
 
 
 def backClicked():
+    global stop
     songPlayingFrame.pack_forget()
     displaySongs()
+    stop = True
 
+
+def stopClicked():
+    global stop, thread
+    stop = True
+    if isinstance(thread, Thread):
+        if thread.isAlive():
+            thread.join()
+    createSongThread()
+
+
+def onClose():
+    global thread, stop
+    stop = True
+    if isinstance(thread, Thread):
+        if thread.isAlive():
+            thread.join()
+    drums.close()
+    mainWindow.quit()
 
 mainWindow = Tk()
+mainWindow.protocol("WM_DELETE_WINDOW", onClose)
 
 # window title
 mainWindow.title("Interactive Drums")
@@ -164,7 +241,7 @@ backButton.pack()
 
 pausePlayButtonFrame = Frame(songPlayingFrame)
 pausePlayButtonFrame.pack(anchor='ne', side=LEFT, expand=1)
-pausePlayButton = Button(pausePlayButtonFrame, text="Play/Pause",
+pausePlayButton = Button(pausePlayButtonFrame, text="Pause",
                          font=smallFont, command=pausePlayClicked)
 pausePlayButton.pack()
 ###################### End Song Playing frame and buttons ######################
