@@ -29,27 +29,40 @@
     
     /* defines for the control bit codes */
     #define EMPTY       0
-    #define RESET       1
-    #define PAUSE       2
-    #define PLAY        3
-    #define WAIT_MODE   4
-    #define LEAD_MODE   5
-    #define EMPTY_ERR   6
-    #define SEQ_ERR     7
-    #define BUFF_LOAD   8
-    #define SHOW_MODE   9
+    #define CLEAR       1
     
+    /* Lead Mode */ 
+    #define QUEUE_LEAD  2
+    #define PLAY_LEAD   3
+    
+    /* Wait Mode */
+    #define QUEUE_WAIT  4
+    #define PLAY_WAIT   5
+    
+    #define SHOW_MODE   6
+    
+    #define PAUSE       7
+    
+    #define EMPTY_ERR   8
+    #define SEQ_ERR     9
     
     #define MAX_PACKET_PARSE    3 
     
     /* enum for the various states */
     typedef enum {
-        LEAD_MODE_S,
-        WAIT_MODE_S,
+        QUEUE_LEAD_MODE_S,
+        QUEUED_LEAD_MODE_S,
+        PLAY_LEAD_MODE_S,
+        PAUSE_LEAD_MODE_S,
+        
+        QUEUE_WAIT_MODE_S,
+        QUEUED_WAIT_MODE_S,
+        PLAY_WAIT_MODE_S,
+        PAUSE_WAIT_MODE_S,
+        
         SHOW_MODE_S,
-        PAUSE_S,
-        RESET_S,
-        BUF_LOAD_S
+        
+        CLEARED_S,
     }state_t;
         
     

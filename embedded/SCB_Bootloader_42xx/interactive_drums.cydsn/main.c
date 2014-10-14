@@ -23,7 +23,7 @@ void pullPacketInterrupt(void);
 ringBuf_t ringBuf;
 
 /* Starting State */
-volatile state_t state = SHOW_MODE_S;
+volatile state_t state = CLEARED_S;
 
 uint16_t hit_mask = 0;
 uint16_t drum_thresholds[NUM_DRUMS_ENABLED];
@@ -41,11 +41,14 @@ CY_ISR(beat_interrupt){
     packet_t temp_packet;
     
     switch(state){
-        case BUF_LOAD_S:
-            /* Wait for packets to fill up the buffer */
-        break;
+        /* Lead Mode */
+        case QUEUE_LEAD_MODE_S:
+            break;
         
-        case LEAD_MODE_S:
+        case QUEUED_LEAD_MODE_S:
+            break;
+        
+        case PLAY_LEAD_MODE_S:
             /* Process a packet, send back the restults from ADC thresholds */
             temp_packet = ringBuf_get(&ringBuf);
             if(temp_packet.packet.control != EMPTY_ERR){
@@ -54,8 +57,18 @@ CY_ISR(beat_interrupt){
                     UART_UartPutChar(temp_packet.byte[i]);
             }
         break;
+            
+        case PAUSE_LEAD_MODE_S:
+            break;
         
-        case WAIT_MODE_S:
+        /* Wait Mode */
+        case QUEUE_WAIT_MODE_S:
+            break;
+            
+        case QUEUED_WAIT_MODE_S:
+            break;
+            
+        case PLAY_WAIT_MODE_S:
             /* if you detected a hit send back a packet */
             temp_packet = ringBuf_peek(&ringBuf);
             if( (!temp_packet.packet.drums) || (hit_mask && temp_packet.packet.drums)){
@@ -66,12 +79,15 @@ CY_ISR(beat_interrupt){
                         UART_UartPutChar(temp_packet.byte[i]);
                 }
             }
-        break;
+            break;
+            
+        case PAUSE_WAIT_MODE_S:
+            break;
             
         default:
             /* SHOW_MODE_S */
+            /* CLEARED_S */
             break;
-                
     } /* Switch (state) END */
     
     hit_mask = 0;
@@ -92,42 +108,68 @@ void pullPacketInterrupt(void){
             }
         }
             
-        /*
-         * When the buffer is full enough, start the song
-        */ 
-        if(state == BUF_LOAD_S){
-            if(ringBuf.count >= MIN_BUF)
-                state = WAIT_MODE_S;
-        }
-        
-        /*
-         *  Switch Statement for changing state
-        */
+        /*  Switch Statement for processing control bits */ 
+        /* changes state based on control bits */
         switch(temp_packet.packet.control){
             case EMPTY:
                 ringBuf_put(&ringBuf, temp_packet);
                 break;
                 
-            case RESET:
+            case CLEAR:
+                UART_SpiUartClearRxBuffer();
                 ringBuf_flush(&ringBuf);
-                state = BUF_LOAD_S;
+                state = CLEARED_S;
                 break;
                 
-            case PAUSE:
-                state = PAUSE_S;
+            /* Lead Mode */    
+            case QUEUE_LEAD:
+                ringBuf_flush(&ringBuf);
+                state = QUEUE_LEAD_MODE_S;
+                break;
+            
+            case PLAY_LEAD:
+                if(state == QUEUE_LEAD_MODE_S)
+                    state = PLAY_LEAD_MODE_S;
                 break;
                 
-            case WAIT_MODE:
-                state = WAIT_MODE_S;
+            /* Wait Mode */
+            case QUEUE_WAIT:
+                ringBuf_flush(&ringBuf);
+                state = QUEUE_WAIT_MODE_S;
                 break;
                 
-            case LEAD_MODE:
-                state = LEAD_MODE_S;
+            case PLAY_WAIT:
+                if(state == QUEUE_WAIT_MODE_S)
+                    state = PLAY_WAIT_MODE_S;
+                break;
+                
+            case SHOW_MODE:
+                state = SHOW_MODE_S;
                 break;
              
+            /* send state back to queued if you get a pause command */
+            case PAUSE:
+                if(state == PLAY_LEAD_MODE_S)
+                    state = QUEUED_WAIT_MODE_S;
+                else if(state == PLAY_WAIT_MODE_S)
+                    state = QUEUED_WAIT_MODE_S;
+                break;
             default:
-                if(!ringBuf_full(&ringBuf))
-                    ringBuf_put(&ringBuf, temp_packet);
+                break;
+        }
+        
+        /* check to see if you have enoguh packets to leave queue modes */
+        switch(state){
+            case QUEUE_LEAD_MODE_S:
+                if(ringBuf.count > MIN_BUF)
+                    state = QUEUE_LEAD_MODE_S;
+                break;
+            
+            case QUEUE_WAIT_MODE_S:
+                if(ringBuf.count > MIN_BUF)
+                    state = QUEUED_WAIT_MODE_S;
+                break;
+            default:
                 break;
         }
         
@@ -232,7 +274,7 @@ int main(){
         }
         
         /* Start by looking through future packets to set the leds */
-       if((state == LEAD_MODE_S) || (state == WAIT_MODE_S)){
+       if((state == PLAY_LEAD_MODE_S) || (state == PLAY_WAIT_MODE_S)){
             time_in_packet = timer_ReadCounter() / (timer_period / 4);
             if(time_in_packet != last_time_in_packet){
                 freePwm = 0x07;
@@ -259,7 +301,6 @@ int main(){
             REG_B_Write(0x00);
             GREEN_Write(ringBuf.buf[ringBuf.tail].packet.drums);
         }
-            
 
         
     } /* END for(;;) */
