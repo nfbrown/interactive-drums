@@ -128,7 +128,7 @@ void pullPacketInterrupt(void){
                 break;
             
             case PLAY_LEAD:
-                if(state == QUEUE_LEAD_MODE_S)
+                if(state == QUEUED_LEAD_MODE_S)
                     state = PLAY_LEAD_MODE_S;
                 break;
                 
@@ -139,7 +139,7 @@ void pullPacketInterrupt(void){
                 break;
                 
             case PLAY_WAIT:
-                if(state == QUEUE_WAIT_MODE_S)
+                if(state == QUEUED_WAIT_MODE_S)
                     state = PLAY_WAIT_MODE_S;
                 break;
                 
@@ -154,6 +154,7 @@ void pullPacketInterrupt(void){
                 else if(state == PLAY_WAIT_MODE_S)
                     state = QUEUED_WAIT_MODE_S;
                 break;
+                
             default:
                 break;
         }
@@ -162,7 +163,7 @@ void pullPacketInterrupt(void){
         switch(state){
             case QUEUE_LEAD_MODE_S:
                 if(ringBuf.count > MIN_BUF)
-                    state = QUEUE_LEAD_MODE_S;
+                    state = QUEUED_LEAD_MODE_S;
                 break;
             
             case QUEUE_WAIT_MODE_S:
@@ -285,13 +286,13 @@ int main(){
                 } 
                 
                 last_time_in_packet = time_in_packet;
-                GREEN_Write(ringBuf.buf[ringBuf.tail].packet.drums);
+                //GREEN_Write(ringBuf.buf[ringBuf.tail].packet.drums);
 
             }    
         }
         
         if( state == SHOW_MODE_S ){
-            GREEN_Write(hit_mask);
+            //GREEN_Write(hit_mask);
         }
             
         /* If you aren't running make sure to turn off the leds */
@@ -299,9 +300,10 @@ int main(){
             REG_A_Write(0x00);
             REG_B_Write(0x00);
             REG_B_Write(0x00);
-            GREEN_Write(ringBuf.buf[ringBuf.tail].packet.drums);
+            //GREEN_Write(ringBuf.buf[ringBuf.tail].packet.drums);
         }
-
+        
+        GREEN_Write(state);
         
     } /* END for(;;) */
     

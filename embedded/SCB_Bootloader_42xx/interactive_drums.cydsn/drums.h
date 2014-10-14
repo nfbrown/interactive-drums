@@ -50,8 +50,8 @@
     
     /* enum for the various states */
     typedef enum {
-        QUEUE_LEAD_MODE_S,
-        QUEUED_LEAD_MODE_S,
+        QUEUE_LEAD_MODE_S = 0,
+        QUEUED_LEAD_MODE_S = 1,
         PLAY_LEAD_MODE_S,
         PAUSE_LEAD_MODE_S,
         
