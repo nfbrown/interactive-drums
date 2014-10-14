@@ -11,7 +11,7 @@
  *
  * ========================================
 */
-#include "drums.h"
+#include "drums.h" 
 #include <project.h>
 
 const uint16_t pwm_array[16] = {
@@ -56,6 +56,7 @@ uint8_t ringBuf_full(ringBuf_t * _this){
 
 /*
     This function returns the oldest packet in the ring buffer.
+    The function will then remove the packet from the buffer
     If the buffer is empty, the reserved byte will be 1
 */
 packet_t ringBuf_get(ringBuf_t * _this){
@@ -64,6 +65,22 @@ packet_t ringBuf_get(ringBuf_t * _this){
         packet = _this->buf[_this->tail];
         _this->tail = WRAP(++_this->tail);
         --_this->count;
+    }
+    else{
+        packet.packet.control = EMPTY_ERR;
+    }
+    
+    return packet;
+}
+
+/*
+    This function returns the oldest packet in the ring buffer.
+    If the buffer is empty, the reserved byte will be 1
+*/
+packet_t ringBuf_peek(ringBuf_t * _this){
+    packet_t packet;
+    if(_this->count > 0){
+        packet = _this->buf[_this->tail];
     }
     else{
         packet.packet.control = EMPTY_ERR;

@@ -13,56 +13,69 @@
 <v>Output</v>
 </TreeKeys>
 <TreeStates>
-<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="SCB_Bootloader\interactive_drums\Source Files">
+<CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC\ADC_INT.c">
 <ExpandedNodeIds>
 <v>SCB_Bootloader</v>
 <v>SCB_Bootloader\interactive_drums</v>
 <v>SCB_Bootloader\interactive_drums\Source Files</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\GREEN</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC\ADC.c</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC\ADC.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC\ADC_INT.c</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC\ADC_PM.c</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC_intClock</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC_intClock\ADC_intClock.c</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC_intClock\ADC_intClock.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC_IRQ</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC_IRQ\ADC_IRQ.c</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC_IRQ\ADC_IRQ.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\GREEN\GREEN.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\GREEN\GREEN.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\GREEN\GREEN_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_0</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_0\mic_0.c</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_0\mic_0.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_0\mic_0_aliases.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_1\mic_1.c</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_1\mic_1.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_1\mic_1_aliases.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_2\mic_2.c</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_2\mic_2.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_2\mic_2_aliases.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_3\mic_3.c</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_3\mic_3.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\mic_3\mic_3_aliases.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_0\RED_0.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_0\RED_0.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_0\RED_0_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_1</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_1\RED_1.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_1\RED_1.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_1\RED_1_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_2</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_2\RED_2.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_2\RED_2.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_2\RED_2_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_3</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_3\RED_3.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_3\RED_3.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_3\RED_3_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_4</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_4\RED_4.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_4\RED_4.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_4\RED_4_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_5</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_5\RED_5.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_5\RED_5.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_5\RED_5_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_6</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_6\RED_6.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_6\RED_6.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_6\RED_6_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_7</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_7\RED_7.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_7\RED_7.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_7\RED_7_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_C</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_C\RED_C.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_C\RED_C.h</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_C\RED_C_PM.c</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\REG_C</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\REG_C\REG_C.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\REG_C\REG_C.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\UART</v>
 <v>SCB_Bootloader\UART_Bootloader</v>
 <v>SCB_Bootloader\UART_Bootloader\UART_Bootloader.cydwr</v>
 <v>SCB_Bootloader\UART_Bootloader\Source Files</v>
@@ -82,44 +95,7 @@
 <v>SCB_Bootloader\interactive_drums\Source Files\main.c</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source</v>
 <v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\Bootloadable_1</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\Button</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\Clock_1</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\Clock_2</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\Clock_3</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\cy_boot</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\GREEN</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\GREEN\GREEN.c</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\GREEN\GREEN.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\GREEN\GREEN_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\LED</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_0</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_0\RED_0.c</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_0\RED_0.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_0\RED_0_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_1</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_1\RED_1.c</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_1\RED_1.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_1\RED_1_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_2</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_2\RED_2.c</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_2\RED_2.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_2\RED_2_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_3</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_3\RED_3.c</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_3\RED_3.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_3\RED_3_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_4</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_4\RED_4.c</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_4\RED_4.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_4\RED_4_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_5</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_5\RED_5.c</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_5\RED_5.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_5\RED_5_aliases.h</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_6</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_6\RED_6.c</v>
-<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\RED_6\RED_6.h</v>
+<v>SCB_Bootloader\interactive_drums\Generated_Source\PSoC4\ADC</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 <CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237 type_name="CyDesigner.Common.Base.Controls.CyTreeViewState" version="1" SelectedNodeId="">
@@ -183,6 +159,11 @@
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files</v>
+<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC.lst</v>
+<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC_INT.lst</v>
+<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC_intClock.lst</v>
+<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC_IRQ.lst</v>
+<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\ADC_PM.lst</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\Bootloadable_1.lst</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\Button.lst</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\Clock_1.lst</v>
@@ -201,6 +182,10 @@
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\GREEN.lst</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\LED.lst</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\main.lst</v>
+<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\mic_0.lst</v>
+<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\mic_1.lst</v>
+<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\mic_2.lst</v>
+<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\mic_3.lst</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\RED_0.lst</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\RED_1.lst</v>
 <v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\RED_2.lst</v>
@@ -263,43 +248,6 @@
 <v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\cybootloader.lst</v>
 <v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\cyfitter_cfg.lst</v>
 <v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\CyFlash.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\CyLib.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\cymetadata.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\cyPm.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\cyutils.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\main.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\P1_6.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\Pin_1.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\PWM.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\PWM_PM.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Bootloadable Blinking LED.cyacd</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Bootloadable Blinking LED.elf</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Bootloadable Blinking LED.hex</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Bootloadable Blinking LED.map</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\Bootloadable Blinking LED.rpt</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\Bootloadable Blinking LED_timing.html</v>
-<v>SCB_Bootloader\interactive_drums</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\Bootloadable_1.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\Button.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\Clock_1.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\Clock_2.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\Clock_3.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\Cm0Start.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\cybootloader.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\CyFlash.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\CyLib.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\cymetadata.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\cyPm.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\cyutils.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\drums.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\GREEN.lst</v>
-<v>SCB_Bootloader\interactive_drums\CortexM0\ARM_GCC_473\Debug\Listing Files\LED.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>
@@ -326,6 +274,7 @@
 <v>SCB_Bootloader\interactive_drums\PSoC 4 Architecture TRM</v>
 <v>SCB_Bootloader\interactive_drums\PSoC 4200 Family Datasheet</v>
 <v>SCB_Bootloader\interactive_drums\System Reference Guide v4_10</v>
+<v>SCB_Bootloader\interactive_drums\ADC_SAR_SEQ_P4_v1_10</v>
 <v>SCB_Bootloader\interactive_drums\and_v1_0</v>
 <v>SCB_Bootloader\interactive_drums\Bootloadable_v1_20</v>
 <v>SCB_Bootloader\interactive_drums\cy_clock_v2_20</v>
@@ -368,35 +317,6 @@
 <v>SCB_Bootloader\Bootloadable Blinking LED\Resistor_v1_0</v>
 <v>SCB_Bootloader\Bootloadable Blinking LED\TCPWM_P4_v1_10</v>
 <v>SCB_Bootloader\interactive_drums</v>
-<v>SCB_Bootloader\interactive_drums\PSoC 4 Architecture TRM</v>
-<v>SCB_Bootloader\interactive_drums\PSoC 4200 Family Datasheet</v>
-<v>SCB_Bootloader\interactive_drums\System Reference Guide v4_10</v>
-<v>SCB_Bootloader\interactive_drums\and_v1_0</v>
-<v>SCB_Bootloader\interactive_drums\Bootloadable_v1_20</v>
-<v>SCB_Bootloader\interactive_drums\cy_clock_v2_20</v>
-<v>SCB_Bootloader\interactive_drums\cy_constant_v1_0</v>
-<v>SCB_Bootloader\interactive_drums\cy_isr_v1_70</v>
-<v>SCB_Bootloader\interactive_drums\cy_pins_v2_0</v>
-<v>SCB_Bootloader\interactive_drums\CyControlReg_v1_70</v>
-<v>SCB_Bootloader\interactive_drums\or_v1_0</v>
-<v>SCB_Bootloader\interactive_drums\SCB_P4_v1_20</v>
-<v>SCB_Bootloader\interactive_drums\TCPWM_P4_v1_10</v>
-<v>SCB_Bootloader\interactive_drums\Timer_v2_50</v>
-<v>SCB_Bootloader\interactive_drums\ZeroTerminal</v>
-<v>SCB_Bootloader\UART_Bootloader</v>
-<v>SCB_Bootloader\UART_Bootloader\PSoC 4 Architecture TRM</v>
-<v>SCB_Bootloader\UART_Bootloader\PSoC 4200 Family Datasheet</v>
-<v>SCB_Bootloader\UART_Bootloader\System Reference Guide v4_10</v>
-<v>SCB_Bootloader\UART_Bootloader\Bootloader_v1_20</v>
-<v>SCB_Bootloader\UART_Bootloader\cy_clock_v2_20</v>
-<v>SCB_Bootloader\UART_Bootloader\cy_pins_v2_0</v>
-<v>SCB_Bootloader\UART_Bootloader\Gnd_v1_0</v>
-<v>SCB_Bootloader\UART_Bootloader\LED_v1_0</v>
-<v>SCB_Bootloader\UART_Bootloader\OneTerminal</v>
-<v>SCB_Bootloader\UART_Bootloader\Resistor_v1_0</v>
-<v>SCB_Bootloader\UART_Bootloader\SCB_P4_v1_20</v>
-<v>SCB_Bootloader\UART_Bootloader\SwitchSPST_v1_0</v>
-<v>SCB_Bootloader\UART_Bootloader\TCPWM_P4_v1_10</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStatesV2>
@@ -412,10 +332,9 @@
 <Unloaded />
 <OpenDocs>
 <name v=".\interactive_drums.cydsn\main.c" />
-<name v=".\interactive_drums.cydsn\drums.h" />
-<name v=".\interactive_drums.cydsn\drums.c" />
 <name v=".\interactive_drums.cydsn\TopDesign\TopDesign.cysch" />
-<name v=".\interactive_drums.cydsn\interactive_drums.cydwr" />
+<name v=".\interactive_drums.cydsn\drums.c" />
+<name v=".\interactive_drums.cydsn\drums.h" />
 </OpenDocs>
 <config v="" />
 <AutoUpdate v="true" />
