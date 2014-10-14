@@ -15,9 +15,18 @@ class DrumSerial:
                         if str(p[0]).startswith('/dev/ttyUSB')]
             self.serial_port.port = filtered[0]
         elif _platform == "darwin":
-            filtered = [p[0] for p in com_ports
-                        if str(p[0]).startswith('/dev/cu.usbserial')]
-            self.serial_port.port = filtered[0]
+            print _platform + ' currently not supported'
+            # Uncomment the following three lines to support Mac
+            # Note getting the GUI to run on Mac will require additional
+            # configuration
+            # filtered = [p[0] for p in com_ports
+            #             if str(p[0]).startswith('/dev/cu.usbserial')]
+            # self.serial_port.port = filtered[0]
+        elif _platform == 'win32':
+            # TODO: support for Windows
+            print _platform + ' currently not supported'
+        else:
+            print _platform + ' currently not supported'
         self.serial_port.open()
 
     def send(self, packet):
