@@ -12,7 +12,10 @@
 <CyGuid_f44455c5-3770-4452-b988-0a7a7ff46256 type_name="CyDesigner.Common.ProjMgmt.Model.CyConfigDependencies" version="1">
 <dependency_info name="c9323d49-d323-40b8-9b59-cc008d68a989@Debug@CortexM0" xml_contents_version="2">
 <CyGuid_1173175f-1b9b-4ad4-a065-754a48a27021 type_name="CyDesigner.Common.Base.CyFileDeps" version="1">
-<file name=".\CortexM0\ARM_GCC_473\Debug\main.o">
+<file name=".\CortexM0\ARM_GCC_473\Debug\drums.o">
+<dep name=".\Generated_Source\PSoC4\ADC.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_intClock.h" />
 <dep name=".\Generated_Source\PSoC4\Bootloadable_1.h" />
 <dep name=".\Generated_Source\PSoC4\Button.h" />
 <dep name=".\Generated_Source\PSoC4\Button_aliases.h" />
@@ -67,12 +70,23 @@
 <dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
 <dep name=".\Generated_Source\PSoC4\cypins.h" />
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\mic_0.h" />
+<dep name=".\Generated_Source\PSoC4\mic_0_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_1.h" />
+<dep name=".\Generated_Source\PSoC4\mic_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_2.h" />
+<dep name=".\Generated_Source\PSoC4\mic_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_3.h" />
+<dep name=".\Generated_Source\PSoC4\mic_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC4\project.h" />
 <dep name=".\Generated_Source\PSoC4\tick.h" />
 <dep name=".\Generated_Source\PSoC4\timer.h" />
+<dep name=".\drums.c" />
 <dep name=".\drums.h" />
-<dep name=".\main.c" />
 </file>
+<file name=".\Generated_Source\PSoC4\ADC.h" />
+<file name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
+<file name=".\Generated_Source\PSoC4\ADC_intClock.h" />
 <file name=".\Generated_Source\PSoC4\Bootloadable_1.h" />
 <file name=".\Generated_Source\PSoC4\Button.h" />
 <file name=".\Generated_Source\PSoC4\Button_aliases.h" />
@@ -127,12 +141,23 @@
 <file name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
 <file name=".\Generated_Source\PSoC4\cypins.h" />
 <file name=".\Generated_Source\PSoC4\cytypes.h" />
+<file name=".\Generated_Source\PSoC4\mic_0.h" />
+<file name=".\Generated_Source\PSoC4\mic_0_aliases.h" />
+<file name=".\Generated_Source\PSoC4\mic_1.h" />
+<file name=".\Generated_Source\PSoC4\mic_1_aliases.h" />
+<file name=".\Generated_Source\PSoC4\mic_2.h" />
+<file name=".\Generated_Source\PSoC4\mic_2_aliases.h" />
+<file name=".\Generated_Source\PSoC4\mic_3.h" />
+<file name=".\Generated_Source\PSoC4\mic_3_aliases.h" />
 <file name=".\Generated_Source\PSoC4\project.h" />
 <file name=".\Generated_Source\PSoC4\tick.h" />
 <file name=".\Generated_Source\PSoC4\timer.h" />
+<file name=".\drums.c" />
 <file name=".\drums.h" />
-<file name=".\main.c" />
-<file name=".\CortexM0\ARM_GCC_473\Debug\drums.o">
+<file name=".\CortexM0\ARM_GCC_473\Debug\main.o">
+<dep name=".\Generated_Source\PSoC4\ADC.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_intClock.h" />
 <dep name=".\Generated_Source\PSoC4\Bootloadable_1.h" />
 <dep name=".\Generated_Source\PSoC4\Button.h" />
 <dep name=".\Generated_Source\PSoC4\Button_aliases.h" />
@@ -187,13 +212,101 @@
 <dep name=".\Generated_Source\PSoC4\cyfitter_cfg.h" />
 <dep name=".\Generated_Source\PSoC4\cypins.h" />
 <dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\mic_0.h" />
+<dep name=".\Generated_Source\PSoC4\mic_0_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_1.h" />
+<dep name=".\Generated_Source\PSoC4\mic_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_2.h" />
+<dep name=".\Generated_Source\PSoC4\mic_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_3.h" />
+<dep name=".\Generated_Source\PSoC4\mic_3_aliases.h" />
 <dep name=".\Generated_Source\PSoC4\project.h" />
 <dep name=".\Generated_Source\PSoC4\tick.h" />
 <dep name=".\Generated_Source\PSoC4\timer.h" />
-<dep name=".\drums.c" />
 <dep name=".\drums.h" />
+<dep name=".\main.c" />
 </file>
-<file name=".\drums.c" />
+<file name=".\main.c" />
+<file name=".\CortexM0\ARM_GCC_473\Debug\ADC.o">
+<dep name=".\Generated_Source\PSoC4\ADC.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\ADC.c" />
+</file>
+<file name=".\Generated_Source\PSoC4\ADC.c" />
+<file name=".\CortexM0\ARM_GCC_473\Debug\ADC_INT.o">
+<dep name=".\Generated_Source\PSoC4\ADC.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_INT.c" />
+</file>
+<file name=".\Generated_Source\PSoC4\ADC_INT.c" />
+<file name=".\CortexM0\ARM_GCC_473\Debug\ADC_IRQ.o">
+<dep name=".\Generated_Source\PSoC4\ADC_IRQ.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_IRQ.c" />
+</file>
+<file name=".\Generated_Source\PSoC4\ADC_IRQ.c" />
+<file name=".\CortexM0\ARM_GCC_473\Debug\ADC_PM.o">
+<dep name=".\Generated_Source\PSoC4\ADC.h" />
+<dep name=".\Generated_Source\PSoC4\CyLib.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_PM.c" />
+</file>
+<file name=".\Generated_Source\PSoC4\ADC_PM.c" />
+<file name=".\CortexM0\ARM_GCC_473\Debug\ADC_intClock.o">
+<dep name=".\Generated_Source\PSoC4\ADC_intClock.h" />
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\ADC_intClock.c" />
+</file>
+<file name=".\Generated_Source\PSoC4\ADC_intClock.c" />
+<file name=".\CortexM0\ARM_GCC_473\Debug\mic_0.o">
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\mic_0.h" />
+<dep name=".\Generated_Source\PSoC4\mic_0_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_0.c" />
+</file>
+<file name=".\Generated_Source\PSoC4\mic_0.c" />
+<file name=".\CortexM0\ARM_GCC_473\Debug\mic_1.o">
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\mic_1.h" />
+<dep name=".\Generated_Source\PSoC4\mic_1_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_1.c" />
+</file>
+<file name=".\Generated_Source\PSoC4\mic_1.c" />
+<file name=".\CortexM0\ARM_GCC_473\Debug\mic_2.o">
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\mic_2.h" />
+<dep name=".\Generated_Source\PSoC4\mic_2_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_2.c" />
+</file>
+<file name=".\Generated_Source\PSoC4\mic_2.c" />
+<file name=".\CortexM0\ARM_GCC_473\Debug\mic_3.o">
+<dep name=".\Generated_Source\PSoC4\cydevice_trm.h" />
+<dep name=".\Generated_Source\PSoC4\cyfitter.h" />
+<dep name=".\Generated_Source\PSoC4\cytypes.h" />
+<dep name=".\Generated_Source\PSoC4\mic_3.h" />
+<dep name=".\Generated_Source\PSoC4\mic_3_aliases.h" />
+<dep name=".\Generated_Source\PSoC4\mic_3.c" />
+</file>
+<file name=".\Generated_Source\PSoC4\mic_3.c" />
 <file name=".\CortexM0\ARM_GCC_473\Debug\Bootloadable_1.o">
 <dep name=".\Generated_Source\PSoC4\Bootloadable_1.h" />
 <dep name=".\Generated_Source\PSoC4\CyFlash.h" />
@@ -1174,6 +1287,15 @@
 <dep name=".\CortexM0\ARM_GCC_473\Debug\RED_6.o" />
 <dep name=".\CortexM0\ARM_GCC_473\Debug\RED_4.o" />
 <dep name=".\CortexM0\ARM_GCC_473\Debug\GREEN.o" />
+<dep name=".\CortexM0\ARM_GCC_473\Debug\ADC.o" />
+<dep name=".\CortexM0\ARM_GCC_473\Debug\ADC_PM.o" />
+<dep name=".\CortexM0\ARM_GCC_473\Debug\ADC_INT.o" />
+<dep name=".\CortexM0\ARM_GCC_473\Debug\mic_0.o" />
+<dep name=".\CortexM0\ARM_GCC_473\Debug\mic_1.o" />
+<dep name=".\CortexM0\ARM_GCC_473\Debug\mic_2.o" />
+<dep name=".\CortexM0\ARM_GCC_473\Debug\mic_3.o" />
+<dep name=".\CortexM0\ARM_GCC_473\Debug\ADC_intClock.o" />
+<dep name=".\CortexM0\ARM_GCC_473\Debug\ADC_IRQ.o" />
 <dep name=".\CortexM0\ARM_GCC_473\Debug\interactive_drums.a" />
 <dep name="${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\CortexM0\ARM_GCC_473\Debug\CyComponentLibrary.a" />
 </file>
@@ -1282,6 +1404,15 @@
 <name_val_pair name=".\Generated_Source\PSoC4\RED_6.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
 <name_val_pair name=".\Generated_Source\PSoC4\RED_4.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
 <name_val_pair name=".\Generated_Source\PSoC4\GREEN.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC4\mic_0.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC4\mic_1.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC4\mic_2.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC4\mic_3.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC4\ADC.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC4\ADC_PM.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC4\ADC_INT.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC4\ADC_intClock.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
+<name_val_pair name=".\Generated_Source\PSoC4\ADC_IRQ.c" v="&quot;-I. &quot;&quot;-I./Generated_Source/PSoC4 &quot;&quot;-Wno-main &quot;&quot;-mcpu=cortex-m0 &quot;&quot;-mthumb &quot;&quot;-Wall &quot;&quot;-g &quot;&quot;-D &quot;&quot;DEBUG &quot;&quot;-Wa,-alh=${OutputDir}\${CompileFile}.lst &quot;&quot;-ffunction-sections &quot;" />
 </name>
 </genericCmdLineData>
 <codeGenCmdLineTag v="&quot;-.appdatapath&quot; &quot;C:\Users\Hristos\AppData\Local\Cypress Semiconductor\PSoC Creator\3.0&quot; &quot;-.fdsnotice&quot; &quot;-.fdswarpdepfile=warp_dependencies.txt&quot; &quot;-.fdselabdepfile=elab_dependencies.txt&quot; &quot;-.fdsbldfile=generated_files.txt&quot; &quot;-p&quot; &quot;D:\Development\interactive_drums\embedded\SCB_Bootloader_42xx\interactive_drums.cydsn\interactive_drums.cyprj&quot; &quot;-d&quot; &quot;CY8C4245AXI-483&quot; &quot;-s&quot; &quot;D:\Development\interactive_drums\embedded\SCB_Bootloader_42xx\interactive_drums.cydsn\Generated_Source\PSoC4&quot; &quot;--&quot; &quot;-yv2&quot; &quot;-v3&quot; &quot;-ygs&quot; &quot;-q10&quot; &quot;-o2&quot; &quot;-.fftcfgtype=LE&quot; " />
@@ -2460,6 +2591,583 @@
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.c</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.h</v>
 <v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\aliases.h</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\ADC_SAR_SEQ_P4_v1_10.cysym</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\ADC_SAR_SEQ_P4_v1_10.cysch</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\ADC_SAR_SEQ_P4_v1_10.pdf</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\ADC_SAR_SEQ_P4_v1_10.cycdx</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\ADC_SAR_SEQ_P4_v1_10.cystate</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\cycustomizer.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\cyparameters.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\cytabcontrolwrapper.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\Resources.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\Tabs\cychannelstab.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\Tabs\cychannelstab.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\Tabs\cygeneraltab.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\Tabs\cygeneraltab.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\cychannelsconfigtable.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\cyclock.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\cyenumconverter.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\cyshapesbuilder.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\Resources.resx</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\Tabs\cygeneraltab.resx</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\Custom\Tabs\cychannelstab.resx</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\PSoC4\API\ADC_SAR_SEQ_P4.c</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\PSoC4\API\ADC_SAR_SEQ_P4.h</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\PSoC4\API\ADC_SAR_SEQ_P4_PM.c</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\ADC_SAR_SEQ_P4_v1_10\PSoC4\API\ADC_SAR_SEQ_P4_INT.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_psoc4_sar_v1_0\cy_psoc4_sar_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_psoc4_sar_v1_0\PSoC4\cy_psoc4_sar_v1_0.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\cy_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_virtualmux_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\cy_clock_v2_20.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\PSoC4\API\clk.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\PSoC4\API\clk.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_clock_v2_20\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_psoc4_sarmux_v1_0\cy_psoc4_sarmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_psoc4_sarmux_v1_0\Custom\cycustomizer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_psoc4_sarmux_v1_0\PSoC4\cy_psoc4_sarmux_v1_0.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bus_Connect_v1_10\Bus_Connect_v1_10.cysym</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bus_Connect_v1_10\Bus_Connect_v1_10.v</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bus_Connect_v1_10\Custom\cycustomizer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bus_Connect_v1_10\Bus_Connect_v1_10.cysym</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bus_Connect_v1_10\Bus_Connect_v1_10.v</v>
+<v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bus_Connect_v1_10\Custom\cycustomizer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\cy_analog_noconnect_v1_0.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_noconnect_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.primitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\cy_isr_v1_70.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC4\API\intc.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_isr_v1_70\PSoC4\API\intc.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\or_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\or_v1_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\ZeroTerminal\ZeroTerminal.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\Custom\cy_analog_virtualmux_v1_0.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyenums.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinsdata.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinutils.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\Resource1.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\Resource1.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\aliases.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyenums.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinsdata.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinutils.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\Resource1.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\Resource1.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\aliases.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyenums.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinsdata.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinutils.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\Resource1.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\Resource1.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\aliases.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cyprimitive</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cysym</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.pdf</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\cy_pins_v2_0.cystate</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\custom.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyenums.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinsdata.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinutils.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\Resource1.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.Designer.cs</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cygeneralcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyinputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cymappingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyoutputcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinaliasdialog.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cypinscontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyporcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cytypecontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\Resource1.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\Custom\cyclockingcontrol.resx</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.c</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\pins.h</v>
+<v>${CyRoot}\psoc\content\cyprimitives\CyPrimitives.cylib\cy_pins_v2_0\PSoC4\API\aliases.h</v>
 <v>.\interactive_drums.cydwr</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_10\PSoC4\API\cm0gcc.ld</v>
 <v>${CyRoot}\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\cy_boot_v4_10\PSoC4\API\Cm0RealView.scat</v>
@@ -2719,6 +3427,26 @@
 <v>.\Generated_Source\PSoC4\GREEN.c</v>
 <v>.\Generated_Source\PSoC4\GREEN.h</v>
 <v>.\Generated_Source\PSoC4\GREEN_aliases.h</v>
+<v>.\Generated_Source\PSoC4\ADC.c</v>
+<v>.\Generated_Source\PSoC4\ADC.h</v>
+<v>.\Generated_Source\PSoC4\ADC_PM.c</v>
+<v>.\Generated_Source\PSoC4\ADC_INT.c</v>
+<v>.\Generated_Source\PSoC4\mic_0.c</v>
+<v>.\Generated_Source\PSoC4\mic_0.h</v>
+<v>.\Generated_Source\PSoC4\mic_0_aliases.h</v>
+<v>.\Generated_Source\PSoC4\mic_1.c</v>
+<v>.\Generated_Source\PSoC4\mic_1.h</v>
+<v>.\Generated_Source\PSoC4\mic_1_aliases.h</v>
+<v>.\Generated_Source\PSoC4\mic_2.c</v>
+<v>.\Generated_Source\PSoC4\mic_2.h</v>
+<v>.\Generated_Source\PSoC4\mic_2_aliases.h</v>
+<v>.\Generated_Source\PSoC4\mic_3.c</v>
+<v>.\Generated_Source\PSoC4\mic_3.h</v>
+<v>.\Generated_Source\PSoC4\mic_3_aliases.h</v>
+<v>.\Generated_Source\PSoC4\ADC_intClock.c</v>
+<v>.\Generated_Source\PSoC4\ADC_intClock.h</v>
+<v>.\Generated_Source\PSoC4\ADC_IRQ.c</v>
+<v>.\Generated_Source\PSoC4\ADC_IRQ.h</v>
 </gen_list>
 <warp_dep>
 <v>D:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\ieee\work\stdlogic.vif</v>
@@ -2732,17 +3460,19 @@
 <v>D:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_constant_v1_0\cy_constant_v1_0.v</v>
 <v>D:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\and_v1_0\and_v1_0.v</v>
 <v>D:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\CyControlReg_v1_70\CyControlReg_v1_70.v</v>
+<v>D:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cyprimitives\CyPrimitives.cylib\cy_analog_virtualmux_v1_0\cy_analog_virtualmux_v1_0.v</v>
+<v>D:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\psoc\content\cycomponentlibrary\CyComponentLibrary.cylib\Bus_Connect_v1_10\Bus_Connect_v1_10.v</v>
 <v>D:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\rtlpkg.vif</v>
 <v>D:\Program Files (x86)\Cypress\PSoC Creator\3.0\PSoC Creator\warp\lib\common\stdlogic\cy_psoc3.vif</v>
 </warp_dep>
-<deps_time v="130566520128847187" />
+<deps_time v="130577814078749609" />
 <top_block v="TopDesign" />
-<last_generation v="4" />
+<last_generation v="6" />
 </CyGuid_925cc1e1-309e-4e08-b0a1-09a83c35b157>
 </dataGuid>
 <dataGuid v="769d31ea-68b1-4f0c-b90a-7c10a43ee563">
 <CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563 type_name="CyDesigner.Common.ProjMgmt.Model.CyLinkCustomData" version="1">
-<deps_time v="130566608605415191" />
+<deps_time v="130577814098380212" />
 </CyGuid_769d31ea-68b1-4f0c-b90a-7c10a43ee563>
 </dataGuid>
 <dataGuid v="504337dd-7d07-4bc7-9057-90e60cf6c469">
