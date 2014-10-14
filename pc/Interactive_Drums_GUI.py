@@ -6,6 +6,7 @@ import re
 import drumserial as ds
 import midiparser as mp
 import time
+import ttk
 
 mode = "none"
 currentSong = None
@@ -65,7 +66,7 @@ def pausePlayClicked():
         thread.start()
     else:
         paused = not paused
-        pausePlayButton['text'] = 'Play' if paused else 'Pause'
+        pausePlayButton['text'] = ' Play  ' if paused else 'Pause'
 
 
 def playSong():
@@ -84,7 +85,7 @@ def createSongThread():
 
 
 def songThread():
-    global packets, drums
+    global packets, drums    
     packetsRemaining = len(packets)
     time.sleep(3)
     for i in range(12):
@@ -97,6 +98,7 @@ def songThread():
         if (drums.check_for_packet()):
             print ds.parse_packet(drums.receive())
             packetsRemaining -= 1
+            songProgressBar.step(1/len(packets))
             if (len(packets) > 0):
                 drums.send(packets.pop(0))
         waitOnPause()
@@ -238,15 +240,30 @@ songPlayingLabel.pack()
 
 backButtonFrame = Frame(songPlayingFrame)
 backButtonFrame.pack(anchor='nw', side=LEFT, expand=1)
-backButton = Button(backButtonFrame, text="Back",
+backButton = Button(backButtonFrame, text="  Back  ",
                     command=backClicked, font=smallFont)
 backButton.pack()
 
+songProgressBarFrame = Frame(songPlayingFrame)
+songProgressBarFrame.pack(anchor='w', side=TOP, expand=1)
+songProgressBar = ttk.Progressbar(songProgressBarFrame,orient ="horizontal",length = 600, mode ="determinate")
+songProgressBar.pack()
+
+
 pausePlayButtonFrame = Frame(songPlayingFrame)
-pausePlayButtonFrame.pack(anchor='ne', side=LEFT, expand=1)
-pausePlayButton = Button(pausePlayButtonFrame, text="Play",
+pausePlayButtonFrame.pack(anchor='w', side=LEFT, expand=1)
+pausePlayButton = Button(pausePlayButtonFrame, text=" Play  ",
                          font=smallFont, command=pausePlayClicked)
 pausePlayButton.pack()
+
+
+stopButtonFrame = Frame(songPlayingFrame)
+stopButtonFrame.pack(anchor='w', side=LEFT, expand=1)
+stopButton = Button(stopButtonFrame, text=" Stop  ",
+                         font=smallFont, command=stopClicked)
+stopButton.pack()
+
+
 ###################### End Song Playing frame and buttons ######################
 
 # start event loop
