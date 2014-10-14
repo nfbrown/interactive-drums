@@ -1,13 +1,23 @@
 import serial
+from serial.tools import list_ports
+from sys import platform as _platform
 
 
 class DrumSerial:
     serial_port = serial.Serial()
 
-    def __init__(self, port):
+    def __init__(self):
         self.serial_port.baudrate = 115200
         self.serial_port.timeout = 5
-        self.serial_port.port = port
+        com_ports = list_ports.comports()
+        if _platform == "linux" or _platform == "linux2":
+            filtered = [p[0] for p in com_ports
+                        if str(p[0]).startswith('/dev/ttyUSB')]
+            self.serial_port.port = filtered[0]
+        elif _platform == "darwin":
+            filtered = [p[0] for p in com_ports
+                        if str(p[0]).startswith('/dev/cu.usbserial')]
+            self.serial_port.port = filtered[0]
         self.serial_port.open()
 
     def send(self, packet):
