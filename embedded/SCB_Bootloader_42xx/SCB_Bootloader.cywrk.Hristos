@@ -355,17 +355,6 @@
 <VisibleNodeIds>
 <v>SCB_Bootloader</v>
 <v>SCB_Bootloader\Bootloadable Blinking LED</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\Bootloadable.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\Clock.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\Cm0Start.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\CyBootAsmGnu.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\cybootloader.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\cyfitter_cfg.lst</v>
-<v>SCB_Bootloader\Bootloadable Blinking LED\CortexM0\ARM_GCC_473\Debug\Listing Files\CyFlash.lst</v>
 </VisibleNodeIds>
 </CyGuid_2a325b3b-c96a-4e9f-b7a0-2c44ecb5f237>
 </TreeStates>

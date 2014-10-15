@@ -52,17 +52,17 @@
     typedef enum {
         QUEUE_LEAD_MODE_S = 0,
         QUEUED_LEAD_MODE_S = 1,
-        PLAY_LEAD_MODE_S,
-        PAUSE_LEAD_MODE_S,
+        PLAY_LEAD_MODE_S = 2,
+        PAUSE_LEAD_MODE_S = 3,
         
-        QUEUE_WAIT_MODE_S,
-        QUEUED_WAIT_MODE_S,
-        PLAY_WAIT_MODE_S,
-        PAUSE_WAIT_MODE_S,
+        QUEUE_WAIT_MODE_S = 4,
+        QUEUED_WAIT_MODE_S = 5,
+        PLAY_WAIT_MODE_S = 6,
+        PAUSE_WAIT_MODE_S = 7,
         
-        SHOW_MODE_S,
+        SHOW_MODE_S = 8,
         
-        CLEARED_S,
+        CLEARED_S = 9
     }state_t;
         
     
