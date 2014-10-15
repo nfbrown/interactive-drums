@@ -112,7 +112,6 @@ uint8_t set_red_pwm(uint8_t channel, uint8_t drums, uint8_t position_in_queue, u
     /* Highest Precedence */
     if(channel & 0x01){
         RED_A_WriteCompare(pwmVal);
-        //RED_A_Start();
         REG_A_Write(drums);
         REG_B_Write(REG_B_Read() & ~drums);
         REG_C_Write(REG_C_Read() & ~drums);
@@ -124,7 +123,6 @@ uint8_t set_red_pwm(uint8_t channel, uint8_t drums, uint8_t position_in_queue, u
     /* Mid Precedence */
     else if (channel & 0x02){
         RED_B_WriteCompare(pwmVal);
-        //RED_A_Start();
         REG_B_Write(drums);
         REG_C_Write(REG_C_Read() & ~drums);
         return 0x02;
@@ -134,7 +132,6 @@ uint8_t set_red_pwm(uint8_t channel, uint8_t drums, uint8_t position_in_queue, u
     /* Low Precedence */
     else if(channel & 0x03){
         RED_C_WriteCompare(pwmVal);
-        //RED_A_Start();
         REG_C_Write(drums);
         return 0x04;
     }

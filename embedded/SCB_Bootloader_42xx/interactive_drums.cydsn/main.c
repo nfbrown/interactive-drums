@@ -14,8 +14,9 @@
 #include <stdio.h>
 #include "drums.h"
 
-#define NUM_DRUMS_ENABLED 1
-//#define CALLIBRATE_FLAG
+#define NUM_DRUMS_ENABLED 4
+#define CALLIBRATE_FLAG
+
 //#define DEBUG_ON
 
 void pullPacketInterrupt(void);
@@ -23,7 +24,7 @@ void pullPacketInterrupt(void);
 ringBuf_t ringBuf;
 
 /* Starting State */
-volatile state_t state = CLEARED_S;
+volatile state_t state = SHOW_MODE_S;
 
 uint16_t hit_mask = 0;
 uint16_t drum_thresholds[NUM_DRUMS_ENABLED];
@@ -98,6 +99,7 @@ void pullPacketInterrupt(void){
     uint8_t i;
     packet_t temp_packet;
     
+    
     if(0u != (UART_GetRxInterruptSourceMasked() & UART_INTR_RX_TRIGGER)){
         /*
          *  Pull Packet from the Buffer
@@ -106,6 +108,12 @@ void pullPacketInterrupt(void){
             for(i = 0; i < 4; i++){   
                 temp_packet.byte[i] = (uint8_t) (UART_UartGetByte() & 0xFF);
             }
+        }
+        
+        /* Adjust timer period based on imput from packet */
+        if(temp_packet.packet.speed){
+           timer_period = (temp_packet.packet.speed << 5);
+           timer_WritePeriod(timer_period);
         }
             
         /*  Switch Statement for processing control bits */ 
@@ -150,7 +158,7 @@ void pullPacketInterrupt(void){
             /* send state back to queued if you get a pause command */
             case PAUSE:
                 if(state == PLAY_LEAD_MODE_S)
-                    state = QUEUED_WAIT_MODE_S;
+                    state = QUEUED_LEAD_MODE_S;
                 else if(state == PLAY_WAIT_MODE_S)
                     state = QUEUED_WAIT_MODE_S;
                 break;
@@ -198,8 +206,13 @@ int main(){
     
     /* Start the 3 PWM Channels */
     RED_A_Start();
+    RED_A_WriteCompare(65530);
+    
     RED_B_Start();
+    RED_B_WriteCompare(65530);
+    
     RED_C_Start();
+    RED_C_WriteCompare(65530);
     
     /* Start timer running for 3200 Ticks */
     /* 150 BPM, 600 PPM, 10PPS, 3200 Ticks Per Packet */
@@ -215,6 +228,7 @@ int main(){
     /* Callibrate the ADC */
 #ifdef CALLIBRATE_FLAG
     uint16_t low_limit = 0;
+    REG_A_Write(0x0F);
     for(i = 0; i < NUM_DRUMS_ENABLED; i ++){
         drum_thresholds[i] = 0x07FF;
         timer_WriteCounter(0xFFFE);
@@ -235,6 +249,7 @@ int main(){
     
     low_limit += 0x01A;
     ADC_SetLowLimit(low_limit);
+    REG_A_Write(0x00);
 #else
     ADC_SetLowLimit(0x6E0);
 #endif
@@ -279,20 +294,19 @@ int main(){
             time_in_packet = timer_ReadCounter() / (timer_period / 4);
             if(time_in_packet != last_time_in_packet){
                 freePwm = 0x07;
-
                 for(i = MAX_PACKET_PARSE ; i > 0; i--){
                     drums = ringBuf.buf[WRAP(ringBuf.tail + i)].packet.drums;
                     freePwm &= ~set_red_pwm(freePwm, (uint8_t) drums, i, time_in_packet);
-                } 
-                
+                }           
+     
                 last_time_in_packet = time_in_packet;
-                //GREEN_Write(ringBuf.buf[ringBuf.tail].packet.drums);
+                GREEN_Write(ringBuf.buf[ringBuf.tail].packet.drums);
 
             }    
         }
         
-        if( state == SHOW_MODE_S ){
-            //GREEN_Write(hit_mask);
+        else if( state == SHOW_MODE_S ){
+            GREEN_Write(hit_mask);
         }
             
         /* If you aren't running make sure to turn off the leds */
@@ -300,10 +314,9 @@ int main(){
             REG_A_Write(0x00);
             REG_B_Write(0x00);
             REG_B_Write(0x00);
-            //GREEN_Write(ringBuf.buf[ringBuf.tail].packet.drums);
+            GREEN_Write(0);
         }
-        
-        GREEN_Write(state);
+
         
     } /* END for(;;) */
     
