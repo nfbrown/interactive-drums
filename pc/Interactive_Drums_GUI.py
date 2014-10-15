@@ -29,6 +29,8 @@ packets = []
 paused = True
 stop = True
 thread = None
+score = 0
+maxScore = 0
 
 drums = ds.DrumSerial()
 
@@ -74,9 +76,11 @@ def freePlayModeClicked():
     sendPlay()
     freePlayDisplayFrame.pack(fill=BOTH, expand=1)
 
+
 def freePlayBackClicked():
     freePlayDisplayFrame.pack_forget()
     mainFrame.pack(fill=BOTH, expand=1)
+
 
 def pausePlayClicked():
     global paused, thread, stop
