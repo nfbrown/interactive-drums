@@ -72,7 +72,11 @@ def freePlayModeClicked():
     global mode
     mode = "free"
     sendPlay()
-    displaySongs()  # this needs to be changed to a free play display
+    songSelectionFrame.pack(fill=BOTH, expand=1)
+    songPlayingLabel['text'] = "Play Away"
+    songProgressbarFrame.pack_forget()
+    pausePlayButtonFrame.pack_forget()
+    stopButtonFrame.pack_forget()
 
 
 def pausePlayClicked():
@@ -304,12 +308,12 @@ menuButton.pack()
 songSelectionLabelFrame = Frame(songSelectionFrame)
 songSelectionLabelFrame.pack(anchor='n', side=LEFT, expand=1)
 songSelectionLabel = Label(songSelectionLabelFrame,
-                           text="Select a Song to Play", font=largeFont)
+                           text="Select a Track to Play", font=largeFont)
 songSelectionLabel.pack()
 
 playButtonFrame = Frame(songSelectionFrame)
 playButtonFrame.pack(anchor='ne', side=LEFT, expand=1)
-playButton = Button(playButtonFrame, text="Play Song", font=smallFont,
+playButton = Button(playButtonFrame, text="Play Track", font=smallFont,
                     state=DISABLED, command=playSong)
 playButton.pack()
 ##################### End Song Selection frame and buttons #####################
