@@ -141,11 +141,13 @@ def songThread():
                     drums.send(p)
                     sent.append(ds.parse_packet(p))
                     print 'Sending packet: ' + str(ds.parse_packet(p))
-            if received[3] != 0:
+            s = sent.pop(0)
+            if received[3] != 0 and s[3] != 0:
                 maxScore += 1
-                if received[3] == sent.pop(0)[3]:
+                if received[3] == s[3]:
                     score += 1
-                # update label here!
+                # replace the following line with GUI update
+                print str(score) + " / " + str(maxScore)
             print 'Received: ' + str(received)
         if handleStop():
             return
@@ -236,13 +238,16 @@ def emulateStopClicked(*args):
 
 
 def stopClicked():
-    global stop, paused, thread
+    global stop, paused, thread, score, maxScore
     stop = True
     paused = True
     pausePlayButton['text'] = ' Play  ' if paused else 'Pause'
     if isinstance(thread, Thread):
         if thread.isAlive():
             thread.join()
+    score = 0
+    maxScore = 0
+    # Update score label here too!
     createSongThread()
     songProgressBar.event_generate("<<Reset>>", when="tail")
 
