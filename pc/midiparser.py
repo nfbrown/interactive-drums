@@ -17,7 +17,7 @@ def midi_to_packets(filename):
                 and i.type == 'note_on']
     m = [(i.note, i.velocity, float(i.time)) for i in note_ons]
     return tuples_to_packets(delta_time_to_seconds(m, packets_per_second),
-                             seconds_per_beat)
+                             seconds_per_beat, packets_per_second)
 
 
 def delta_time_to_seconds(note_on_tuples, pps):
@@ -33,10 +33,12 @@ def delta_time_to_seconds(note_on_tuples, pps):
     return [i for i in new_tuples if i[1] != 0]
 
 
-def tuples_to_packets(note_on_tuples, seconds_per_beat):
+def tuples_to_packets(note_on_tuples, seconds_per_beat, pps):
     packets = []
     i = 0
     seq = 0
+    period = (1.0/pps)*(32000)
+    packets.append(ds.create_packet(0, 0, int(period) >> 5), 0)
     while (i < len(note_on_tuples)):
         filtered = [x for x in note_on_tuples if x[2] == note_on_tuples[i][2]]
         drums = 0
