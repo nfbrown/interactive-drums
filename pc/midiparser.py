@@ -15,7 +15,7 @@ def midi_to_packets(filename):
     packets_per_second = beats_per_second * 4.0
     note_ons = [i for i in mf if type(i) == mido.Message
                 and i.type == 'note_on']
-    m = [(i.note, i.velocity, float(i.time)) for i in note_ons]
+    m = [(i.note, i.velocity, i.time) for i in note_ons]
     return tuples_to_packets(delta_time_to_seconds(m, packets_per_second),
                              packets_per_second)
 
@@ -23,13 +23,14 @@ def midi_to_packets(filename):
 def delta_time_to_seconds(note_on_tuples, pps):
     total = 0
     new_tuples = []
-
+    print note_on_tuples
     for i in note_on_tuples:
-        delta_packets = int(round_to(i[2], 1 / pps) * pps)
+        delta_packets = (round_to(i[2], 1.0 / pps) * pps)
         total += delta_packets
-        if (i[1] != 0):
-            new_tuples.append((i[0], i[1],
-                               (total * (16 * pps)), delta_packets))
+        print delta_packets
+        new_tuples.append((i[0], i[1],
+                           total * pps, int(delta_packets)))
+              
     return [i for i in new_tuples if i[1] != 0]
 
 
@@ -58,8 +59,7 @@ def tuples_to_packets(note_on_tuples, pps):
 
 
 def round_to(n, precision):
-    correction = 0.5 if n >= 0 else -0.5
-    return (n / precision + correction) * precision
+    return round(n / precision) * precision
 
 
 def main():
