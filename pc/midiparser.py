@@ -38,7 +38,7 @@ def tuples_to_packets(note_on_tuples, seconds_per_beat, pps):
     i = 0
     seq = 0
     period = (1.0/pps)*(32000)
-    packets.append(ds.create_packet(0, 0, int(period) >> 5), 0)
+    packets.append(ds.create_packet(0, 0, int(period) >> 5, 0))
     while (i < len(note_on_tuples)):
         filtered = [x for x in note_on_tuples if x[2] == note_on_tuples[i][2]]
         drums = 0
