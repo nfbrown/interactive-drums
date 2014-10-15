@@ -365,7 +365,7 @@ freePlayLabel.pack()
 
 freePlayBackButtonFrame = Frame(freePlayDisplayFrame)
 freePlayBackButtonFrame.pack(anchor='nw', side=LEFT, expand=1)
-freePlayBackButton = Button(backButtonFrame, text="  Back  ",
+freePlayBackButton = Button(freePlayBackButtonFrame, text="  Back  ",
                     command=freePlayBackClicked, font=smallFont)
 freePlayBackButton.pack()
 
