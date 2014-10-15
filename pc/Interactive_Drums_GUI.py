@@ -72,12 +72,11 @@ def freePlayModeClicked():
     global mode
     mode = "free"
     sendPlay()
-    songPlayingFrame.pack(fill=BOTH, expand=1)
-    songPlayingLabel['text'] = "Play Away"
-    songProgressbarFrame.pack_forget()
-    pausePlayButtonFrame.pack_forget()
-    stopButtonFrame.pack_forget()
+    freePlayDisplayFrame.pack(fill=BOTH, expand=1)
 
+def freePlayBackClicked():
+    freePlayDisplayFrame.pack_forget()
+    mainFrame.pack(fill=BOTH, expand=1)
 
 def pausePlayClicked():
     global paused, thread, stop
@@ -94,11 +93,7 @@ def pausePlayClicked():
 def playSong():
     global packets, thread, currentSong
     songSelectionFrame.pack_forget()
-    songPlayingFrame.pack(fill=BOTH, expand=1)        
-    backButton.pack()
-    songProgressBar.pack()
-    pausePlayButton.pack()
-    stopButton.pack()
+    songPlayingFrame.pack(fill=BOTH, expand=1)
     songPlayingLabel['text'] = currentSong
     createSongThread()
 
@@ -320,10 +315,10 @@ playButtonFrame.pack(anchor='ne', side=LEFT, expand=1)
 playButton = Button(playButtonFrame, text="Play Track", font=smallFont,
                     state=DISABLED, command=playSong)
 playButton.pack()
-##################### End Song Selection frame and buttons #####################
+##################### End Song Selection frame #################################
 
 
-###################### Start Song Playing fram and buttons #####################
+###################### Start Song Playing fram #################################
 songPlayingFrame = Frame(mainWindow)
 
 songPlayingLabel = Label(songPlayingFrame, font=largeFont)
@@ -333,6 +328,7 @@ backButtonFrame = Frame(songPlayingFrame)
 backButtonFrame.pack(anchor='nw', side=LEFT, expand=1)
 backButton = Button(backButtonFrame, text="  Back  ",
                     command=backClicked, font=smallFont)
+backButton.pack()
 
 songProgressBarFrame = Frame(songPlayingFrame)
 songProgressBarFrame.pack(anchor='w', side=TOP, expand=1)
@@ -340,12 +336,14 @@ songProgressBar = ttk.Progressbar(songProgressBarFrame, orient="horizontal",
                                   length=600, mode="determinate")
 songProgressBar.bind("<<Step>>", doProgressBarStep)
 songProgressBar.bind("<<Reset>>", doProgressBarReset)
+songProgressBar.pack()
 
 
 pausePlayButtonFrame = Frame(songPlayingFrame)
 pausePlayButtonFrame.pack(anchor='w', side=LEFT, expand=1)
 pausePlayButton = Button(pausePlayButtonFrame, text=" Play  ",
                          font=smallFont, command=pausePlayClicked)
+pausePlayButton.pack()
 
 
 stopButtonFrame = Frame(songPlayingFrame)
@@ -353,9 +351,29 @@ stopButtonFrame.pack(anchor='w', side=LEFT, expand=1)
 stopButton = Button(stopButtonFrame, text=" Stop  ",
                     font=smallFont, command=stopClicked)
 stopButton.bind("<<EmulateClick>>", emulateStopClicked)
+stopButton.pack()
 
 
-###################### End Song Playing frame and buttons ######################
+###################### End Song Playing frame ##################################
+
+
+###################### Start Free Play Display frame ###########################
+freePlayDisplayFrame = Frame(mainWindow)
+
+freePlayLabel = Label(freePlayDisplayFrame, font=largeFont, text="Play Away")
+freePlayLabel.pack()
+
+freePlayBackButtonFrame = Frame(freePlayDisplayFrame)
+freePlayBackButtonFrame.pack(anchor='nw', side=LEFT, expand=1)
+freePlayBackButton = Button(backButtonFrame, text="  Back  ",
+                    command=freePlayBackClicked, font=smallFont)
+freePlayBackButton.pack()
+
+
+###################### End Free Play Display frame #############################
+
+
+
 
 # start event loop
 mainWindow.mainloop()
