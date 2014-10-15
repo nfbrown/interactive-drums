@@ -6,18 +6,19 @@ supported_drums = [36, 38, 47, 48]
 
 def midi_to_packets(filename):
     mf = mido.MidiFile(filename)
-    seconds_per_beat = 0.5
+    beats_per_second = 1000000.0 / 500000
     tempo_list = [i for i in mf
                   if type(i) == mido.MetaMessage and i.type == 'tempo']
     if tempo_list != []:
-        seconds_per_beat = tempo_list[0].tempo / 1000000.0
-    packets_per_second = 16/seconds_per_beat
+        beats_per_second = 1000000.0 / tempo_list[0].tempo
 
+    packets_per_second = beats_per_second * 4.0
+    print packets_per_second
     note_ons = [i for i in mf if type(i) == mido.Message
                 and i.type == 'note_on']
     m = [(i.note, i.velocity, float(i.time)) for i in note_ons]
     return tuples_to_packets(delta_time_to_seconds(m, packets_per_second),
-                             seconds_per_beat, packets_per_second)
+                             packets_per_second)
 
 
 def delta_time_to_seconds(note_on_tuples, pps):
@@ -33,7 +34,7 @@ def delta_time_to_seconds(note_on_tuples, pps):
     return [i for i in new_tuples if i[1] != 0]
 
 
-def tuples_to_packets(note_on_tuples, seconds_per_beat, pps):
+def tuples_to_packets(note_on_tuples, pps):
     packets = []
     i = 0
     seq = 0
