@@ -153,7 +153,7 @@ def songThread():
                 maxScore += 1
                 if received[3] == s[3]:
                     score += 1
-                updateScore(score, maxScore)
+                scoreLabel.event_generate("<<updateScore>>", when="tail")
             print 'Received: ' + str(received)
         if handleStop():
             return
@@ -253,14 +253,14 @@ def stopClicked():
     if isinstance(thread, Thread):
         if thread.isAlive():
             thread.join()
-    scoreLabel['text'] = "0/" + str(maxScore)
     score = 0
     maxScore = 0    
     createSongThread()
     songProgressBar.event_generate("<<Reset>>", when="tail")
 
-def updateScore(score, maxScore):
-    scoreLabel['text']= str(score) + "/" + str(maxScore)
+def updateScore(*args):
+    global score, maxScore
+    scoreLabel['text']= "Score: " + str(score) + "/" + str(maxScore)
 
 def onClose():
     global thread, stop
@@ -362,12 +362,6 @@ backButton.pack()
 invisLabelFrame = Frame(songPlayingFrame)
 invisLabelFrame.pack(anchor='s', side=BOTTOM, expand=1)
 
-scoreLabelFrame = Frame(songPlayingFrame)
-scoreLabelFrame.pack(side=LEFT, expand=1)
-scoreLabel = Label(scoreLabelFrame, text = "0/50", font=smallFont)
-scoreLabel.bind("<<Step>>", updateScore)
-scoreLabel.pack()
-
 songProgressBarFrame = Frame(songPlayingFrame)
 songProgressBarFrame.pack(anchor='w', side=LEFT, expand=1)
 songProgressBar = ttk.Progressbar(songProgressBarFrame, orient="horizontal",
@@ -375,6 +369,12 @@ songProgressBar = ttk.Progressbar(songProgressBarFrame, orient="horizontal",
 songProgressBar.bind("<<Step>>", doProgressBarStep)
 songProgressBar.bind("<<Reset>>", doProgressBarReset)
 songProgressBar.pack()
+
+scoreLabelFrame = Frame(songPlayingFrame)
+scoreLabelFrame.pack(side=LEFT, expand=1)
+scoreLabel = Label(scoreLabelFrame, text = "Score: 0/0", font=smallFont)
+scoreLabel.bind("<<updateScore>>", updateScore)
+scoreLabel.pack()
 
 
 pausePlayButtonFrame = Frame(songPlayingFrame)
