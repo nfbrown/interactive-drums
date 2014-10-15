@@ -13,7 +13,6 @@ def midi_to_packets(filename):
         beats_per_second = 1000000.0 / tempo_list[0].tempo
 
     packets_per_second = beats_per_second * 4.0
-    print packets_per_second
     note_ons = [i for i in mf if type(i) == mido.Message
                 and i.type == 'note_on']
     m = [(i.note, i.velocity, float(i.time)) for i in note_ons]

@@ -110,14 +110,18 @@ def createSongThread():
 
 
 def songThread():
-    global packets, drums, stop, originalLen
+    global packets, drums, stop, originalLen, score, maxScore
+    score = 0
     packetsRemaining = len(packets)
+    sent = []
     originalLen = len(packets)
     sendQueue()
     print 'Filling buffer'
     time.sleep(0.1)
     for i in range(14):
-        drums.send(packets.pop(0))
+        p = packets.pop(0)
+        drums.send(p)
+        sent.append(ds.parse_packet(p))
         time.sleep(0.1)
         if handleStop():
             return
@@ -135,7 +139,13 @@ def songThread():
                 if (len(packets) > 0):
                     p = packets.pop(0)
                     drums.send(p)
+                    sent.append(ds.parse_packet(p))
                     print 'Sending packet: ' + str(ds.parse_packet(p))
+            if received[3] != 0:
+                maxScore += 1
+                if received[3] == sent.pop(0)[3]:
+                    score += 1
+                # update label here!
             print 'Received: ' + str(received)
         if handleStop():
             return
