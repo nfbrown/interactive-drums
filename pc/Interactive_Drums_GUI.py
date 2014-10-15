@@ -72,7 +72,7 @@ def freePlayModeClicked():
     global mode
     mode = "free"
     sendPlay()
-    songSelectionFrame.pack(fill=BOTH, expand=1)
+    songPlayingFrame.pack(fill=BOTH, expand=1)
     songPlayingLabel['text'] = "Play Away"
     songProgressbarFrame.pack_forget()
     pausePlayButtonFrame.pack_forget()
@@ -94,7 +94,11 @@ def pausePlayClicked():
 def playSong():
     global packets, thread, currentSong
     songSelectionFrame.pack_forget()
-    songPlayingFrame.pack(fill=BOTH, expand=1)
+    songPlayingFrame.pack(fill=BOTH, expand=1)        
+    backButton.pack()
+    songProgressBar.pack()
+    pausePlayButton.pack()
+    stopButton.pack()
     songPlayingLabel['text'] = currentSong
     createSongThread()
 
@@ -329,7 +333,6 @@ backButtonFrame = Frame(songPlayingFrame)
 backButtonFrame.pack(anchor='nw', side=LEFT, expand=1)
 backButton = Button(backButtonFrame, text="  Back  ",
                     command=backClicked, font=smallFont)
-backButton.pack()
 
 songProgressBarFrame = Frame(songPlayingFrame)
 songProgressBarFrame.pack(anchor='w', side=TOP, expand=1)
@@ -337,14 +340,12 @@ songProgressBar = ttk.Progressbar(songProgressBarFrame, orient="horizontal",
                                   length=600, mode="determinate")
 songProgressBar.bind("<<Step>>", doProgressBarStep)
 songProgressBar.bind("<<Reset>>", doProgressBarReset)
-songProgressBar.pack()
 
 
 pausePlayButtonFrame = Frame(songPlayingFrame)
 pausePlayButtonFrame.pack(anchor='w', side=LEFT, expand=1)
 pausePlayButton = Button(pausePlayButtonFrame, text=" Play  ",
                          font=smallFont, command=pausePlayClicked)
-pausePlayButton.pack()
 
 
 stopButtonFrame = Frame(songPlayingFrame)
@@ -352,7 +353,6 @@ stopButtonFrame.pack(anchor='w', side=LEFT, expand=1)
 stopButton = Button(stopButtonFrame, text=" Stop  ",
                     font=smallFont, command=stopClicked)
 stopButton.bind("<<EmulateClick>>", emulateStopClicked)
-stopButton.pack()
 
 
 ###################### End Song Playing frame and buttons ######################
