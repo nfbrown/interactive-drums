@@ -75,11 +75,15 @@ def freePlayModeClicked():
     mode = "free"
     sendPlay()
     freePlayDisplayFrame.pack(fill=BOTH, expand=1)
+    mainWindow.minsize(1100, 150)
+    mainWindow.geometry("1100x150")
 
 
 def freePlayBackClicked():
     freePlayDisplayFrame.pack_forget()
     mainFrame.pack(fill=BOTH, expand=1)
+    mainWindow.minsize(800, 500)
+    mainWindow.geometry("1100x700")
 
 
 def pausePlayClicked():
@@ -95,11 +99,14 @@ def pausePlayClicked():
 
 
 def playSong():
+    mainWindow.minsize(1100, 150)
+    mainWindow.geometry("1100x150")
     global packets, thread, currentSong
     songSelectionFrame.pack_forget()
     songPlayingFrame.pack(fill=BOTH, expand=1)
     songPlayingLabel['text'] = currentSong
     createSongThread()
+
 
 
 def createSongThread():
@@ -231,6 +238,8 @@ def backClicked():
     songPlayingFrame.pack_forget()
     displaySongs()
     stop = True
+    mainWindow.minsize(800, 500)
+    mainWindow.geometry("1100x700")
 
 
 def emulateStopClicked(*args):
@@ -349,8 +358,16 @@ backButton = Button(backButtonFrame, text="  Back  ",
                     command=backClicked, font=smallFont)
 backButton.pack()
 
+invisLabelFrame = Frame(songPlayingFrame)
+invisLabelFrame.pack(anchor='s', side=BOTTOM, expand=1)
+
+scoreLabelFrame = Frame(songPlayingFrame)
+scoreLabelFrame.pack(side=LEFT, expand=1)
+scoreLabel = Label(scoreLabelFrame, text = "0/50", font=smallFont)
+scoreLabel.pack()
+
 songProgressBarFrame = Frame(songPlayingFrame)
-songProgressBarFrame.pack(anchor='w', side=TOP, expand=1)
+songProgressBarFrame.pack(anchor='w', side=LEFT, expand=1)
 songProgressBar = ttk.Progressbar(songProgressBarFrame, orient="horizontal",
                                   length=600, mode="determinate")
 songProgressBar.bind("<<Step>>", doProgressBarStep)
