@@ -1,5 +1,6 @@
 from Tkinter import *
 from threading import Thread
+from enum import IntEnum
 import glob
 import tkFont
 import re
@@ -7,6 +8,19 @@ import drumserial as ds
 import midiparser as mp
 import time
 import ttk
+
+
+class Control(IntEnum):
+    EMPTY = 0
+    CLEAR = 1
+    QUEUE_LEAD = 2
+    PLAY_LEAD = 3
+    QUEUE_WAIT = 4
+    PLAY_WAIT = 5
+    SHOW_MODE = 6
+    PAUSE = 7
+    EMPTY_ERR = 8
+    SEQ_ERR = 9
 
 mode = "none"
 currentSong = None
@@ -41,6 +55,7 @@ def scoreModeClicked():
     mainFrame.pack_forget()
     global mode
     mode = "score"
+    sendClear()
     displaySongs()
 
 
@@ -48,6 +63,7 @@ def trainingModeClicked():
     mainFrame.pack_forget()
     global mode
     mode = "training"
+    sendClear()
     displaySongs()
 
 
@@ -55,7 +71,7 @@ def freePlayModeClicked():
     mainFrame.pack_forget()
     global mode
     mode = "free"
-    sendMode()
+    sendPlay()
     displaySongs()  # this needs to be changed to a free play display
 
 
@@ -87,37 +103,66 @@ def createSongThread():
 
 
 def songThread():
-    global packets, drums, originalLen
+    global packets, drums, stop, originalLen
     packetsRemaining = len(packets)
     originalLen = len(packets)
-    time.sleep(3)
-    for i in range(12):
+    sendQueue()
+    print 'Filling buffer'
+    time.sleep(0.1)
+    for i in range(14):
         drums.send(packets.pop(0))
+        time.sleep(0.1)
         if handleStop():
             return
 
-    sendMode()
-    waitOnPause()
+    time.sleep(2)
+    sendPlay()
+    print 'Start receiving'
+    print 'Packets Remaining: ' + str(packetsRemaining)
     while packetsRemaining > 0:
-        if (drums.check_for_packet()):
-            print ds.parse_packet(drums.receive())
-            packetsRemaining -= 1
-            songProgressBar.event_generate("<<Step>>", when="tail")
-            if (len(packets) > 0):
-                drums.send(packets.pop(0))
-        waitOnPause()
+        if drums.check_for_packet():
+            received = ds.parse_packet(drums.receive())
+            if received[1] == 0:
+                packetsRemaining -= 1
+                songProgressBar.event_generate("<<Step>>", when="tail")
+                if (len(packets) > 0):
+                    p = packets.pop(0)
+                    drums.send(p)
+                    print 'Sending packet: ' + str(ds.parse_packet(p))
+            print 'Received: ' + str(received)
         if handleStop():
             return
+        waitOnPause()
+    print 'Song complete'
+    sendClear()
+    stopButton.event_generate("<<EmulateClick>>", when="tail")
 
 
-def sendMode():
+def sendQueue():
     global mode, drums
     if mode == "score":
-        drums.send(ds.create_packet())
+        print 'Sending QUEUE_LEAD'
+        drums.send(ds.create_packet(0, int(Control.QUEUE_LEAD), 0, 0))
     elif mode == "training":
-        drums.send(ds.create_packet())
+        print 'Sending QUEUE_WAIT'
+        drums.send(ds.create_packet(0, int(Control.QUEUE_WAIT), 0, 0))
     elif mode == "free":
-        drums.send(ds.create_packet())
+        print 'Sending SHOW_MODE'
+        drums.send(ds.create_packet(0, int(Control.SHOW_MODE), 0, 0))
+
+
+def sendPlay():
+    global mode, drums
+    if mode == "score":
+        print 'Sending PLAY_LEAD'
+        print ds.parse_packet(ds.create_packet(0, int(Control.PLAY_LEAD), 0, 0))
+        drums.send(ds.create_packet(0, int(Control.PLAY_LEAD), 0, 0))
+    elif mode == "training":
+        print 'Sending PLAY_WAIT'
+        drums.send(ds.create_packet(0, int(Control.PLAY_WAIT), 0, 0))
+    elif mode == "free":
+        print 'Sending SHOW_MODE'
+        drums.send(ds.create_packet(0, int(Control.SHOW_MODE), 0, 0))
 
 
 def doProgressBarStep(*args):
@@ -125,22 +170,33 @@ def doProgressBarStep(*args):
     songProgressBar.step(99.9/originalLen)
 
 
+def doProgressBarReset(*args):
+    songProgressBar['value'] = 0
+
+
 def waitOnPause():
     global paused
     if paused is True:
-        drums.send(ds.create_packet(0, 2, 0, 0))
+        if stop is False:
+            print 'Sending PAUSE'
+            drums.send(ds.create_packet(0, int(Control.PAUSE), 0, 0))
         while paused:
             if handleStop():
                 return
             pass
-        drums.send(ds.create_packet(0, 3, 0, 0))
+        sendPlay()
 
 
 def handleStop():
-    global stop, drums
+    global stop, paused, drums
     if stop is True:
-        drums.send(ds.create_packet(0, 1, 0, 0))
+        sendClear()
     return stop
+
+
+def sendClear():
+    print 'Sending CLEAR'
+    drums.send(ds.create_packet(0, Control.CLEAR, 0, 0))
 
 
 def on_select(event):
@@ -152,18 +208,26 @@ def on_select(event):
 
 def backClicked():
     global stop
+    songProgressBar.event_generate("<<Reset>>", when="tail")
     songPlayingFrame.pack_forget()
     displaySongs()
     stop = True
 
 
+def emulateStopClicked(*args):
+    stopClicked()
+
+
 def stopClicked():
-    global stop, thread
+    global stop, paused, thread
     stop = True
+    paused = True
+    pausePlayButton['text'] = ' Play  ' if paused else 'Pause'
     if isinstance(thread, Thread):
         if thread.isAlive():
             thread.join()
     createSongThread()
+    songProgressBar.event_generate("<<Reset>>", when="tail")
 
 
 def onClose():
@@ -268,6 +332,7 @@ songProgressBarFrame.pack(anchor='w', side=TOP, expand=1)
 songProgressBar = ttk.Progressbar(songProgressBarFrame, orient="horizontal",
                                   length=600, mode="determinate")
 songProgressBar.bind("<<Step>>", doProgressBarStep)
+songProgressBar.bind("<<Reset>>", doProgressBarReset)
 songProgressBar.pack()
 
 
@@ -282,6 +347,7 @@ stopButtonFrame = Frame(songPlayingFrame)
 stopButtonFrame.pack(anchor='w', side=LEFT, expand=1)
 stopButton = Button(stopButtonFrame, text=" Stop  ",
                     font=smallFont, command=stopClicked)
+stopButton.bind("<<EmulateClick>>", emulateStopClicked)
 stopButton.pack()
 
 

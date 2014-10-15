@@ -56,7 +56,7 @@ class DrumSerial:
 
 def create_packet(sequence, control, pps, drums):
     packet = (sequence & 0x3) << 30
-    packet |= (control & 0x1F) << 25
+    packet |= (control & 0x3F) << 24
     packet |= (pps & 0xFF) << 16
     packet |= (drums & 0xFFFF)
     b = bytearray(4)
@@ -67,7 +67,7 @@ def create_packet(sequence, control, pps, drums):
 
 def parse_packet(packet):
     seq = (packet[3] >> 6) & 0x3
-    con = (packet[3] >> 1) & 0x1F
+    con = (packet[3]) & 0x3F
     pps = (packet[2] & 0x7F)
     drm = (int(packet[1]) << 8) | packet[0]
     return (seq, con, pps, drm)
