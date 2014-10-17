@@ -18,3 +18,4 @@ The Python code requires a few modules:
 - mido
 - enum34
 
+To see the project in action, watch [this video](https://www.youtube.com/watch?v=5bVihZEgty4&feature=youtu.be "Interactive Drums Demo").
