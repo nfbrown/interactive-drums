@@ -30,7 +30,7 @@ def delta_time_to_seconds(note_on_tuples, pps):
         print delta_packets
         new_tuples.append((i[0], i[1],
                            total * pps, int(delta_packets)))
-              
+
     return [i for i in new_tuples if i[1] != 0]
 
 
@@ -60,13 +60,3 @@ def tuples_to_packets(note_on_tuples, pps):
 
 def round_to(n, precision):
     return round(n / precision) * precision
-
-
-def main():
-    p = midi_to_packets("example3.mid")
-    for x in [ds.parse_packet(i) for i in p]:
-        print x
-
-
-if __name__ == "__main__":
-    main()
